@@ -44,7 +44,7 @@
             <li class="dropdown <?php echo ($page == 'fidusia') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta Fidusia <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Debitur</a></li><!-- 
+                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Fidusia</a></li><!-- 
                 <li><a href="#">Data Persetujuan</a></li>
                 <li><a href="#">Data Pemilik</a></li>
                 <li><a href="#">Data Pinjaman</a></li> -->

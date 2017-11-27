@@ -7,7 +7,10 @@ class Aktamodel extends CI_Model {
         parent::__construct();
     }
 
-    function findAll() {
+    function findAll($id_petugas = '') {
+        if ($id_petugas != '') {
+            $this->db->where('id_petugas', $id_petugas);
+        }
         $this->db->where('status', 1);
         $query = $this->db->get($this->table);
 

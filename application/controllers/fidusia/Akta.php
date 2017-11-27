@@ -15,7 +15,12 @@ class Akta extends CI_Controller
 	{
 		$data['title'] = 'Data Debitur';
 		$data['page']  = 'fidusia';
-		$data['baris'] = $this->akta->findAll();
+		if ($this->session->userdata('level') == 1) {
+			$data['baris'] = $this->akta->findAll();
+		}
+		else {
+			$data['baris'] = $this->akta->findAll($this->session->userdata('id'));
+		}
 		$this->load->view('data_debitur/data',$data);
 	}
 
@@ -275,6 +280,7 @@ class Akta extends CI_Controller
 							'no_bukti_setoran'            => $no_bukti_setoran,
 							'tgl_setor'                   => $tgl_setor,
 							'nama_karyawan'               => $nama_karyawan,
+							'id_petugas'               	  => $this->session->userdata('id'),
 							'created_at'                  => date('Y-m-d H:i:s'),
 							'updated_at'				  => date('Y-m-d H:i:s'),
 							'status'                      => 1
