@@ -78,15 +78,60 @@ function autoCodeInv() {
 if (!function_exists('headLetter'))
 {
 function headLetter() {
-		$data = array('{nomor}', 
-						'{nama}',
-						'{memo}', 
-						'{tanggal}', 
-						'{nominal}', 
-						'{terbilang}',
-                        '{nama_item}', 
-						'{total_item}', 
-						'{terbilang_item}');
+		$data = array('{no_akta}', 
+                        '{tanggal_akta}',
+                        '{tanggal_akta_terbilang}',
+                        '{waktu}',
+                        '{waktu_terbilang}', 
+                        '{gelar_debitur}',
+                        '{nama_debitur}',
+						'{kota_lahir_debitur}', 
+						'{tgl_lahir_debitur}', 
+                        '{tgl_lhr_dbt_terbilang}',
+                        '{warga_debitur}',
+                        '{pekerjaan_debitur}', 
+						'{alamat_debitur}',
+                        '{rt_debitur}',
+                        '{rw_debitur}',
+                        '{kelurahan_debitur}',
+                        '{nama_kelurahan_debitur}',
+                        '{kecamatan_debitur}',
+                        '{kota_debitur}',
+                        '{nama_kota_debitur}',
+                        '{no_identitas_debitur}',
+                        '{tgl_sk_penerima_fidusia}',
+                        '{gelar_persetujuan}',
+                        '{nama_persetujuan}',
+                        '{kota_lahir_persetujuan}',
+                        '{tgl_lahir_persetujuan}',
+                        '{tgl_lhr_persetujuan_terbilang}',
+                        '{warga_persetujuan}',
+                        '{pekerjaan_persetujuan}',
+                        '{alamat_persetujuan}',
+                        '{rt_persetujuan}',
+                        '{kelurahan_persetujuan}',
+                        '{nama_kelurahan_persetujuan}',
+                        '{kecamatan_persetujuan}',
+                        '{kota_persetujuan}',
+                        '{nama_kota_persetujuan}',
+                        '{no_identitas_persetujuan}',
+                        '{no_sk_penerima_fidusia}',
+                        '{tgl_sk_terbilang}',
+                        '{nilai_penjaminan}',
+                        '{nilai_penjaminan_terbilang}',
+                        '{merk}',
+                        '{type}',
+                        '{thn_buat}',
+                        '{thn_rakit}',
+                        '{warna}',
+                        '{no_rangka}',
+                        '{no_mesin}',
+                        '{no_polisi}',
+                        '{bukti_hak}',
+                        '{bpkb_atas_nama}',
+                        '{nilai_obyek}',
+                        '{nilai_obyek_terbilang}'
+                        );
 		return $data;
     }
 }
@@ -95,15 +140,58 @@ if (!function_exists('tailLetter'))
 {
 function tailLetter($row) {
 
-		$data = array($row['no_invoice'], 
-						$row['pembayar'],
-						$row['ket'], 
-						humanDate($row['tanggal']), 
-						number_format($row['nominal']), 
-						terbilang($row['nominal']).' Rupiah.',
-                        $row['nama_item'],
-						$row['jumlah'],
-						terbilang($row['jumlah'])
+		$data = array($row['no_akta'], 
+						humanDate($row['tanggal_akta']),
+						format_tanggal($row['tanggal_akta']), 
+						format_waktu($row['jam_akta']), 
+						waktu_terbilang($row['jam_akta']), 
+						$row['gelar_debitur'],
+                        $row['nama_debitur'],
+						$row['kota_lahir_debitur'],
+                        humanDate($row['tgl_lahir_debitur']),
+                        format_tanggal($row['tgl_lahir_debitur']),
+                        $row['warga_debitur'],
+                        $row['pekerjaan_debitur'],
+                        $row['alamat_debitur'],
+                        $row['rt_debitur'],
+                        $row['kelurahan_debitur'],
+                        $row['nama_kelurahan_debitur'],
+                        $row['kecamatan_debitur'],
+                        $row['kota_debitur'],
+                        $row['nama_kota_debitur'],
+                        $row['no_identitas_debitur'],
+                        humanDate($row['tgl_sk_penerima_fidusia']),
+                        format_tanggal($row['tgl_sk_penerima_fidusia']),
+                        $row['gelar_persetujuan'],
+                        $row['kota_lahir_persetujuan'],
+                        humanDate($row['tgl_lahir_persetujuan']),
+                        format_tanggal($row['tgl_lahir_persetujuan']),
+                        $row['warga_persetujuan'],
+                        $row['pekerjaan_persetujuan'],
+                        $row['alamat_persetujuan'],
+                        $row['rt_persetujuan'],
+                        $row['kelurahan_persetujuan'],
+                        $row['nama_kelurahan_persetujuan'],
+                        $row['kecamatan_persetujuan'],
+                        $row['kota_persetujuan'],
+                        $row['nama_kota_persetujuan'],
+                        $row['no_identitas_persetujuan'],
+                        $row['no_sk_penerima_fidusia'],
+                        humanDate($row['tgl_sk_penerima_fidusia']),
+                        format_tanggal($row['tgl_sk_penerima_fidusia']),
+                        number_format($row['nilai_penjaminan']),
+                        terbilang($row['nilai_penjaminan']),
+                        $row['merk'],
+                        $row['type'],
+                        $row['thn_buat'],
+                        $row['warna'],
+                        $row['no_rangka'],
+                        $row['no_mesin'],
+                        $row['no_polisi'],
+                        $row['bukti_hak'],
+                        $row['bpkb_atas_nama'],
+                        number_format($row['nilai_obyek']),
+                        terbilang($row['nilai_obyek'])
 						);
 		return $data;
     }
@@ -138,6 +226,82 @@ function kekata($x) {
         return $temp;
 }
 
+function format_tanggal($tanggal) {
+    $explode = explode('-',$tanggal);
+    $tanggal = terbilang($explode[2]);
+    switch ($explode[1]) {
+        case '01':
+        $bulan = 'Januari';
+            break;
+
+        case '02':
+        $bulan = 'Februari';
+            break;
+
+        case '03':
+        $bulan = 'Maret';
+            break;
+
+        case '04':
+        $bulan = 'April';
+            break;
+
+        case '05':
+        $bulan = 'Mei';
+            break;
+
+        case '06':
+        $bulan = 'Juni';
+            break;
+
+        case '07':
+        $bulan = 'Juli';
+            break;
+
+        case '08':
+        $bulan = 'Agustus';
+            break;
+
+        case '09':
+        $bulan = 'September';
+            break;
+        
+        case '10':
+        $bulan = 'Oktober';
+            break;
+
+        case '11':
+        $bulan = 'November';
+            break;
+
+        case '12':
+        $bulan = 'Desember';
+            break;
+
+        default:
+            $bulan = 'Not Definied';
+            break;
+    }
+$tahun = terbilang($explode[0]);
+
+return $tanggal.' '.$bulan.' '.$tahun;
+}
+
+function format_waktu($jam) {
+    $explode = explode(':',$jam);
+    $jam = $explode[0];
+    $menit = $explode[1];
+    $wilayah = 'WITA';
+    return $jam.'.'.$menit.' '.$wilayah;
+}
+
+function waktu_terbilang($jam) {
+    $explode = explode(':',$jam);
+    $jam = terbilang($explode[0]);
+    $menit = terbilang($explode[1]);
+    $wilayah = 'Waktu Indonesia Tengah';
+    return $jam.'.'.$menit.' '.$wilayah;
+}
 
 function terbilang($x, $style=3) {
     if($x<0) {

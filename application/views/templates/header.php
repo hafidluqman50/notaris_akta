@@ -17,6 +17,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/skins/_all-skins.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/tinymce/skins/lightgray/skin.min.css') ?>">
+  <!-- <link rel="stylesheet" href=""> -->
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -42,11 +44,17 @@
             <li class="dropdown <?php echo ($page == 'fidusia') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta Fidusia <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Debitur</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Debitur</a></li><!-- 
                 <li><a href="#">Data Persetujuan</a></li>
                 <li><a href="#">Data Pemilik</a></li>
-                <li><a href="#">Data Pinjaman</a></li>
+                <li><a href="#">Data Pinjaman</a></li> -->
               </ul>
+            <li class="dropdown <?php echo($page=='surat') ? 'active' : '' ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template Surat <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?php echo base_url('fidusia/akta/surat_akta') ?>">Surat Akta</a></li>
+              </ul>
+            </li>
             </li>
           </ul>
         </div>
