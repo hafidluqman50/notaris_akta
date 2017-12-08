@@ -18,17 +18,17 @@ class Surataktamodel extends CI_Model
         }
     }
 
-    // function findById($id) {
-    //     $this->db->where('id_nota', $id);
-    //     $query = $this->db->get($this->table);
+    function findById($id) {
+        $this->db->where('id_surat', $id);
+        $query = $this->db->get($this->table);
 
-    //     if ($query->num_rows() >= 1) {
-    //         return $query->row_array();
-    //     }
-    //     else {
-    //         return array();
-    //     }
-    // }
+        if ($query->num_rows() >= 1) {
+            return $query->row_array();
+        }
+        else {
+            return array();
+        }
+    }
 
     function showSurat() {
     	$this->db->where('id_surat',1);
@@ -55,7 +55,7 @@ class Surataktamodel extends CI_Model
 
     function updateData($id,$data) {
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id',$id);
+        $this->db->where('id_surat',$id);
         $this->db->update($this->table,$data);
     }
 

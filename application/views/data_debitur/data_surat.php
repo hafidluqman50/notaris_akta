@@ -17,7 +17,7 @@
 							<?php if ($this->session->flashdata('pesan')) :?>
 								<div class="alert alert-success">
 									<button type="button" class="close" data-dismiss="alert">X</button>
-									<?php echo $this->session->flasdata('pesan'); ?>
+									<?php echo $this->session->flashdata('pesan'); ?>
 								</div>
 							<?php endif ?>
 

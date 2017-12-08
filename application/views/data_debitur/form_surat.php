@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					<button type="submit" class="btn btn-primary" name="proses">Tambah</button>
+					<button type="submit" class="btn <?php echo(isset($row)) ? 'btn-warning' : '' ?>" name="proses"><?php echo(isset($row)) ? 'Edit' : 'Tambah'; ?></button>
 				</div>
 			</form>
 			</div>

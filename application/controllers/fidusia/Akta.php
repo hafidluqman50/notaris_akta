@@ -328,8 +328,6 @@ class Akta extends CI_Controller
 		$nama_surat = $this->input->post('nama_surat');
 		$template   = $this->input->post('template');
 		$id         = $this->input->post('id_surat');
-		// var_dump($id);
-		// die;
 		$array = [
 			'nama_surat' => $nama_surat,
 			'template' => 	$template,
@@ -348,56 +346,59 @@ class Akta extends CI_Controller
 	}
 
 	public function cetak($id) {
-		$akta = $this->akta->findById($id);
-		$surat = $this->surat->showSurat();
-		$row = [];
-		$row['no_akta'] = $akta['no_akta'];
-		$row['tanggal_akta'] = $akta['tanggal_akta'];
-		$row['jam_akta'] = $akta['jam_akta'];
-		$row['gelar_debitur'] = $akta['gelar_debitur'];
-		$row['nama_debitur'] = $akta['nama_debitur'];
-		$row['kota_lahir_debitur'] = $akta['kota_lahir_debitur'];
-		$row['tgl_lahir_debitur'] = $akta['tgl_lahir_debitur'];
-		$row['warga_debitur'] = $akta['warga_debitur'];
-		$row['pekerjaan_debitur'] = $akta['pekerjaan_debitur'];
-		$row['alamat_debitur'] = $akta['alamat_debitur'];
-		$row['rt_debitur'] = $akta['rt_debitur'];
-		$row['kelurahan_debitur'] = $akta['kelurahan_debitur'];
-		$row['nama_kelurahan_debitur'] = $akta['nama_kelurahan_debitur'];
-		$row['kecamatan_debitur'] = $akta['kecamatan_debitur'];
-		$row['kota_debitur'] = $akta['kota_debitur'];
-		$row['nama_kota_debitur'] = $akta['nama_kota_debitur'];
-		$row['no_identitas_debitur'] = $akta['no_identitas_debitur'];
-		$row['tgl_sk_penerima_fidusia'] = $akta['tgl_sk_penerima_fidusia'];
-		$row['gelar_persetujuan'] = $akta['gelar_persetujuan'];
-		$row['kota_lahir_persetujuan'] = $akta['kota_lahir_persetujuan'];
-		$row['tgl_lahir_persetujuan'] = $akta['tgl_lahir_persetujuan'];
-		$row['warga_persetujuan'] = $akta['warga_persetujuan'];
-		$row['pekerjaan_persetujuan'] = $akta['pekerjaan_persetujuan'];
-		$row['alamat_persetujuan'] = $akta['alamat_persetujuan'];
-		$row['rt_persetujuan'] = $akta['rt_persetujuan'];
-		$row['kelurahan_persetujuan'] = $akta['kelurahan_persetujuan'];
+		$akta                              = $this->akta->findById($id);
+		$surat                             = $this->surat->showSurat();
+		$row                               = [];
+		$row['no_akta']                    = $akta['no_akta'];
+		$row['tanggal_akta']               = $akta['tanggal_akta'];
+		$row['jam_akta']                   = $akta['jam_akta'];
+		$row['gelar_debitur']              = $akta['gelar_debitur'];
+		$row['nama_debitur']               = $akta['nama_debitur'];
+		$row['kota_lahir_debitur']         = $akta['kota_lahir_debitur'];
+		$row['tgl_lahir_debitur']          = $akta['tgl_lahir_debitur'];
+		$row['warga_debitur']              = $akta['warga_debitur'];
+		$row['pekerjaan_debitur']          = $akta['pekerjaan_debitur'];
+		$row['alamat_debitur']             = $akta['alamat_debitur'];
+		$row['rt_debitur']                 = $akta['rt_debitur'];
+		$row['kelurahan_debitur']          = $akta['kelurahan_debitur'];
+		$row['nama_kelurahan_debitur']     = $akta['nama_kelurahan_debitur'];
+		$row['kecamatan_debitur']          = $akta['kecamatan_debitur'];
+		$row['kota_debitur']               = $akta['kota_debitur'];
+		$row['nama_kota_debitur']          = $akta['nama_kota_debitur'];
+		$row['no_identitas_debitur']       = $akta['no_identitas_debitur'];
+		$row['tgl_sk_penerima_fidusia']    = $akta['tgl_sk_penerima_fidusia'];
+		$row['gelar_persetujuan']          = $akta['gelar_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $akta['kota_lahir_persetujuan'];
+		$row['tgl_lahir_persetujuan']      = $akta['tgl_lahir_persetujuan'];
+		$row['warga_persetujuan']          = $akta['warga_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $akta['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $akta['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $akta['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $akta['kelurahan_persetujuan'];
 		$row['nama_kelurahan_persetujuan'] = $akta['nama_kelurahan_persetujuan'];
-		$row['kecamatan_persetujuan'] = $akta['kecamatan_persetujuan'];
-		$row['kota_persetujuan'] = $akta['kota_persetujuan'];
-		$row['nama_kota_persetujuan'] = $akta['nama_kota_persetujuan'];
-		$row['no_identitas_persetujuan'] = $akta['no_identitas_persetujuan'];
-		$row['no_sk_penerima_fidusia'] = $akta['no_sk_penerima_fidusia'];
-		$row['nilai_penjaminan'] = $akta['nilai_penjaminan'];
-		$row['merk'] = $akta['merk'];
-		$row['type'] = $akta['type'];
-		$row['thn_buat'] = $akta['thn_buat'];
-		$row['warna'] = $akta['warna'];
-		$row['no_rangka'] = $akta['no_rangka'];
-		$row['no_mesin'] = $akta['no_mesin'];
-		$row['no_polisi'] = $akta['no_polisi'];
-		$row['bukti_hak'] = $akta['bukti_hak'];
-		$row['bpkb_atas_nama'] = $akta['bpkb_atas_nama'];
-		$row['nilai_obyek'] = $akta['nilai_obyek'];
-		$dataStart = headLetter();
-		$dataEnd = tailLetter($row);
-		$format = $surat['template'];
-		echo str_replace($dataStart,$dataEnd,$format);
+		$row['kecamatan_persetujuan']      = $akta['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $akta['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $akta['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $akta['no_identitas_persetujuan'];
+		$row['no_sk_penerima_fidusia']     = $akta['no_sk_penerima_fidusia'];
+		$row['nilai_penjaminan']           = $akta['nilai_penjaminan'];
+		$row['merk']                       = $akta['merk'];
+		$row['type']                       = $akta['type'];
+		$row['thn_buat']                   = $akta['thn_buat'];
+		$row['warna']                      = $akta['warna'];
+		$row['no_rangka']                  = $akta['no_rangka'];
+		$row['no_mesin']                   = $akta['no_mesin'];
+		$row['no_polisi']                  = $akta['no_polisi'];
+		$row['bukti_hak']                  = $akta['bukti_hak'];
+		$row['bpkb_atas_nama']             = $akta['bpkb_atas_nama'];
+		$row['nilai_obyek']                = $akta['nilai_obyek'];
+		$dataStart                         = headLetter();
+		$dataEnd                           = tailLetter($row);
+		$format                            = $surat['template'];
+		// var_dump($dataEnd);
+		// exit;
+		$data['format_surat']              = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('data_debitur/cetak',$data);
 	}
 
 }

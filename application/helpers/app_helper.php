@@ -193,7 +193,7 @@ function tailLetter($row) {
                         number_format($row['nilai_obyek']),
                         terbilang($row['nilai_obyek'])
 						);
-		return $data;
+        return $data;
     }
 }
 
