@@ -8,9 +8,18 @@
 		@page{
 			size:A3 landscape;
 		}
+		p {
+			font-size: 20px;
+		}
 	</style>
 </head>
 <body>
-	<?= $format_surat; ?>
+	<div class="book-main">
+		<div class="chapter">
+			<p>
+				<?= $format_surat; ?>
+			</p>
+		</div>
+	</div>
 </body>
 </html>
