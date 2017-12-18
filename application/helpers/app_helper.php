@@ -75,10 +75,24 @@ function autoCodeInv() {
     }
 }
 
+function rupiah($uang) {
+    $jagaw = number_format($uang,2,",",".");
+    $uang = 'Rp'.$jagaw;
+    return $uang;
+}
+
+function format_hari($tanggal) {
+    $cek = date('D',strtotime($tanggal));
+    $array = ['Sun'=>'Minggu','Mon'=>'Senin','Tue'=>'Selasa','Wed'=>'Rabu','Thu'=>'Kamis','Fri'=>
+    "Jum'at",'Sat'=>'Sabtu'];
+    return $array[$cek];
+}
+
 if (!function_exists('headLetter'))
 {
 function headLetter() {
 		$data = array('{no_akta}', 
+                        '{hari}',
                         '{tanggal_akta}',
                         '{tanggal_akta_terbilang}',
                         '{waktu}',
@@ -98,8 +112,10 @@ function headLetter() {
                         '{kecamatan_debitur}',
                         '{kota_debitur}',
                         '{nama_kota_debitur}',
+                        '{jenis_identitas_debitur}',
                         '{no_identitas_debitur}',
                         '{tgl_sk_penerima_fidusia}',
+                        '{tgl_sk_terbilang}',
                         '{gelar_persetujuan}',
                         '{nama_persetujuan}',
                         '{kota_lahir_persetujuan}',
@@ -109,20 +125,23 @@ function headLetter() {
                         '{pekerjaan_persetujuan}',
                         '{alamat_persetujuan}',
                         '{rt_persetujuan}',
+                        '{rw_persetujuan}',
                         '{kelurahan_persetujuan}',
                         '{nama_kelurahan_persetujuan}',
                         '{kecamatan_persetujuan}',
                         '{kota_persetujuan}',
                         '{nama_kota_persetujuan}',
+                        '{jenis_identitas_persetujuan}',
                         '{no_identitas_persetujuan}',
                         '{no_sk_penerima_fidusia}',
-                        '{tgl_sk_terbilang}',
+                        '{nilai_hutang}',
+                        '{nilai_hutang_terbilang}',
                         '{nilai_penjaminan}',
                         '{nilai_penjaminan_terbilang}',
                         '{merk}',
                         '{type}',
                         '{thn_buat}',
-                        '{thn_rakit}',
+                        // '{thn_rakit}',
                         '{warna}',
                         '{no_rangka}',
                         '{no_mesin}',
@@ -141,6 +160,7 @@ if (!function_exists('tailLetter'))
 function tailLetter($row) {
 
 		$data = array($row['no_akta'], 
+                        format_hari($row['tanggal_akta']),
 						humanDate($row['tanggal_akta']),
 						format_tanggal($row['tanggal_akta']), 
 						format_waktu($row['jam_akta']), 
@@ -154,15 +174,18 @@ function tailLetter($row) {
                         $row['pekerjaan_debitur'],
                         $row['alamat_debitur'],
                         $row['rt_debitur'],
+                        $row['rw_debitur'],
                         $row['kelurahan_debitur'],
                         $row['nama_kelurahan_debitur'],
                         $row['kecamatan_debitur'],
                         $row['kota_debitur'],
                         $row['nama_kota_debitur'],
+                        $row['jenis_identitas_debitur'],
                         $row['no_identitas_debitur'],
                         humanDate($row['tgl_sk_penerima_fidusia']),
                         format_tanggal($row['tgl_sk_penerima_fidusia']),
                         $row['gelar_persetujuan'],
+                        $row['nama_persetujuan'],
                         $row['kota_lahir_persetujuan'],
                         humanDate($row['tgl_lahir_persetujuan']),
                         format_tanggal($row['tgl_lahir_persetujuan']),
@@ -170,16 +193,20 @@ function tailLetter($row) {
                         $row['pekerjaan_persetujuan'],
                         $row['alamat_persetujuan'],
                         $row['rt_persetujuan'],
+                        $row['rw_persetujuan'],
                         $row['kelurahan_persetujuan'],
                         $row['nama_kelurahan_persetujuan'],
                         $row['kecamatan_persetujuan'],
                         $row['kota_persetujuan'],
                         $row['nama_kota_persetujuan'],
+                        $row['jenis_identitas_persetujuan'],
                         $row['no_identitas_persetujuan'],
                         $row['no_sk_penerima_fidusia'],
-                        humanDate($row['tgl_sk_penerima_fidusia']),
-                        format_tanggal($row['tgl_sk_penerima_fidusia']),
-                        number_format($row['nilai_penjaminan']),
+                        // humanDate($row['tgl_sk_penerima_fidusia']),
+                        // format_tanggal($row['tgl_sk_penerima_fidusia']),
+                        rupiah($row['nilai_hutang']),
+                        terbilang($row['nilai_hutang']),
+                        rupiah($row['nilai_penjaminan']),
                         terbilang($row['nilai_penjaminan']),
                         $row['merk'],
                         $row['type'],
@@ -190,7 +217,7 @@ function tailLetter($row) {
                         $row['no_polisi'],
                         $row['bukti_hak'],
                         $row['bpkb_atas_nama'],
-                        number_format($row['nilai_obyek']),
+                        rupiah($row['nilai_obyek']),
                         terbilang($row['nilai_obyek'])
 						);
         return $data;

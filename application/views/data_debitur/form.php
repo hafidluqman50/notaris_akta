@@ -179,13 +179,13 @@
                   <label for="">Jenis Persetujuan</label>
                   <select name="jenis_persetujuan" class="form-control" required>
                     <option selected disabled>-----------------</option>
-                    <option value="Istri <?php echo (isset($row)) ? $row['jenis_persetujuan'] == "Istri" : '' ?>">Istri</option>
-                    <option value="Suami <?php echo (isset($row)) ? $row['jenis_persetujuan'] == "Suami" : '' ?>">Suami</option>
-                    <option value="Menikah, tapi pasangan tidak ikut <?php echo (isset($row)) ? $row['jenis_persetujuan'] == "Menikah, tapi pasangan tidak ikut" : '' ?>">Menikah, tapi pasangan tidak ikut</option>
+                    <option value="1" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '1' ? 'selected' : '' ?>>Istri</option>
+                    <option value="2" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '2' ? 'selected' : '' ?>>Suami</option>
+                    <option value="3" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '3' ? 'selected' : '' ?>>Menikah, tapi pasangan tidak ikut</option>
                     <option value="Belum Menikah <?php echo (isset($row)) ? $row['jenis_persetujuan'] == "Belum Menikah" : '' ?>">Belum Menikah</option>
-                    <option value="Janda/Duda <?php echo (isset($row)) ? $row['jenis_persetujuan'] == "Janda/Duda" : '' ?>">Janda/Duda</option>
-                    <option value="Persetujuan PT <?php echo (isset($row)) ? $row['jenis_persetujuan'] =="Persetujuan PT" : '' ?>">Persetujuan PT</option>
-                    <option value="Persetujuan CV <?php echo (isset($row)) ? $row['jenis_persetujuan'] =="Persetujuan CV" : '' ?>">Persetujuan CV</option>
+                    <option value="4" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '4' ? 'selected' : '' ?>>Janda/Duda</option>
+                    <option value="5" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '5' ? 'selected' : '' ?>>Persetujuan PT</option>
+                    <option value="6" <?php echo (isset($row)) && $row['jenis_persetujuan'] == '6' ? 'selected' : '' ?>>Persetujuan CV</option>
                   </select>
                 </div>
               </div>
@@ -194,8 +194,8 @@
                   <label for="">Gelar Persetujuan</label>
                   <select name="gelar_persetujuan" class="form-control" required>
                     <option selected disabled>===============</option>
-                    <option value="Tuan <?php echo(isset($row)) ? $row['gelar_persetujuan'] == "Tuan" : '' ?>">Tuan</option>
-                    <option value="Nyonya <?php echo(isset($row)) ? $row['gelar_persetujuan'] == "Nyonya" : '' ?>">Nyonya</option>
+                    <option value="Tuan" <?php echo(isset($row)) && $row['gelar_persetujuan'] == 'Tuan' ? 'selected' : '' ?>>Tuan</option>
+                    <option value="Nyonya" <?php echo(isset($row)) && $row['gelar_persetujuan'] == 'Nyonya' ? 'selected' : '' ?>>Nyonya</option>
                   </select>
                 </div>
               </div>
@@ -313,8 +313,8 @@
                   <label for="">Gelar Pemilik</label>
                   <select name="gelar_pemilik" class="form-control" required>
                     <option selected disabled>==============</option>
-                    <option value="Tuan <?php echo(isset($row)) ? $row['gelar_pemilik'] == "Tuan" : '' ?>">Tuan</option>
-                    <option value="Nyonya <?php echo(isset($row)) ? $row['gelar_pemilik'] == "Nyonya" : '' ?>">Nyonya</option>
+                    <option value="Tuan" <?php echo(isset($row)) && $row['gelar_pemilik'] == 'Tuan' ? 'selected' : '' ?>>Tuan</option>
+                    <option value="Nyonya" <?php echo(isset($row)) && $row['gelar_pemilik'] == 'Nyonya' ? 'selected' : '' ?>>Nyonya</option>
                   </select>
                 </div>
               </div>
@@ -565,7 +565,7 @@
               <div class="form-group row">
                 <div class="col-md-4">
                   <label for="">No. Rangka</label>
-                  <input type="date" name="no_rangka" class="form-control" placeholder="Masukkan Nomor Rangka Kendaraan" value="<?php echo(isset($row)) ? $row['no_rangka'] : '' ?>">
+                  <input type="text" name="no_rangka" class="form-control" placeholder="Masukkan Nomor Rangka Kendaraan" value="<?php echo(isset($row)) ? $row['no_rangka'] : '' ?>">
                 </div>
               </div>
               <div class="form-group row">

@@ -8,15 +8,16 @@ $(function(){
 	    'insertdatetime media nonbreaking save table contextmenu directionality',
 	    'emoticons template paste textcolor colorpicker textpattern imagetools'
 	  ],
+	  advlist_number_styles: "upper-alpha",
 	  toolbar1: 'insertfile undo redo | styleselect | fontselect fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons |',
-	  toolbar2: 'Nomor_Akta Tanggal_Akta Tanggal_Akta_Terbilang Waktu Waktu_Terbilang Gelar_Debitur Nama_Debitur Kota_Lahir_Debitur Tgl_Lahir_Debitur',
-	  toolbar3: 'Tgl_Lahir_Debitur_Terbilang Pekerjaan_Debitur Alamat_Debitur Rt_Debitur Rw_Debitur Kelurahan_Debitur Nama_Kelurahan_Debitur Kecamatan_Debitur', 
-	  toolbar4: 'Kota_Debitur Nama_Kota_Debitur No_Identitas_Debitur Tgl_Sk_Penerima_Fidusia Tgl_Sk_Terbilang Gelar_Persetujuan Nama_Persetujuan',
-	  toolbar5: 'Kota_Lahir_Persetujuan Tgl_Lahir_Persetujuan Tgl_Lahir_Persetujuan_Terbilang Warga_Persetujuan Pekerjaan_Persetujuan Alamat_Persetujuan', 
-	  toolbar6: 'Rt_Persetujuan Kelurahan_Persetujuan Nama_Kelurahan_Persetujuan Kecamatan_Persetujuan Kota_Persetujuan Nama_Kota_Persetujuan No_Identitas_Persetujan',
-	  toolbar7:'No_Sk_Penerima_Fidusia Nilai_Penjaminan Nilai_Penjaminan_Terbilang Merk Type Thn_Buat Thn_Rakit Warna No_Rangka No_Mesin',
-	  toolbar8:'No_Polisi Bukti_Hak Bpkb_Atas_Nama Nilai_Obyek Nilai_Obyek_Terbilang',
-	  image_advtab: true,
+	  toolbar2: 'Nomor_Akta Hari Tanggal_Akta Tanggal_Akta_Terbilang Waktu Waktu_Terbilang Gelar_Debitur Nama_Debitur Kota_Lahir_Debitur Tgl_Lahir_Debitur',
+	  toolbar3: 'Tgl_Lahir_Debitur_Terbilang Kewarganegaraan_Debitur Pekerjaan_Debitur Alamat_Debitur Rt_Debitur Rw_Debitur Kelurahan_Debitur Nama_Kelurahan_Debitur', 
+	  toolbar4: 'Kecamatan_Debitur Kota_Debitur Nama_Kota_Debitur No_Identitas_Debitur Jenis_Identitas_Debitur Tgl_Sk_Penerima_Fidusia Tgl_Sk_Terbilang',
+	  toolbar5: 'Gelar_Persetujuan Nama_Persetujuan Kota_Lahir_Persetujuan Tgl_Lahir_Persetujuan Tgl_Lahir_Persetujuan_Terbilang Warga_Persetujuan', 
+	  toolbar6: 'Pekerjaan_Persetujuan Alamat_Persetujuan Rt_Persetujuan Kelurahan_Persetujuan Nama_Kelurahan_Persetujuan Kecamatan_Persetujuan Kota_Persetujuan',
+	  toolbar7: 'Nama_Kota_Persetujuan No_Identitas_Persetujan Jenis_Identitas_Persetujuan No_Sk_Penerima_Fidusia Nilai_Hutang Nilai_Hutang_Terbilang',
+	  toolbar8: 'Nilai_Penjaminan Nilai_Penjaminan_Terbilang Merk Type Thn_Buat Warna No_Polisi Bukti_Hak Bpkb_Atas_Nama Nilai_Obyek Nilai_Obyek_Terbilang',
+	  image_ahun: true,
 	  templates: [
 	    { title: 'Test template 1', content: 'Test 1' },
 	    { title: 'Test template 2', content: 'Test 2' },
@@ -28,6 +29,13 @@ $(function(){
 	      onclick: function () {
 	        editor.insertContent('{no_akta}&nbsp;');
 	      }
+	    }),
+	    editor.addButton('Hari',{
+	    	text:'Hari',
+	    	icon:false,
+	    	onclick:function(){
+	    		editor.insertContent('{hari}&nbsp;');
+	    	}
 	    }),
 	    editor.addButton('Tanggal_Akta',{
 	    	text:'Tanggal Akta',
@@ -85,6 +93,13 @@ $(function(){
 	        editor.insertContent('{tgl_lahir_debitur}&nbsp;');
 	      }
 	    }),
+	    editor.addButton('Jenis_Identitas_Debitur', {
+	    	text: 'Jenis Identitas Debitur',
+	    	icon: false,
+	    	onclick: function () {
+	    		editor.insertContent('{jenis_identitas_debitur}&nbsp;');
+	    	}
+	    }),
 	    editor.addButton('Tgl_Lahir_Debitur_Terbilang', {
 	      text: 'Tanggal Lahir Debitur Terbilang',
 	      icon: false,
@@ -92,8 +107,8 @@ $(function(){
 	        editor.insertContent('{tgl_lhr_dbt_terbilang}&nbsp;');
 	      }
 	    }),
-	    editor.addButton('Warga_Debitur',{
-	    	text:'Warga Debitur',
+	    editor.addButton('Kewarganegaraan_Debitur',{
+	    	text:'Kewarganegaraan Debitur',
 	    	icon:false,
 	    	onclick:function() {
 	    		editor.inserContent('{warga_debitur}&nbsp;');
@@ -170,14 +185,14 @@ $(function(){
 	      }
 	    }),
 	    editor.addButton('Tgl_Sk_Penerima_Fidusia', {
-	      text: 'Tanggal Surat Kuasa Penerima Fidusia',
+	      text: 'Tanggal SK Penerima Fidusia',
 	      icon: false,
 	      onclick: function () {
 	        editor.insertContent('{tgl_sk_penerima_fidusia}&nbsp;');
 	      }
 	    }),
 	    editor.addButton('Tgl_Sk_Terbilang',{
-	    	text: 'Tanggal Surat Kuasa Terbilang',
+	    	text: 'Tanggal SK Terbilang',
 	    	icon: false,
 	    	onclick: function() {
 	    		editor.insertContent('{tgl_sk_terbilang}&nbsp;');
@@ -288,12 +303,33 @@ $(function(){
 	        editor.insertContent('{no_identitas_persetujuan}&nbsp;');
 	      }
 	    }),
+	    editor.addButton('Jenis_Identitas_Persetujuan', {
+	    	text: 'Jenis Identitas Persetujuan',
+	    	icon: false,
+	    	onclick: function () {
+	    		editor.insertContent('{jenis_identitas_persetujuan}&nbsp;');
+	    	}
+	    }),
 	    editor.addButton('No_Sk_Penerima_Fidusia', {
 	      text: 'No Surat Kuasa Penerima Fidusia',
 	      icon: false,
 	      onclick: function () {
 	        editor.insertContent('{no_sk_penerima_fidusia}&nbsp;');
 	      }
+	    }),
+	    editor.addButton('Nilai_Hutang',{
+	    	text: 'Nilai Hutang',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{nilai_hutang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nilai_Hutang_Terbilang',{
+	    	text: 'Nilai Hutang Terbilang',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{nilai_hutang_terbilang}&nbsp;');
+	    	}
 	    }),
 	    editor.addButton('Nilai_Penjaminan', {
 	      text: 'Nilai Penjaminan',
@@ -324,19 +360,19 @@ $(function(){
 	      }
 	    }),
 	    editor.addButton('Thn_Buat', {
-	      text: 'Tanggal Buat',
+	      text: 'Tahun Buat',
 	      icon: false,
 	      onclick: function () {
 	        editor.insertContent('{thn_buat}&nbsp;');
 	      }
 	    }),
-	    editor.addButton('Thn_Rakit', {
-	      text: 'Tahun Rakit',
-	      icon: false,
-	      onclick: function () {
-	        editor.insertContent('{thn_rakit}&nbsp;');
-	      }
-	    }),
+	    // editor.addButton('Thn_Rakit', {
+	    //   text: 'Tahun Rakit',
+	    //   icon: false,
+	    //   onclick: function () {
+	    //     editor.insertContent('{thn_rakit}&nbsp;');
+	    //   }
+	    // }),
 	    editor.addButton('Warna', {
 	      text: 'Warna',
 	      icon: false,
