@@ -40,7 +40,7 @@
                                     <td><?php echo $row['nama_surat']; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?php echo base_url('fidusia/akta/edit_surat/'.$row['id_surat']); ?>" class="btn btn-success">Ubah</a>
+                                            <a href="<?php echo base_url('fidusia/akta/edit_surat_debitur/'.$row['id_surat']); ?>" class="btn btn-success">Ubah</a>
                                         </div>
                                     </td>
                                 </tr>

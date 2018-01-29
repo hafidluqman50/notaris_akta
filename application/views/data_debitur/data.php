@@ -54,7 +54,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <a href="<?php echo base_url('fidusia/akta/edit_debitur/'.$row['id']); ?>" class="btn btn-success">Ubah</a>
-                                            <a href="<?php echo base_url('fidusia/akta/cetak/'.$row['id']); ?>" class="btn btn-warning">Cetak</a>
+                                            <a href="<?php echo base_url('fidusia/akta/cetak_debitur/'.$row['id']); ?>" class="btn btn-warning">Cetak</a>
                                             <a href="<?php echo base_url('fidusia/akta/hapus_debitur/'.$row['id']); ?>" class="btn btn-danger" onclick="return confirm('Yakin hapus?');">Hapus</a>
                                         </div>
                                     </td>

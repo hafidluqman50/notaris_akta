@@ -1,5 +1,6 @@
 $(function(){
-	tinymce.init({selector:'#template',
+	// $.noConflict();
+	tinymce.init({selector:'#debitur',
 		height: 1500,
 	  theme: 'modern',
 	  plugins: [
@@ -430,5 +431,569 @@ $(function(){
 	      }
 	    })
 	    }
+	  });
+	
+	$('.table').DataTable();
+
+	tinymce.init({selector:'#ppat',
+		height: 2000,
+	  theme:'modern',
+	  plugins: [
+	    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+	    'searchreplace wordcount visualblocks visualchars code fullscreen',
+	    'insertdatetime media nonbreaking save table contextmenu directionality',
+	    'emoticons template paste textcolor colorpicker textpattern imagetools'
+	  ],
+	  advlist_number_styles: "upper-alpha",
+	  toolbar: ['insertfile undo redo | styleselect | fontselect fontsizeselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons |',
+	  'Nomor_Akta Hari Tanggal_Akta Tanggal_Akta_Terbilang Gelar_Penjual Nama_Penjual Kota_Lahir_Penjual Tgl_Lahir_Penjual',
+	  'Tgl_Lahir_Penjual_Terbilang Pekerjaan_Penjual Alamat_Penjual Rt_Penjual Rw_Penjual Kelurahan_Penjual Nama_Kelurahan_Penjual', 
+	  'Kecamatan_Penjual Kota_Penjual Nama_Kota_Penjual No_Identitas_Penjual Kedudukan_Keluarga_Penjual',
+	  'Gelar_Persetujuan Nama_Persetujuan Kota_Lahir_Persetujuan Tgl_Lahir_Persetujuan Tgl_Lahir_Persetujuan_Terbilang Pekerjaan_Persetujuan',
+	  'Alamat_Persetujuan Rt_Persetujuan Rw_Persetujuan Kelurahan_Persetujuan Nama_Kelurahan_Persetujuan Kecamatan_Persetujuan Kota_Persetujuan',
+	  'Nama_Kota_Persetujuan No_Identitas_Persetujuan Gelar_Pembeli Nama_Pembeli Kota_Lahir_Pembeli Tgl_Lahir_Pembeli Tgl_Lahir_Penjual_Terbilang',
+	  'Pekerjaan_Pembeli Alamat_Pembeli Rt_Pembeli Rw_Pembeli Kelurahan_Pembeli Nama_Kelurahan_Pembeli Kecamatan_Pembeli Kota_Pembeli',
+	  'Nama_Kota_Pembeli No_Identitas_Pembeli Nilai_Perjanjian Nilai_Perjanjian_Terbilang Nomor_Perjanjian_Kredit Tanggal_Perjanjian Tanggal_Perjanjian_Terbilang',
+	  'Peringkat_Tanggungan Nilai_Tanggungan Nilai_Tanggungan_Terbilang Jenis_Kepemilikan Nomor_Kepemilikan',
+	  'Nomor_Surat_Ukur Tanggal_Surat_Ukur Tanggal_Surat_Ukur_Terbilang Luas_Tanah Luas_Tanah_Terbilang Nomor_NIB Nomor_SPPTPBB Kecamatan_Tanah',
+	  'Kelurahan_Tanah Nama_Kelurahan_Tanah Luas_Bangunan Luas_Bangunan_Terbilang Alamat_Bangunan Tanggal_Dibuat_APHT',
+	  ],
+	  image_ahun: true,
+	  templates: [
+	    { title: 'Test template 1', content: 'Test 1' },
+	    { title: 'Test template 2', content: 'Test 2' },
+	  ],
+	  setup: function (editor) {
+	    editor.addButton('Nomor_Akta', {
+	      text: 'Nomor Akta',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{no_akta}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Hari',{
+	    	text:'Hari',
+	    	icon:false,
+	    	onclick:function(){
+	    		editor.insertContent('{hari}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Akta',{
+	    	text:'Tanggal Akta',
+	    	icon:false,
+	    	onclick:function(){
+	    		editor.insertContent('{tanggal_akta}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Akta_Terbilang', {
+	      text: 'Tanggal Akta Terbilang',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tanggal_akta_terbilang}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Waktu', {
+	      text: 'Waktu',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{waktu}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Waktu_Terbilang', {
+	      text: 'Waktu Terbilang',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{waktu_terbilang}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Gelar_Penjual', {
+	      text: 'Gelar Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{gelar_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Nama_Penjual', {
+	      text: 'Nama Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Lahir_Penjual', {
+	      text: 'Kota Lahir Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kota_lahir_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Penjual', {
+	      text: 'Tanggal Lahir Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lahir_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Penjual_Terbilang', {
+	      text: 'Tanggal Lahir Penjual Terbilang',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lhr_penjual_terbilang}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Pekerjaan_Penjual', {
+	      text: 'Pekerjaan Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{pekerjaan_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Alamat_Penjual', {
+	      text: 'Alamat Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{alamat_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rt_Penjual', {
+	      text: 'Rt Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rt_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rw_Penjual', {
+	      text: 'Rw Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rw_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kelurahan_Penjual', {
+	      text: 'Kelurahan Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kelurahan_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Nama_Kelurahan_Penjual', {
+	      text: 'Nama Kelurahan Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kelurahan_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kecamatan_Penjual', {
+	      text: 'Kecamatan Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kecamatan_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Penjual',{
+	    	text:'Kota Penjual',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{kota_penjual}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nama_Kota_Penjual', {
+	      text: 'Nama Kota Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kota_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('No_Identitas_Penjual', {
+	      text: 'No Identitas Penjual',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{no_identitas_penjual}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kedudukan_Keluarga_Penjual', {
+	    	text: 'Kedudukan Keluarga Penjual',
+	    	icon: false,
+	    	onclick: function () {
+	    		editor.insertContent('{kedudukan_keluarga_penjual}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Gelar_Persetujuan', {
+	    	text: ' Gelar Persetujuan',
+	    	icon: false,
+	    	onclick: function() {
+	    		editor.insertContent('{gelar_persetujuan}&nbsp;');
+	    	}
+	    }),editor.addButton('Nama_Persetujuan', {
+	      text: 'Nama Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Lahir_Persetujuan', {
+	      text: 'Kota Lahir Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kota_lahir_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Persetujuan', {
+	      text: 'Tanggal Lahir Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lahir_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Persetujuan_Terbilang', {
+	      text: 'Tanggal Lahir Persetujuan Terbilang',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lhr_persetujuan_terbilang}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Pekerjaan_Persetujuan', {
+	      text: 'Pekerjaan Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{pekerjaan_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Alamat_Persetujuan', {
+	      text: 'Alamat Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{alamat_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rt_Persetujuan', {
+	      text: 'Rt Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rt_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rw_Persetujuan', {
+	      text: 'Rw Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rw_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kelurahan_Persetujuan', {
+	      text: 'Kelurahan Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kelurahan_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Nama_Kelurahan_Persetujuan', {
+	      text: 'Nama Kelurahan Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kelurahan_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kecamatan_Persetujuan', {
+	      text: 'Kecamatan Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kecamatan_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Persetujuan',{
+	    	text:'Kota Persetujuan',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{kota_persetujuan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nama_Kota_Persetujuan', {
+	      text: 'Nama Kota Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kota_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('No_Identitas_Persetujuan', {
+	      text: 'No Identitas Persetujuan',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{no_identitas_persetujuan}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Gelar_Pembeli', {
+	    	text: ' Gelar Pembeli',
+	    	icon: false,
+	    	onclick: function() {
+	    		editor.insertContent('{gelar_pembeli}&nbsp;');
+	    	}
+	    }),editor.addButton('Nama_Pembeli', {
+	      text: 'Nama Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Lahir_Pembeli', {
+	      text: 'Kota Lahir Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kota_lahir_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Pembeli', {
+	      text: 'Tanggal Lahir Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lahir_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Tgl_Lahir_Pembeli_Terbilang', {
+	      text: 'Tanggal Lahir Pembeli Terbilang',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{tgl_lhr_pembeli_terbilang}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Pekerjaan_Pembeli', {
+	      text: 'Pekerjaan Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{pekerjaan_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Alamat_Pembeli', {
+	      text: 'Alamat Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{alamat_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rt_Pembeli', {
+	      text: 'Rt Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rt_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Rw_Pembeli', {
+	      text: 'Rw Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{rw_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kelurahan_Pembeli', {
+	      text: 'Kelurahan Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kelurahan_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Nama_Kelurahan_Pembeli', {
+	      text: 'Nama Kelurahan Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kelurahan_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kecamatan_Pembeli', {
+	      text: 'Kecamatan Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{kecamatan_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Kota_Pembeli',{
+	    	text:'Kota Pembeli',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{kota_pembeli}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nama_Kota_Pembeli', {
+	      text: 'Nama Kota Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{nama_kota_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('No_Identitas_Pembeli', {
+	      text: 'No Identitas Pembeli',
+	      icon: false,
+	      onclick: function () {
+	        editor.insertContent('{no_identitas_pembeli}&nbsp;');
+	      }
+	    }),
+	    editor.addButton('Nilai_Perjanjian', {
+	    	text: 'Nilai Perjanjian',
+	    	icon: false,
+	    	onclick: function() {
+	    		editor.insertContent('{nilai_perjanjian}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nilai_Perjanjian_Terbilang', {
+	    	text: 'Nilai Perjanjian Terbilang',
+	    	icon: false,
+	    	onclick: function() {
+	    		editor.insertContent('{nilai_perjanjian_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nomor_Perjanjian_Kredit',{
+	    	text:'Nomor Perjanjian Kredit',
+	    	icon:false,
+	    	onclick: function() {
+	    		editor.insertContent('{nomor_perjanjian_kredit}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Perjanjian',{
+	    	text:'Tanggal Perjanjian',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{tanggal_perjanjian}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Perjanjian_Terbilang',{
+	    	text:'Tanggal Perjanjian Terbilang',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{tanggal_perjanjian_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Peringkat_Tanggungan',{
+	    	text:'Peringkat Tanggungan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{peringkat_tanggungan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nilai_Tanggungan',{
+	    	text:'Nilai Tanggungan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nilai_tanggungan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nilai_Tanggungan_Terbilang',{
+	    	text:'Nilai Tanggungan Terbilang',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nilai_tanggungan_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Jenis_Kepemilikan',{
+	    	text:'Jenis Kepemilikan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{jenis_kepemilikan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nomor_Kepemilikan',{
+	    	text:'Nomor Kepemilikan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nomor_kepemilikan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nomor_Surat_ukur',{
+	    	text:'Nomor Surat Ukur',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nomor_surat_ukur}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Surat_Ukur',{
+	    	text:'Tanggal Surat Ukur',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{tanggal_surat_ukur}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Surat_Ukur_Terbilang',{
+	    	text:'Tanggal Surat Ukur Terbilang',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{tanggal_surat_ukur_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Luas_Tanah',{
+	    	text:'Luas Tanah',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{luas_tanah}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Luas_Tanah_Terbilang',{
+	    	text:'Luas Tanah Terbilang',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{luas_tanah_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nomor_NIB',{
+	    	text:'Nomor NIB',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nomor_nib}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nomor_SPPTPBB',{
+	    	text:'Nomor SPPTPBB',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nomor_spptpbb}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Kecamatan_Tanah',{
+	    	text:'Kecamatan Tanah',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{kecamatan_tanah}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Kelurahan_Tanah',{
+	    	text:'Kelurahan Tanah',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{kelurahan_tanah}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Nama_Kelurahan_Tanah',{
+	    	text:'Nama Kelurahan Tanah',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{nama_kelurahan_tanah}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Luas_Bangunan',{
+	    	text:'Luas Bangunan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{luas_bangunan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Luas_Bangunan_Terbilang',{
+	    	text:'Luas Bangunan Terbilang',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{luas_bangunan_terbilang}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Alamat_Bangunan',{
+	    	text:'Alamat Bangunan',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{alamat_bangunan}&nbsp;');
+	    	}
+	    }),
+	    editor.addButton('Tanggal_Dibuat_APHT',{
+	    	text:'Tanggal Dibuat APHT',
+	    	icon:false,
+	    	onclick:function() {
+	    		editor.insertContent('{tanggal_dibuat_apht}&nbsp;');
+	    	}
+	    })
+	   }
 	  });
 });

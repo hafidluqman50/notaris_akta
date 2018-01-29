@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/css/skins/_all-skins.min.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins/tinymce/skins/lightgray/skin.min.css') ?>">
   <!-- <link rel="stylesheet" href=""> -->
-
+<link rel="stylesheet" href="<?php echo base_url('assets/plugins/dataTables/table/css/dataTables.bootstrap.css') ?>">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -49,12 +49,21 @@
                 <li><a href="#">Data Pemilik</a></li>
                 <li><a href="#">Data Pinjaman</a></li> -->
               </ul>
+            </li>
+            <li class="dropdown <?php echo($page=='ppat') ? 'active' : '' ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta PPAT <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?php echo base_url('fidusia/akta/data_skmht') ?>">Data SKMHT</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/data_apht') ?>">Data APHT</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/data_ajb') ?>">Data AJB</a></li>
+              </ul>              
+            </li>
             <li class="dropdown <?php echo($page=='surat') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template Surat <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/surat_akta') ?>">Surat Akta</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/surat_debitur') ?>">Surat Akta Debitur</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/surat_ppat') ?>">Surat Akta PPAT</a></li>
               </ul>
-            </li>
             </li>
           </ul>
         </div>

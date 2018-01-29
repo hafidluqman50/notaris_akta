@@ -7,7 +7,20 @@ class Surataktamodel extends CI_Model
         parent::__construct();
     }
 
-    function findAll() {
+    function findDebitur() {
+        $this->db->where('jenis_surat','debitur');
+        $query = $this->db->get($this->table);
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        else {
+            return array();
+        }
+    }
+
+    function findPpat() {
+        $this->db->where('jenis_surat','ppat');
         $query = $this->db->get($this->table);
 
         if ($query->num_rows() > 0) {
@@ -34,6 +47,11 @@ class Surataktamodel extends CI_Model
     	$this->db->where('id_surat',1);
     	$query = $this->db->get($this->table);
     	return $query->row_array();
+    }
+
+    function cetakSkmht() {
+        // $this->db->where('id_surat',2);
+        // TO DO LIST
     }
 
     function getDataColumn($table,$where,$keyword,$value) {

@@ -224,6 +224,30 @@ function tailLetter($row) {
     }
 }
 
+function headSkmht() {
+    //
+}
+
+function footSkmht($row) {
+    //
+}
+
+function headApht() {
+    //
+}
+
+function footApht($row) {
+    //
+}
+
+function headAjb() {
+    //
+}
+
+function footAjb($row) {
+    //
+}
+
 function kekata($x) {
     $x = abs($x);
     $angka = array("", "satu", "dua", "tiga", "empat", "lima",
