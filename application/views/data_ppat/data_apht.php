@@ -49,8 +49,8 @@
                                 	<td><?= $ppat['nama_penjual'] ?></td>
                                 	<td><?= $ppat['nama_kota_penjual'] ?></td>
                                 	<td><div class="btn-group">
-                                		<a href="<?= base_url('fidusia/akta/form_apht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
-                                		<a href="<?= base_url('fidusia/akta/cetak_apht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak APHT</a>
+                                		<a href="<?= base_url('ppat/aktappat/form_apht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
+                                		<a href="<?= base_url('ppat/aktappat/cetak_apht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak APHT</a>
                                 	</div></td>
                                 </tr>
                             	<?php endforeach ?>

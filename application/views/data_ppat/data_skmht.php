@@ -27,7 +27,7 @@
                         </div>
                     <?php endif; ?>
                     <p>
-                        <a href="<?php echo base_url('fidusia/akta/add_skmht/'); ?>" class="btn btn-primary">Tambah Data</a>
+                        <a href="<?php echo base_url('ppat/aktappat/add_skmht/'); ?>" class="btn btn-primary">Tambah Data</a>
                     </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -52,9 +52,9 @@
                                 	<td><?= $ppat['nama_penjual'] ?></td>
                                 	<td><?= $ppat['nama_kota_penjual'] ?></td>
                                 	<td><div class="btn-group">
-                                		<a href="<?= base_url('fidusia/akta/edit_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-success">Ubah</a>
-                                		<a href="<?= base_url('fidusia/akta/hapus_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-danger">Hapus</a>
-                                		<a href="<?= base_url('fidusia/akta/cetak_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak SKMHT</a>
+                                		<a href="<?= base_url('ppat/aktappat/edit_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-success">Ubah</a>
+                                		<a href="<?= base_url('ppat/aktappat/hapus_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-danger">Hapus</a>
+                                		<a href="<?= base_url('ppat/aktappat/cetak_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak SKMHT</a>
                                 	</div></td>
                                 </tr>
                             	<?php endforeach ?>

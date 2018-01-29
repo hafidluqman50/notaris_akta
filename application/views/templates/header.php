@@ -53,16 +53,16 @@
             <li class="dropdown <?php echo($page=='ppat') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta PPAT <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/data_skmht') ?>">Data SKMHT</a></li>
-                <li><a href="<?php echo base_url('fidusia/akta/data_apht') ?>">Data APHT</a></li>
-                <li><a href="<?php echo base_url('fidusia/akta/data_ajb') ?>">Data AJB</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/data_skmht') ?>">Data SKMHT</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/data_apht') ?>">Data APHT</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/data_ajb') ?>">Data AJB</a></li>
               </ul>              
             </li>
             <li class="dropdown <?php echo($page=='surat') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template Surat <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="<?php echo base_url('fidusia/akta/surat_debitur') ?>">Surat Akta Debitur</a></li>
-                <li><a href="<?php echo base_url('fidusia/akta/surat_ppat') ?>">Surat Akta PPAT</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/surat_ppat') ?>">Surat Akta PPAT</a></li>
               </ul>
             </li>
           </ul>
