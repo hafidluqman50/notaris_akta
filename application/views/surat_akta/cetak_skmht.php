@@ -5,6 +5,6 @@
 	<title>Cetak SKMHT</title>
 </head>
 <body>
-	
+	<?php echo $format_surat; ?>
 </body>
 </html>

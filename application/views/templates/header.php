@@ -61,7 +61,7 @@
             <li class="dropdown <?php echo($page=='surat') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template Surat <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/surat_debitur') ?>">Surat Akta Debitur</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/surat_debitur') ?>">Surat Akta Fidusia</a></li>
                 <li><a href="<?php echo base_url('ppat/aktappat/surat_ppat') ?>">Surat Akta PPAT</a></li>
               </ul>
             </li>

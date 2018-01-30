@@ -31,7 +31,6 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>No Akta</th>
                                     <th>Tanggal Akta</th>
                                    	<th>Jenis Kepemilikan</th>
                                     <th>Nama Penjual Tanah</th>
@@ -43,14 +42,14 @@
                             	<?php foreach ($data_skmht as $key => $ppat): ?>
                                 <tr>
                                 	<td><?= $key+1 ?></td>
-                                	<td><?= $ppat['nomor_akta_skmht'] ?></td>
                                 	<td><?= humanDate($ppat['tanggal_akta_skmht']) ?></td>
                                 	<td><?= $ppat['jenis_kepemilikan'] ?></td>
                                 	<td><?= $ppat['nama_penjual'] ?></td>
                                 	<td><?= $ppat['nama_kota_penjual'] ?></td>
                                 	<td><div class="btn-group">
                                 		<a href="<?= base_url('ppat/aktappat/form_apht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
-                                		<a href="<?= base_url('ppat/aktappat/cetak_apht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak APHT</a>
+                                		<a href="<?= base_url('ppat/aktappat/cetak_apht_bni/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak APHT BNI</a>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_apht_bri/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak APHT BRI</a>
                                 	</div></td>
                                 </tr>
                             	<?php endforeach ?>

@@ -44,7 +44,7 @@ class Aphtmodel extends CI_Model
     }
 
     function findById($id) {
-        $this->db->where('id', $id_user);
+        $this->db->where('id_apht', $id_user);
         $this->db->where('status', 1);
         $query = $this->db->get($this->table, 1);
 
@@ -54,6 +54,15 @@ class Aphtmodel extends CI_Model
         else {
             return array();
         }
+    }
+
+    function cekSkmhtById($id) {
+        $this->db->select('tba_ppat_skmht.*,tba_ppat_apht.*')
+                 ->from('tba_ppat_apht')
+                 ->join('tba_ppat_skmht','tba_ppat_skmht.id_skmht=tba_ppat_apht.id_skmht','inner')
+                 ->where('tba_ppat_apht.id_skmht',$id);
+        $result = $this->db->get();
+        return $result->row_array();
     }
 
     function getDataColumn($table,$where,$keyword,$value) {

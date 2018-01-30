@@ -9,18 +9,18 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">Form Surat Kuasa Membebankan Hak Tanggungan(SKMHT)</h3>
 					</div>
-					<form action="<?= base_url('fidusia/akta/save_skmht') ?>" role="form" method="POST">
+					<form action="<?= base_url('ppat/aktappat/save_skmht') ?>" role="form" method="POST">
 						<div class="box-body">
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label>No Akta</label>
-									<input type="text" class="form-control" name="nomor_akta" placeholder="Isi Nomor Akta" value="<?php echo(isset($row)) ? $row['nomor_akta'] : '' ?>" required>
+									<input type="text" class="form-control" name="nomor_akta" placeholder="Isi Nomor Akta" value="<?php echo(isset($row)) ? $row['nomor_akta_skmht'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="">Tanggal Surat Akta</label>
-									<input type="date" name="tgl_surat_akta" class="form-control" value="<?php echo(isset($row)) ? $row['tgl_surat_akta'] : '' ?>" required>
+									<input type="date" name="tgl_surat_akta" class="form-control" value="<?php echo(isset($row)) ? $row['tanggal_akta_skmht'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -42,13 +42,13 @@
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="">Tempat Lahir Penjual</label>
-									<input type="text" name="tmpt_lhr_penjual" class="form-control" placeholder="Isi Tempat Lahir Penjual" value="<?php echo(isset($row)) ? $row['tmpt_lhr_penjual'] : '' ?>" required>
+									<input type="text" name="tmpt_lhr_penjual" class="form-control" placeholder="Isi Tempat Lahir Penjual" value="<?php echo(isset($row)) ? $row['tempat_lahir_penjual'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label>Tanggal Lahir Penjual</label>
-									<input type="date" name="tgl_lhr_penjual" class="form-control" value="<?php echo(isset($row)) ? $row['tgl_lhr_penjual'] : '' ?>" required>
+									<input type="date" name="tgl_lhr_penjual" class="form-control" value="<?php echo(isset($row)) ? $row['tanggal_lahir_penjual'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -146,13 +146,13 @@
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="">Tempat Lahir Persetujuan</label>
-									<input type="text" name="tmpt_lhr_persetujuan" class="form-control" placeholder="Isi Tempat Lahir Persetujuan" value="<?php echo(isset($row)) ? $row['tmpt_lhr_persetujuan'] : '' ?>" required>
+									<input type="text" name="tmpt_lhr_persetujuan" class="form-control" placeholder="Isi Tempat Lahir Persetujuan" value="<?php echo(isset($row)) ? $row['tempat_lahir_persetujuan'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label>Tanggal Lahir Persetujuan</label>
-									<input type="date" name="tgl_lhr_persetujuan" class="form-control" value="<?php echo(isset($row)) ? $row['tgl_lhr_persetujuan'] : '' ?>" required>
+									<input type="date" name="tgl_lhr_persetujuan" class="form-control" value="<?php echo(isset($row)) ? $row['tanggal_lahir_persetujuan'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -332,11 +332,52 @@
 									<label for="">RT Bangunan</label>
 									<input type="text" name="rt_bangunan" class="form-control" placeholder="Isi RT Bangunan" value="<?php echo(isset($row) ? $row['rt_bangunan'] : '') ?>" required>
 								</div>
+							</div><div class="form-group row">
+								<div class="col-md-6">
+									<label for="">Kelurahan Bangunan</label>
+									<select name="kelurahan_bangunan" class="form-control" required>
+										<option selected disabled>========Pilih Jenis Kelurahan=========</option>
+										<option value="Kelurahan" <?php if (isset($row)) echo ($row['kelurahan_bangunan'] == 'Kelurahan') ? 'selected' : '' ?>>
+											Kelurahan
+										</option>
+										<option value="Desa" <?php if (isset($row)) echo ($row['kelurahan_bangunan'] == 'Desa') ? 'selected' : '' ?>>
+											Desa
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label>Nama Kelurahan Bangunan</label>
+									<input type="text" name="nama_kelurahan_bangunan" class="form-control" placeholder="Isi Nama Kelurahan Bangunan" value="<?php echo(isset($row) ? $row['nama_kelurahan_bangunan'] : '') ?>" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="">Nama Kecamatan Bangunan</label>
+									<input type="text" name="kecamatan_bangunan" class="form-control" value="<?php echo(isset($row) ? $row['kecamatan_bangunan'] : '') ?>" placeholder="Isi Nama Kecamatan Bangunan" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="">Kota Bangunan</label>
+									<select name="kota_bangunan" class="form-control" required>
+										<option selected disabled>=======Pilih Jenis Kota Bangunan========</option>
+				                      <option value="Kota" <?php if (isset($row)) echo ($row['kota_bangunan'] == 'Kota') ? 'selected' : '' ?>>Kota</option>
+				                      <option value="Kabupaten" <?php if (isset($row)) echo ($row['kota_bangunan'] == 'Kabupaten') ? 'selected' : '' ?>>Kabupaten</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-6">
+									<label for="">Nama Kota Bangunan</label>
+									<input type="text" name="nama_kota_bangunan" class="form-control" value="<?php echo(isset($row) ? $row['nama_kota_bangunan'] : '') ?>" placeholder="Isi Nama Kota Bangunan" required>
+								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-md-6">
 									<label for="">Tanggal Dibuat APHT</label>
-									<input type="date" class="form-control" name="tanggal_dibuat_apht" value="<?php echo(isset($row) ? $row['tanggal_dibuat_apht']) ?>">
+									<input type="date" class="form-control" name="tanggal_dibuat_apht" value="<?php echo(isset($row) ? $row['tanggal_dibuat_apht'] : '') ?>">
 								</div>
 							</div>
 						</div>

@@ -33,8 +33,14 @@ class AktaPpat extends CI_Controller {
 	public function edit_skmht($id) {
 		$data['title'] = 'Edit Data SKMHT';
 		$data['page'] = 'ppat';
-		$data['row'] = $this->ppat->findById($id);
+		$data['row'] = $this->skmht->findById($id);
 		$this->load->view('data_ppat/form_skmht',$data);
+	}
+
+	public function delete_skmht($id) {
+		$this->skmht->deleteData($id);
+		$this->session->set_flashdata('pesan','Berhasil Menghapus Data');
+		redirect('ppat/aktappat/data_skmht');
 	}
 
 	public function data_apht() {
@@ -126,7 +132,12 @@ class AktaPpat extends CI_Controller {
 			$luas_bangunan               = $this->input->post('luas_bangunan');
 			$alamat_bangunan             = $this->input->post('alamat_bangunan');
 			$rt_bangunan                 = $this->input->post('rt_bangunan');
-			$tanggal_dibuat_apht		 = $this->input->post('tanggal_dibaut_apht');
+			$kelurahan_bangunan 		 = $this->input->post('kelurahan_bangunan');
+			$nama_kelurahan_bangunan     = $this->input->post('nama_kelurahan_bangunan');
+			$kecamatan_bangunan			 = $this->input->post('kecamatan_bangunan');
+			$kota_bangunan 				 = $this->input->post('kota_bangunan');
+			$nama_kota_bangunan 		 = $this->input->post('nama_kota_bangunan');
+			$tanggal_dibuat_apht		 = $this->input->post('tanggal_dibuat_apht');
 			$status                      = 1;
 			$id                          = $this->input->post('id');
 			$array = [
@@ -172,11 +183,15 @@ class AktaPpat extends CI_Controller {
 				'nomor_nib'                   => $nomor_nib,
 				'nomor_spptpbb'               => $nomor_spptpbb,
 				'kecamatan_tanah'             => $kecamatan_tanah,
-				'kelurahan_tanah'             => $kelurahan_tanah,
 				'nama_kelurahan_tanah'        => $nama_kelurahan_tanah,
 				'luas_bangunan'               => $luas_bangunan,
 				'alamat_bangunan'             => $alamat_bangunan,
 				'rt_bangunan'                 => $rt_bangunan,
+				'kelurahan_bangunan'          => $kelurahan_bangunan,
+				'nama_kelurahan_bangunan'	  => $nama_kelurahan_bangunan,
+				'kecamatan_bangunan'	      => $kecamatan_bangunan,
+				'kota_bangunan'				  => $kota_bangunan,
+				'nama_kota_bangunan'		  => $nama_kota_bangunan,
 				'tanggal_dibuat_apht'		  => $tanggal_dibuat_apht,
 				'status'                      => $status
 			];
@@ -201,8 +216,6 @@ class AktaPpat extends CI_Controller {
 			$nomor_hak_tanggungan   = $this->input->post('nomor_hak_tanggungan');
 			$tanggal_hak_tanggungan = $this->input->post('tanggal_hak_tanggungan');
 			$id                     = $this->input->post('id');
-			// var_dump($id_skmht);
-			// exit;
 			$array = [
 				'id_skmht'				 => $id_skmht,
 				'nomor_akta_apht'        => $nomor_akta,
@@ -285,11 +298,11 @@ class AktaPpat extends CI_Controller {
 		$this->load->view('surat_akta/data_surat_ppat',$data);
 	}
 
-	public function tambah_surat_ppat() {
-		$data['title'] = 'Form Surat PPAT';
-		$data['page'] = 'ppat';
-		$this->load->view('surat_akta/form_surat_ppat',$data);
-	}
+	// public function tambah_surat_ppat() {
+	// 	$data['title'] = 'Form Surat PPAT';
+	// 	$data['page'] = 'ppat';
+	// 	$this->load->view('surat_akta/form_surat_ppat',$data);
+	// }
 
 	public function edit_surat_ppat($id) {
 		$data['title'] = 'Data Surat PPAT';
@@ -305,11 +318,11 @@ class AktaPpat extends CI_Controller {
 			$jenis_surat = 'ppat';
 			$id          = $this->input->post('id_surat');
 			$array = [
-				'nama_surat' => $nama_surat,
-				'template' => $template,
+				'nama_surat'  => $nama_surat,
+				'template'    => $template,
 				'jenis_surat' => $jenis_surat,
-				'created_at' => date('Y-m-d H:i:s'),
-				'updated_at' => date('Y-m-d H:i:s')
+				'created_at'  => date('Y-m-d H:i:s'),
+				'updated_at'  => date('Y-m-d H:i:s')
 			];
 			if ($id == '') {
 				$this->surat->insertData($array);
@@ -319,20 +332,333 @@ class AktaPpat extends CI_Controller {
 				$this->surat->updateData($id,$array);
 				$this->session->set_flashdata('pesan','Berhasil Update Surat');
 			}
-			redirect('fidusia/akta/data_surat_ppat');
+			redirect('ppat/aktappat/surat_ppat');
 		}
 	}
 
-	public function cetak_surat_skmht($id) {
-		// TO DO LIST
+	public function cetak_skmht_bni($id) {
+		$skmht                             = $this->skmht->findById($id);
+		$surat_skmht                       = $this->surat->suratSkmhtBni();
+		$row                               = [];
+		$row['nomor_akta_skmht']           = $skmht['nomor_akta_skmht'];
+		$row['tanggal_akta_skmht']         = $skmht['tanggal_akta_skmht'];
+		$row['gelar_penjual']              = $skmht['gelar_penjual'];
+		$row['nama_penjual']               = $skmht['nama_penjual'];
+		$row['kota_lahir_penjual']         = $skmht['tempat_lahir_penjual'];
+		$row['tanggal_lahir_penjual']      = $skmht['tanggal_lahir_penjual'];
+		$row['pekerjaan_penjual']          = $skmht['pekerjaan_penjual'];
+		$row['alamat_penjual']             = $skmht['alamat_penjual'];
+		$row['rt_penjual']                 = $skmht['rt_penjual'];
+		$row['kelurahan_penjual']          = $skmht['kelurahan_penjual'];
+		$row['nama_kelurahan_penjual']     = $skmht['nama_kelurahan_penjual'];
+		$row['kecamatan_penjual']          = $skmht['kecamatan_penjual'];
+		$row['kota_penjual']               = $skmht['kota_penjual'];
+		$row['nama_kota_penjual']          = $skmht['nama_kota_penjual'];
+		$row['no_identitas_penjual']       = $skmht['nomor_identitas_penjual'];
+		$row['kedudukan_keluarga_penjual'] = $skmht['kedudukan_keluarga_penjual'];
+		$row['gelar_persetujuan']          = $skmht['gelar_persetujuan'];
+		$row['nama_persetujuan']           = $skmht['nama_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $skmht['tempat_lahir_persetujuan'];
+		$row['tanggal_lahir_persetujuan']  = $skmht['tanggal_lahir_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $skmht['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $skmht['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $skmht['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $skmht['kelurahan_persetujuan'];
+		$row['nama_kelurahan_persetujuan'] = $skmht['nama_kelurahan_persetujuan'];
+		$row['kecamatan_persetujuan']      = $skmht['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $skmht['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $skmht['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $skmht['nomor_identitas_persetujuan'];
+		$row['nilai_perjanjian']           = $skmht['nilai_perjanjian'];
+		$row['nomor_perjanjian_kredit']    = $skmht['nomor_perjanjian_kredit'];
+		$row['tanggal_perjanjian']         = $skmht['tanggal_perjanjian'];
+		$row['peringkat_tanggungan']       = $skmht['peringkat_tanggungan'];
+		$row['nilai_tanggungan']		   = $skmht['nilai_tanggungan'];
+		$row['jenis_kepemilikan']          = $skmht['jenis_kepemilikan'];
+		$row['nomor_kepemilikan']          = $skmht['nomor_kepemilikan'];
+		$row['nomor_surat_ukur']           = $skmht['nomor_surat_ukur'];
+		$row['tanggal_surat_ukur']         = $skmht['tanggal_surat_ukur'];
+		$row['luas_tanah']                 = $skmht['luas_tanah'];
+		$row['nomor_nib']                  = $skmht['nomor_nib'];
+		$row['nomor_spptpbb']              = $skmht['nomor_spptpbb'];
+		$row['kecamatan_tanah']            = $skmht['kecamatan_tanah'];
+		$row['nama_kelurahan_tanah']       = $skmht['nama_kelurahan_tanah'];
+		$row['luas_bangunan']              = $skmht['luas_bangunan'];
+		$row['alamat_bangunan']            = $skmht['alamat_bangunan'];
+		$row['rt_bangunan']                = $skmht['rt_bangunan'];
+		$row['kelurahan_bangunan']         = $skmht['kelurahan_bangunan'];
+		$row['nama_kelurahan_bangunan']    = $skmht['nama_kelurahan_bangunan'];
+		$row['kecamatan_bangunan']         = $skmht['kecamatan_bangunan'];
+		$row['kota_bangunan']              = $skmht['kota_bangunan'];
+		$row['nama_kota_bangunan']         = $skmht['nama_kota_bangunan'];
+		$row['tanggal_dibuat_apht']        = $skmht['tanggal_dibuat_apht'];
+		$dataStart                         = headSkmht();
+		$dataEnd                           = footSkmht($row);
+		$format                            = $surat_skmht['template'];
+		$data['format_surat'] = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('surat_akta/cetak_skmht',$data);
 	}
 
-	public function cetak_surat_apht($id) {
-		// TO DO LIST
+	public function cetak_skmht_bri($id) {
+		$skmht                             = $this->skmht->findById($id);
+		$surat_skmht                       = $this->surat->suratSkmhtBri();
+		$row                               = [];
+		$row['nomor_akta_skmht']           = $skmht['nomor_akta_skmht'];
+		$row['tanggal_akta_skmht']         = $skmht['tanggal_akta_skmht'];
+		$row['gelar_penjual']              = $skmht['gelar_penjual'];
+		$row['nama_penjual']               = $skmht['nama_penjual'];
+		$row['kota_lahir_penjual']         = $skmht['tempat_lahir_penjual'];
+		$row['tanggal_lahir_penjual']      = $skmht['tanggal_lahir_penjual'];
+		$row['pekerjaan_penjual']          = $skmht['pekerjaan_penjual'];
+		$row['alamat_penjual']             = $skmht['alamat_penjual'];
+		$row['rt_penjual']                 = $skmht['rt_penjual'];
+		$row['kelurahan_penjual']          = $skmht['kelurahan_penjual'];
+		$row['nama_kelurahan_penjual']     = $skmht['nama_kelurahan_penjual'];
+		$row['kecamatan_penjual']          = $skmht['kecamatan_penjual'];
+		$row['kota_penjual']               = $skmht['kota_penjual'];
+		$row['nama_kota_penjual']          = $skmht['nama_kota_penjual'];
+		$row['no_identitas_penjual']       = $skmht['nomor_identitas_penjual'];
+		$row['kedudukan_keluarga_penjual'] = $skmht['kedudukan_keluarga_penjual'];
+		$row['gelar_persetujuan']          = $skmht['gelar_persetujuan'];
+		$row['nama_persetujuan']           = $skmht['nama_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $skmht['tempat_lahir_persetujuan'];
+		$row['tanggal_lahir_persetujuan']  = $skmht['tanggal_lahir_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $skmht['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $skmht['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $skmht['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $skmht['kelurahan_persetujuan'];
+		$row['nama_kelurahan_persetujuan'] = $skmht['nama_kelurahan_persetujuan'];
+		$row['kecamatan_persetujuan']      = $skmht['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $skmht['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $skmht['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $skmht['nomor_identitas_persetujuan'];
+		$row['nilai_perjanjian']           = $skmht['nilai_perjanjian'];
+		$row['nomor_perjanjian_kredit']    = $skmht['nomor_perjanjian_kredit'];
+		$row['tanggal_perjanjian']         = $skmht['tanggal_perjanjian'];
+		$row['peringkat_tanggungan']       = $skmht['peringkat_tanggungan'];
+		$row['nilai_tanggungan']		   = $skmht['nilai_tanggungan'];
+		$row['jenis_kepemilikan']          = $skmht['jenis_kepemilikan'];
+		$row['nomor_kepemilikan']          = $skmht['nomor_kepemilikan'];
+		$row['nomor_surat_ukur']           = $skmht['nomor_surat_ukur'];
+		$row['tanggal_surat_ukur']         = $skmht['tanggal_surat_ukur'];
+		$row['luas_tanah']                 = $skmht['luas_tanah'];
+		$row['nomor_nib']                  = $skmht['nomor_nib'];
+		$row['nomor_spptpbb']              = $skmht['nomor_spptpbb'];
+		$row['kecamatan_tanah']            = $skmht['kecamatan_tanah'];
+		$row['nama_kelurahan_tanah']       = $skmht['nama_kelurahan_tanah'];
+		$row['luas_bangunan']              = $skmht['luas_bangunan'];
+		$row['alamat_bangunan']            = $skmht['alamat_bangunan'];
+		$row['rt_bangunan']                = $skmht['rt_bangunan'];
+		$row['kelurahan_bangunan']         = $skmht['kelurahan_bangunan'];
+		$row['nama_kelurahan_bangunan']    = $skmht['nama_kelurahan_bangunan'];
+		$row['kecamatan_bangunan']         = $skmht['kecamatan_bangunan'];
+		$row['kota_bangunan']              = $skmht['kota_bangunan'];
+		$row['nama_kota_bangunan']         = $skmht['nama_kota_bangunan'];
+		$row['tanggal_dibuat_apht']        = $skmht['tanggal_dibuat_apht'];
+		$dataStart                         = headSkmht();
+		$dataEnd                           = footSkmht($row);
+		$format                            = $surat_skmht['template'];
+		$data['format_surat'] = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('surat_akta/cetak_skmht',$data);
 	}
 
-	public function cetak_surat_ajb($id) {
-		// TO DO LIST
+	public function cetak_apht_bni($id) {
+		$apht                              = $this->apht->cekSkmhtById($id);
+		$surat_apht                        = $this->surat->suratAphtBni();
+		$row                               = [];
+		$row['nomor_akta_apht']            = $apht['nomor_akta_apht'];
+		$row['tanggal_akta_apht']          = $apht['tanggal_akta_apht'];
+		$row['nomor_akta_skmht']           = $apht['nomor_akta_skmht'];
+		$row['tanggal_akta_skmht']         = $apht['tanggal_akta_skmht'];
+		$row['gelar_penjual']              = $apht['gelar_penjual'];
+		$row['nama_penjual']               = $apht['nama_penjual'];
+		$row['kota_lahir_penjual']         = $apht['tempat_lahir_penjual'];
+		$row['tanggal_lahir_penjual']      = $apht['tanggal_lahir_penjual'];
+		$row['pekerjaan_penjual']          = $apht['pekerjaan_penjual'];
+		$row['alamat_penjual']             = $apht['alamat_penjual'];
+		$row['rt_penjual']                 = $apht['rt_penjual'];
+		$row['kelurahan_penjual']          = $apht['kelurahan_penjual'];
+		$row['nama_kelurahan_penjual']     = $apht['nama_kelurahan_penjual'];
+		$row['kecamatan_penjual']          = $apht['kecamatan_penjual'];
+		$row['kota_penjual']               = $apht['kota_penjual'];
+		$row['nama_kota_penjual']          = $apht['nama_kota_penjual'];
+		$row['no_identitas_penjual']       = $apht['nomor_identitas_penjual'];
+		$row['kedudukan_keluarga_penjual'] = $apht['kedudukan_keluarga_penjual'];
+		$row['gelar_persetujuan']          = $apht['gelar_persetujuan'];
+		$row['nama_persetujuan']           = $apht['nama_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $apht['tempat_lahir_persetujuan'];
+		$row['tanggal_lahir_persetujuan']  = $apht['tanggal_lahir_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $apht['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $apht['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $apht['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $apht['kelurahan_persetujuan'];
+		$row['nama_kelurahan_persetujuan'] = $apht['nama_kelurahan_persetujuan'];
+		$row['kecamatan_persetujuan']      = $apht['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $apht['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $apht['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $apht['nomor_identitas_persetujuan'];
+		$row['nilai_perjanjian']           = $apht['nilai_perjanjian'];
+		$row['nomor_perjanjian_kredit']    = $apht['nomor_perjanjian_kredit'];
+		$row['tanggal_perjanjian']         = $apht['tanggal_perjanjian'];
+		$row['peringkat_tanggungan']       = $apht['peringkat_tanggungan'];
+		$row['nilai_tanggungan']           = $apht['nilai_tanggungan'];
+		$row['jenis_kepemilikan']          = $apht['jenis_kepemilikan'];
+		$row['nomor_kepemilikan']          = $apht['nomor_kepemilikan'];
+		$row['nomor_surat_ukur']           = $apht['nomor_surat_ukur'];
+		$row['tanggal_surat_ukur']         = $apht['tanggal_surat_ukur'];
+		$row['luas_tanah']                 = $apht['luas_tanah'];
+		$row['nomor_nib']                  = $apht['nomor_nib'];
+		$row['nomor_spptpbb']              = $apht['nomor_spptpbb'];
+		$row['kecamatan_tanah']            = $apht['kecamatan_tanah'];
+		$row['nama_kelurahan_tanah']       = $apht['nama_kelurahan_tanah'];
+		$row['luas_bangunan']              = $apht['luas_bangunan'];
+		$row['alamat_bangunan']            = $apht['alamat_bangunan'];
+		$row['rt_bangunan']                = $apht['rt_bangunan'];
+		$row['kelurahan_bangunan']         = $apht['kelurahan_bangunan'];
+		$row['nama_kelurahan_bangunan']    = $apht['nama_kelurahan_bangunan'];
+		$row['kecamatan_bangunan']         = $apht['kecamatan_bangunan'];
+		$row['kota_bangunan']              = $apht['kota_bangunan'];
+		$row['nama_kota_bangunan']         = $apht['nama_kota_bangunan'];
+		$dataStart                         = headApht();
+		$dataEnd                           = footApht($row);
+		$format                            = $surat_apht['template'];
+		$data['format_surat'] = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('surat_akta/cetak_apht',$data);
+	}
+
+	public function cetak_apht_bri($id) {
+		$apht                              = $this->apht->cekSkmhtById($id);
+		$surat_apht                        = $this->surat->suratAphtBri();
+		$row                               = [];
+		$row['nomor_akta_apht']            = $apht['nomor_akta_apht'];
+		$row['tanggal_akta_apht']          = $apht['tanggal_akta_apht'];
+		$row['nomor_akta_skmht']           = $apht['nomor_akta_skmht'];
+		$row['tanggal_akta_skmht']         = $apht['tanggal_akta_skmht'];
+		$row['gelar_penjual']              = $apht['gelar_penjual'];
+		$row['nama_penjual']               = $apht['nama_penjual'];
+		$row['kota_lahir_penjual']         = $apht['tempat_lahir_penjual'];
+		$row['tanggal_lahir_penjual']      = $apht['tanggal_lahir_penjual'];
+		$row['pekerjaan_penjual']          = $apht['pekerjaan_penjual'];
+		$row['alamat_penjual']             = $apht['alamat_penjual'];
+		$row['rt_penjual']                 = $apht['rt_penjual'];
+		$row['kelurahan_penjual']          = $apht['kelurahan_penjual'];
+		$row['nama_kelurahan_penjual']     = $apht['nama_kelurahan_penjual'];
+		$row['kecamatan_penjual']          = $apht['kecamatan_penjual'];
+		$row['kota_penjual']               = $apht['kota_penjual'];
+		$row['nama_kota_penjual']          = $apht['nama_kota_penjual'];
+		$row['no_identitas_penjual']       = $apht['nomor_identitas_penjual'];
+		$row['kedudukan_keluarga_penjual'] = $apht['kedudukan_keluarga_penjual'];
+		$row['gelar_persetujuan']          = $apht['gelar_persetujuan'];
+		$row['nama_persetujuan']           = $apht['nama_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $apht['tempat_lahir_persetujuan'];
+		$row['tanggal_lahir_persetujuan']  = $apht['tanggal_lahir_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $apht['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $apht['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $apht['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $apht['kelurahan_persetujuan'];
+		$row['nama_kelurahan_persetujuan'] = $apht['nama_kelurahan_persetujuan'];
+		$row['kecamatan_persetujuan']      = $apht['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $apht['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $apht['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $apht['nomor_identitas_persetujuan'];
+		$row['nilai_perjanjian']           = $apht['nilai_perjanjian'];
+		$row['nomor_perjanjian_kredit']    = $apht['nomor_perjanjian_kredit'];
+		$row['tanggal_perjanjian']         = $apht['tanggal_perjanjian'];
+		$row['peringkat_tanggungan']       = $apht['peringkat_tanggungan'];
+		$row['nilai_tanggungan']           = $apht['nilai_tanggungan'];
+		$row['jenis_kepemilikan']          = $apht['jenis_kepemilikan'];
+		$row['nomor_kepemilikan']          = $apht['nomor_kepemilikan'];
+		$row['nomor_surat_ukur']           = $apht['nomor_surat_ukur'];
+		$row['tanggal_surat_ukur']         = $apht['tanggal_surat_ukur'];
+		$row['luas_tanah']                 = $apht['luas_tanah'];
+		$row['nomor_nib']                  = $apht['nomor_nib'];
+		$row['nomor_spptpbb']              = $apht['nomor_spptpbb'];
+		$row['kecamatan_tanah']            = $apht['kecamatan_tanah'];
+		$row['nama_kelurahan_tanah']       = $apht['nama_kelurahan_tanah'];
+		$row['luas_bangunan']              = $apht['luas_bangunan'];
+		$row['alamat_bangunan']            = $apht['alamat_bangunan'];
+		$row['rt_bangunan']                = $apht['rt_bangunan'];
+		$row['kelurahan_bangunan']         = $apht['kelurahan_bangunan'];
+		$row['nama_kelurahan_bangunan']    = $apht['nama_kelurahan_bangunan'];
+		$row['kecamatan_bangunan']         = $apht['kecamatan_bangunan'];
+		$row['kota_bangunan']              = $apht['kota_bangunan'];
+		$row['nama_kota_bangunan']         = $apht['nama_kota_bangunan'];
+		$dataStart                         = headApht();
+		$dataEnd                           = footApht($row);
+		$format                            = $surat_apht['template'];
+		$data['format_surat'] = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('surat_akta/cetak_apht',$data);
+	}
+
+	public function cetak_ajb($id) {
+		$ajb                               = $this->ajb->cekSkmhtById($id);
+		$surat_ajb                         = $this->surat->suratAjb();
+		$row                               = [];
+		$row['nomor_akta_ajb']             = $ajb['nomor_akta_ajb'];
+		$row['tanggal_akta_ajb']           = $ajb['tanggal_akta_ajb'];
+		$row['gelar_penjual']              = $ajb['gelar_penjual'];
+		$row['nama_penjual']               = $ajb['nama_penjual'];
+		$row['kota_lahir_penjual']         = $ajb['tempat_lahir_penjual'];
+		$row['tanggal_lahir_penjual']      = $ajb['tanggal_lahir_penjual'];
+		$row['pekerjaan_penjual']          = $ajb['pekerjaan_penjual'];
+		$row['alamat_penjual']             = $ajb['alamat_penjual'];
+		$row['rt_penjual']                 = $ajb['rt_penjual'];
+		$row['kelurahan_penjual']          = $ajb['kelurahan_penjual'];
+		$row['nama_kelurahan_penjual']     = $ajb['nama_kelurahan_penjual'];
+		$row['kecamatan_penjual']          = $ajb['kecamatan_penjual'];
+		$row['kota_penjual']               = $ajb['kota_penjual'];
+		$row['nama_kota_penjual']          = $ajb['nama_kota_penjual'];
+		$row['no_identitas_penjual']       = $ajb['nomor_identitas_penjual'];
+		$row['kedudukan_keluarga_penjual'] = $ajb['kedudukan_keluarga_penjual'];
+		$row['gelar_persetujuan']          = $ajb['gelar_persetujuan'];
+		$row['nama_persetujuan']           = $ajb['nama_persetujuan'];
+		$row['kota_lahir_persetujuan']     = $ajb['tempat_lahir_persetujuan'];
+		$row['tanggal_lahir_persetujuan']  = $ajb['tanggal_lahir_persetujuan'];
+		$row['pekerjaan_persetujuan']      = $ajb['pekerjaan_persetujuan'];
+		$row['alamat_persetujuan']         = $ajb['alamat_persetujuan'];
+		$row['rt_persetujuan']             = $ajb['rt_persetujuan'];
+		$row['kelurahan_persetujuan']      = $ajb['kelurahan_persetujuan'];
+		$row['nama_kelurahan_persetujuan'] = $ajb['nama_kelurahan_persetujuan'];
+		$row['kecamatan_persetujuan']      = $ajb['kecamatan_persetujuan'];
+		$row['kota_persetujuan']           = $ajb['kota_persetujuan'];
+		$row['nama_kota_persetujuan']      = $ajb['nama_kota_persetujuan'];
+		$row['no_identitas_persetujuan']   = $ajb['nomor_identitas_persetujuan'];
+		$row['gelar_pembeli']              = $ajb['gelar_pembeli'];
+		$row['nama_pembeli']               = $ajb['nama_pembeli'];
+		$row['kota_lahir_pembeli']         = $ajb['tempat_lahir_pembeli'];
+		$row['tanggal_lahir_pembeli']      = $ajb['tanggal_lahir_pembeli'];
+		$row['pekerjaan_pembeli']          = $ajb['pekerjaan_pembeli'];
+		$row['alamat_pembeli']             = $ajb['alamat_pembeli'];
+		$row['rt_pembeli']                 = $ajb['rt_pembeli'];
+		$row['kelurahan_pembeli']          = $ajb['kelurahan_pembeli'];
+		$row['nama_kelurahan_pembeli']     = $ajb['nama_kelurahan_pembeli'];
+		$row['kecamatan_pembeli']          = $ajb['kecamatan_pembeli'];
+		$row['kota_pembeli']               = $ajb['kota_pembeli'];
+		$row['nama_kota_pembeli']          = $ajb['nama_kota_pembeli'];
+		$row['no_identitas_pembeli']       = $ajb['nomor_identitas_pembeli'];
+		$row['jenis_kepemilikan']          = $ajb['jenis_kepemilikan'];
+		$row['nomor_kepemilikan']          = $ajb['nomor_kepemilikan'];
+		$row['nomor_surat_ukur']           = $ajb['nomor_surat_ukur'];
+		$row['tanggal_surat_ukur']         = $ajb['tanggal_surat_ukur'];
+		$row['luas_tanah']                 = $ajb['luas_tanah'];
+		$row['nomor_nib']                  = $ajb['nomor_nib'];
+		$row['nomor_spptpbb']              = $ajb['nomor_spptpbb'];
+		$row['kecamatan_tanah']            = $ajb['kecamatan_tanah'];
+		$row['nama_kelurahan_tanah']       = $ajb['nama_kelurahan_tanah'];
+		$row['luas_bangunan']              = $ajb['luas_bangunan'];
+		$row['alamat_bangunan']            = $ajb['alamat_bangunan'];
+		$row['rt_bangunan']                = $ajb['rt_bangunan'];
+		$row['kelurahan_bangunan']         = $ajb['kelurahan_bangunan'];
+		$row['nama_kelurahan_bangunan']    = $ajb['nama_kelurahan_bangunan'];
+		$row['kecamatan_bangunan']         = $ajb['kecamatan_bangunan'];
+		$row['kota_bangunan']              = $ajb['kota_bangunan'];
+		$row['nama_kota_bangunan']         = $ajb['nama_kota_bangunan'];
+		$row['nilai_beli']				   = $ajb['nilai_beli'];
+		$dataStart                         = headAjb();
+		$dataEnd                           = footAjb($row);
+		$format                            = $surat_ajb['template'];
+		$data['format_surat'] = str_replace($dataStart,$dataEnd,$format);
+		$this->load->view('surat_akta/cetak_ajb',$data);
 	}
 	//============= END TEMPLATE SURAT PPAT =============//
 }

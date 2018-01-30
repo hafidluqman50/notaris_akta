@@ -50,7 +50,7 @@
                                   <td><?= $ppat['nama_kota_penjual'] ?></td>
                                   <td><div class="btn-group">
                                     <a href="<?= base_url('ppat/aktappat/form_ajb/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
-                                    <a href="<?= base_url('ppat/aktappat/cetak_ajb/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak AJB</a>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_ajb/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak AJB</a>
                                   </div></td>
                                 </tr>
                               <?php endforeach ?>

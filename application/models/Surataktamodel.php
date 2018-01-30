@@ -49,9 +49,34 @@ class Surataktamodel extends CI_Model
     	return $query->row_array();
     }
 
-    function cetakSkmht() {
-        // $this->db->where('id_surat',2);
-        // TO DO LIST
+    function suratSkmhtBni() {
+        $this->db->where('id_surat',2);
+        $query = $this->db->get($this->table);
+        return $query->row_array();
+    }
+
+    function suratSkmhtBri() {
+        $this->db->where('id_surat',3);
+        $query = $this->db->get($this->table);
+        return $query->row_array();
+    }
+
+    function suratAphtBni() {
+        $this->db->where('id_surat',4);
+        $query = $this->db->get($this->table);
+        return $query->row_array();
+    }
+
+    function suratAphtBri() {
+        $this->db->where('id_surat',5);
+        $query = $this->db->get($this->table);
+        return $query->row_array();
+    }
+
+    function suratAjb() {
+        $this->db->where('id_surat',6);
+        $query = $this->db->get($this->table);
+        return $query->row_array();
     }
 
     function getDataColumn($table,$where,$keyword,$value) {

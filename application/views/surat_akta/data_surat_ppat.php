@@ -21,9 +21,9 @@
 								</div>
 							<?php endif ?>
 
-                    <p>
-                        <a href="<?php echo base_url('fidusia/akta/tambah_surat_ppat'); ?>" class="btn btn-primary">Tambah Data</a>
-                    </p>
+                    <!-- <p>
+                        <a href="<?php echo base_url('ppat/aktappat/tambah_surat_ppat'); ?>" class="btn btn-primary">Tambah Data</a>
+                    </p> -->
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -40,7 +40,7 @@
                                     <td><?php echo $row['nama_surat']; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?php echo base_url('fidusia/akta/edit_surat_ppat/'.$row['id_surat']); ?>" class="btn btn-success">Ubah</a>
+                                            <a href="<?php echo base_url('ppat/aktappat/edit_surat_ppat/'.$row['id_surat']); ?>" class="btn btn-success">Ubah</a>
                                         </div>
                                     </td>
                                 </tr>

@@ -5,6 +5,6 @@
 	<title>Cetak AJB</title>
 </head>
 <body>
-	
+	<?php echo $format_surat; ?>
 </body>
 </html>

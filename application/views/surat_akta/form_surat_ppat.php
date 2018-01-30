@@ -12,12 +12,12 @@
 					<h3 class="box-title">Form Surat PPAT</h3>
 				</div>
 				<div class="box-body">
-					<form role="form" action="<?php echo base_url('/fidusia/akta/save_surat_ppat') ?>" method="POST">
+					<form role="form" action="<?php echo base_url('ppat/aktappat/save_surat_ppat') ?>" method="POST">
 					<input type="hidden" name="id_surat" value="<?php echo(isset($row)) ? $row['id_surat'] : '' ?>">
 					<div class="form-group row">
 						<div class="col-md-6">
 							<label for="">Nama Surat</label>
-							<input type="text" class="form-control" name="nama_surat" placeholder="Masukkan Nama Surat" value="<?php echo(isset($row)) ? $row['nama_surat'] : '' ?>">
+							<input type="text" class="form-control" name="nama_surat" placeholder="Masukkan Nama Surat" value="<?php echo(isset($row)) ? $row['nama_surat'] : '' ?>" required>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					<button type="submit" name="takis" value="sipp" class="btn <?php echo(isset($row)) ? 'btn-warning' : 'btn-primary' ?>" name="proses"><?php echo(isset($row)) ? 'Edit' : 'Tambah'; ?></button>
+					<button type="submit" name="takis" value="sipp" class="btn <?php echo(isset($row)) ? 'btn-warning' : 'btn-primary' ?>"><?php echo(isset($row)) ? 'Edit' : 'Tambah'; ?></button>
 				</div>
 			</form>
 			</div>

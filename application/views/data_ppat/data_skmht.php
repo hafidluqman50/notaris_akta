@@ -52,9 +52,10 @@
                                 	<td><?= $ppat['nama_penjual'] ?></td>
                                 	<td><?= $ppat['nama_kota_penjual'] ?></td>
                                 	<td><div class="btn-group">
-                                		<a href="<?= base_url('ppat/aktappat/edit_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-success">Ubah</a>
-                                		<a href="<?= base_url('ppat/aktappat/hapus_ppat/'.$ppat['id_skmht']) ?>" class="btn btn-danger">Hapus</a>
-                                		<a href="<?= base_url('ppat/aktappat/cetak_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-warning">Cetak SKMHT</a>
+                                		<a href="<?= base_url('ppat/aktappat/edit_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Ubah</a>
+                                		<a href="<?= base_url('ppat/aktappat/delete_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-danger">Hapus</a>
+                                		<a href="<?= base_url('ppat/aktappat/cetak_skmht_bri/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak SKMHT BRI</a>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_skmht_bni/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak SKMHT BNI</a>
                                 	</div></td>
                                 </tr>
                             	<?php endforeach ?>

@@ -35,6 +35,16 @@ class Ajbmodel extends CI_Model
         else {
             return array();
         }
+    }    
+
+    function cekSkmhtById($id) {
+        $this->db->select('tba_ppat_skmht.*,tba_ppat_apht.*,tba_ppat_ajb.*')
+                 ->from('tba_ppat_ajb')
+                 ->join('tba_ppat_apht','tba_ppat_apht.id_apht=tba_ppat_ajb.id_apht','inner')
+                 ->join('tba_ppat_skmht','tba_ppat_apht.id_skmht=tba_ppat_skmht.id_skmht','inner')
+                 ->where('tba_ppat_apht.id_skmht',$id);
+        $result = $this->db->get();
+        return $result->row_array();
     }
 
 	function findAll($id_petugas = '') {
