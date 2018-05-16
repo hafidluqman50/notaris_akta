@@ -26,33 +26,42 @@
                             <?php echo $this->session->flashdata('pesan'); ?>
                         </div>
                     <?php endif; ?>
+                    <p>
+                        <a href="<?php echo base_url('ppat/aktappat/add_apht/'.$id_ppat); ?>" class="btn btn-primary">Tambah Data</a>
+                    </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>No Akta</th>
+                                    <th>Nama Penjual</th>
                                     <th>Tanggal Akta</th>
-                                   	<th>Jenis Kepemilikan</th>
-                                    <th>Nama Penjual Tanah</th>
-                                    <th>Kota</th>
+                                    <th>Jenis Kepemilikan</th>
+                                    <th>Jenis Nasabah</th>
                                     <th>#</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            	<?php foreach ($data_skmht as $key => $ppat): ?>
+                              <?php foreach ($data_apht as $key => $ppat): ?>
                                 <tr>
-                                	<td><?= $key+1 ?></td>
-                                	<td><?= humanDate($ppat['tanggal_akta_skmht']) ?></td>
-                                	<td><?= $ppat['jenis_kepemilikan'] ?></td>
-                                	<td><?= $ppat['nama_penjual'] ?></td>
-                                	<td><?= $ppat['nama_kota_penjual'] ?></td>
-                                	<td><div class="btn-group">
-                                		<a href="<?= base_url('ppat/aktappat/form_apht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
-                                		<a href="<?= base_url('ppat/aktappat/cetak_apht_bni/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak APHT BNI</a>
-                                    <a href="<?= base_url('ppat/aktappat/cetak_apht_bri/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak APHT BRI</a>
-                                	</div></td>
+                                  <td><?= $key+1 ?></td>
+                                  <td><?= $ppat['nomor_akta_apht'] ?></td>
+                                  <td><?= $ppat['nama_penjual'] ?></td>
+                                  <td><?= humanDate($ppat['tanggal_akta_apht']) ?></td>
+                                  <td><?= $ppat['jenis_kepemilikan'] ?></td>
+                                  <td><?= $ppat['nasabah_bank'] ?></td>
+                                  <td><div class="btn-group">
+                                    <a href="<?= base_url('ppat/aktappat/edit_apht/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
+                                    <a href="<?= base_url('ppat/aktappat/delete_apht/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                    <?php if ($ppat['nasabah_bank'] == "BNI"): ?>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_apht_bni/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak APHT</a>
+                                      <?php else: ?>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_apht_bri/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak APHT</a>
+                                    <?php endif ?>
+                                  </div></td>
                                 </tr>
-                            	<?php endforeach ?>
+                              <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>

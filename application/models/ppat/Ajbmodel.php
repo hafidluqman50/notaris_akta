@@ -10,14 +10,40 @@ class Ajbmodel extends CI_Model
 		parent::__construct();
 	}
 
-    function cekAkta($id) {
-        $this->db->select('tba_ppat_apht.id_apht,tba_ppat_skmht.nama_penjual,tba_ppat_skmht.kedudukan_keluarga_penjual,tba_ppat_skmht.nama_persetujuan')
-                ->from('tba_ppat_apht')
-                ->join('tba_ppat_skmht','tba_ppat_skmht.id_skmht=tba_ppat_apht.id_skmht','inner')
-                ->where('tba_ppat_apht.id_apht',$id);
-        $result = $this->db->get();
-        if ($result->num_rows() >= 1) {
-            return $result->row_array();
+    function findAll($id) {
+        $this->db->select('*')
+                 ->from($this->table)  
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_ajb.id_ppat')
+                 ->where('tba_ppat_ajb.id_ppat',$id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        else {
+            return array();
+        }
+    }
+
+    function cetakSurat($id,$id_ppat) {
+        $this->db->select('*')
+                 ->from($this->table)
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_ajb.id_ppat')
+                 ->where(['tba_ppat_ajb.id_ajb'=>$id,'tba_ppat_ajb.id_ppat'=>$id_ppat]);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
+        }
+        else {
+            return array();
+        }
+    }
+
+    function findById($id,$id_ppat) {
+        $this->db->where(['id_ajb'=>$id,'id_ppat'=>$id_ppat]);
+        $query = $this->db->get($this->table, 1);
+
+        if ($query->num_rows() >= 1) {
+            return $query->row_array();
         }
         else {
             return array();
@@ -31,44 +57,6 @@ class Ajbmodel extends CI_Model
         $result = $this->db->get();
         if ($result->num_rows() >= 1 ) {
             return $result->row_array();
-        }
-        else {
-            return array();
-        }
-    }    
-
-    function cekSkmhtById($id) {
-        $this->db->select('tba_ppat_skmht.*,tba_ppat_apht.*,tba_ppat_ajb.*')
-                 ->from('tba_ppat_ajb')
-                 ->join('tba_ppat_apht','tba_ppat_apht.id_apht=tba_ppat_ajb.id_apht','inner')
-                 ->join('tba_ppat_skmht','tba_ppat_apht.id_skmht=tba_ppat_skmht.id_skmht','inner')
-                 ->where('tba_ppat_apht.id_skmht',$id);
-        $result = $this->db->get();
-        return $result->row_array();
-    }
-
-	function findAll($id_petugas = '') {
-        if ($id_petugas != '') {
-            $this->db->where('id_petugas', $id_petugas);
-        }
-        $this->db->where('status', 1);
-        $query = $this->db->get($this->table);
-
-        if ($query->num_rows() > 0) {
-            return $query->result_array();
-        }
-        else {
-            return array();
-        }
-    }
-
-    function findById($id_user) {
-        $this->db->where('id', $id_user);
-        $this->db->where('status', 1);
-        $query = $this->db->get($this->table, 1);
-
-        if ($query->num_rows() >= 1) {
-            return $query->row_array();
         }
         else {
             return array();
@@ -98,10 +86,8 @@ class Ajbmodel extends CI_Model
         $this->db->update($this->table,$data);
     }
 
-    function deleteData($id) {
-        $data['status'] = 0;
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id',$id);
+    function deleteData($id,$id_ppat) {
+        $this->db->where(['id_ajb'=>$id,'id_ppat'=>$id_ppat]);
         $this->db->update($this->table,$data);
     }
 }

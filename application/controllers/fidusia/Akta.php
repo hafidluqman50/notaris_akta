@@ -71,7 +71,7 @@ class Akta extends CI_Controller
 			$pekerjaan_persetujuan       = $this->input->post('pekerjaan_persetujuan');
 			$kota_lahir_persetujuan      = $this->input->post('kota_lahir_persetujuan');
 			$tgl_lahir_persetujuan       = $this->input->post('tgl_lahir_persetujuan');
-			$warga_persetujuan = $this->input->post('warga_persetujuan');
+			$warga_persetujuan           = $this->input->post('warga_persetujuan');
 			$warga_persetujuan           = $this->input->post('warga_persetujuan');
 			$alamat_persetujuan          = $this->input->post('alamat_persetujuan');
 			$rt_persetujuan              = $this->input->post('rt_persetujuan');
@@ -134,7 +134,7 @@ class Akta extends CI_Controller
 			$bukti_hak                   = $this->input->post('bukti_hak');
 			$tgl_spb                     = $this->input->post('tgl_spb');
 			$tgl_kwitansi                = $this->input->post('tgl_kwitansi');
-			$tgl_setuju_cv 				 = $this->input->post('tgl_setuju_cv');
+			$tgl_setuju_cv               = $this->input->post('tgl_setuju_cv');
 			$peradilan_negeri            = $this->input->post('peradilan_negeri');
 			$penerima_fidusia            = $this->input->post('penerima_fidusia');
 			$kedudukan                   = $this->input->post('kedudukan');
@@ -161,7 +161,7 @@ class Akta extends CI_Controller
 			$no_bukti_setoran            = $this->input->post('no_bukti_setoran');
 			$tgl_setor                   = $this->input->post('tgl_setor');
 			$nama_karyawan               = $this->input->post('nama_karyawan');
-			$id                          = $this->input->post('id');
+			$id                          = $this->input->post('id_fidusia');
 
 			$data = array(
 							'no_akta'                     => $no_akta, 
@@ -192,10 +192,10 @@ class Akta extends CI_Controller
 							'nama_persetujuan'            => $nama_persetujuan,
 							'alias_persetujuan'           => $alias_persetujuan,
 							'pekerjaan_persetujuan'       => $pekerjaan_persetujuan,
-							'kota_lahir_persetujuan'	  => $kota_lahir_persetujuan,
+							'kota_lahir_persetujuan'      => $kota_lahir_persetujuan,
 							'tgl_lahir_persetujuan'       => $tgl_lahir_persetujuan,
-							'warga_persetujuan' => $warga_persetujuan,
-							'alamat_persetujuan'		  => $alamat_persetujuan,
+							'warga_persetujuan'           => $warga_persetujuan,
+							'alamat_persetujuan'          => $alamat_persetujuan,
 							'rt_persetujuan'              => $rt_persetujuan,
 							'rw_persetujuan'              => $rw_persetujuan,
 							'kelurahan_persetujuan'       => $kelurahan_persetujuan,
@@ -281,9 +281,9 @@ class Akta extends CI_Controller
 							'no_bukti_setoran'            => $no_bukti_setoran,
 							'tgl_setor'                   => $tgl_setor,
 							'nama_karyawan'               => $nama_karyawan,
-							'id_petugas'               	  => $this->session->userdata('id'),
+							'id_petugas'                  => $this->session->userdata('id'),
 							'created_at'                  => date('Y-m-d H:i:s'),
-							'updated_at'				  => date('Y-m-d H:i:s'),
+							'updated_at'                  => date('Y-m-d H:i:s'),
 							'status'                      => 1
 						);
 

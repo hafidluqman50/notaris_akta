@@ -10,13 +10,12 @@ class Skmhtmodel extends CI_Model
 		parent::__construct();
 	}
 
-	function findAll($id_petugas = '') {
-        if ($id_petugas != '') {
-            $this->db->where('id_petugas', $id_petugas);
-        }
-        $this->db->where('status', 1);
-        $query = $this->db->get($this->table);
-
+    function findAll($id) {
+        $this->db->select('*')
+                 ->from($this->table)  
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_skmht.id_ppat')
+                 ->where('tba_ppat_skmht.id_ppat',$id);
+        $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }
@@ -25,12 +24,25 @@ class Skmhtmodel extends CI_Model
         }
     }
 
-    function findById($id_user) {
-        $this->db->where('id_skmht', $id_user);
-        $this->db->where('status', 1);
+    function findById($id,$id_debitur) {
+        $this->db->where(['id_skmht'=>$id,'id_ppat'=>$id_debitur]);
         $query = $this->db->get($this->table, 1);
 
         if ($query->num_rows() >= 1) {
+            return $query->row_array();
+        }
+        else {
+            return array();
+        }
+    }
+
+    function cetakSurat($id,$id_debitur) {
+        $this->db->select('*')
+                 ->from($this->table)
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_skmht.id_ppat')
+                 ->where(['tba_ppat_skmht.id_skmht'=>$id,'tba_ppat_skmht.id_ppat'=>$id_debitur]);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
             return $query->row_array();
         }
         else {
@@ -61,10 +73,8 @@ class Skmhtmodel extends CI_Model
         $this->db->update($this->table,$data);
     }
 
-    function deleteData($id) {
-        $data['status'] = 0;
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id_skmht',$id);
+    function deleteData($id,$id_debitur) {
+        $this->db->where(['id_skmht'=>$id,'id_ppat'=>$id_debitur]);
         $this->db->update($this->table,$data);
     }
 }

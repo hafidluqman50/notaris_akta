@@ -15,7 +15,7 @@
       <section class="content">
         <div class="box box-default">
           <div class="box-header with-border">
-            <h3 class="box-title">Data AJB</h3>
+            <h3 class="box-title">Data APHT</h3>
           </div>
           <div class="box-body">
             <div class="row">
@@ -26,31 +26,33 @@
                             <?php echo $this->session->flashdata('pesan'); ?>
                         </div>
                     <?php endif; ?>
+                    <p>
+                        <a href="<?php echo base_url('ppat/aktappat/add_ajb/'.$id_ppat); ?>" class="btn btn-primary">Tambah Data</a>
+                    </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>No Akta</th>
+                                    <th>Nama Penjual</th>
                                     <th>Tanggal Akta</th>
                                     <th>Jenis Kepemilikan</th>
-                                    <th>Nama Penjual Tanah</th>
-                                    <th>Kota</th>
                                     <th>#</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <?php foreach ($data_skmht as $key => $ppat): ?>
+                              <?php foreach ($data_ajb as $key => $ppat): ?>
                                 <tr>
                                   <td><?= $key+1 ?></td>
-                                  <td><?= $ppat['nomor_akta_skmht'] ?></td>
-                                  <td><?= humanDate($ppat['tanggal_akta_skmht']) ?></td>
-                                  <td><?= $ppat['jenis_kepemilikan'] ?></td>
+                                  <td><?= $ppat['nomor_akta_ajb'] ?></td>
                                   <td><?= $ppat['nama_penjual'] ?></td>
-                                  <td><?= $ppat['nama_kota_penjual'] ?></td>
+                                  <td><?= humanDate($ppat['tanggal_akta_ajb']) ?></td>
+                                  <td><?= $ppat['jenis_kepemilikan'] ?></td>
                                   <td><div class="btn-group">
-                                    <a href="<?= base_url('ppat/aktappat/form_ajb/'.$ppat['id_skmht']) ?>" class="btn btn-success">Lengkapi Form</a>
-                                    <a href="<?= base_url('ppat/aktappat/cetak_ajb/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak AJB</a>
+                                    <a href="<?= base_url('ppat/aktappat/edit_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
+                                    <a href="<?= base_url('ppat/aktappat/delete_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak AJB</a>
                                   </div></td>
                                 </tr>
                               <?php endforeach ?>

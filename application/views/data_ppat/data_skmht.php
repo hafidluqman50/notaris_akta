@@ -27,7 +27,7 @@
                         </div>
                     <?php endif; ?>
                     <p>
-                        <a href="<?php echo base_url('ppat/aktappat/add_skmht/'); ?>" class="btn btn-primary">Tambah Data</a>
+                        <a href="<?php echo base_url('ppat/aktappat/add_penjual/'.$id_ppat); ?>" class="btn btn-primary">Tambah Data</a>
                     </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -35,10 +35,10 @@
                                 <tr>
                                     <th>No</th>
                                     <th>No Akta</th>
+                                    <th>Nama Debitur</th>
                                     <th>Tanggal Akta</th>
                                    	<th>Jenis Kepemilikan</th>
-                                    <th>Nama Penjual Tanah</th>
-                                    <th>Kota</th>
+                                    <th>Jenis Nasabah</th>
                                     <th>#</th>
                                 </tr>
                             </thead>
@@ -47,16 +47,19 @@
                                 <tr>
                                 	<td><?= $key+1 ?></td>
                                 	<td><?= $ppat['nomor_akta_skmht'] ?></td>
+                                  <td><?= $ppat['nama_penjual'] ?></td>
                                 	<td><?= humanDate($ppat['tanggal_akta_skmht']) ?></td>
                                 	<td><?= $ppat['jenis_kepemilikan'] ?></td>
-                                	<td><?= $ppat['nama_penjual'] ?></td>
-                                	<td><?= $ppat['nama_kota_penjual'] ?></td>
+                                  <td><?= $ppat['nasabah_bank'] ?></td>
                                 	<td><div class="btn-group">
-                                		<a href="<?= base_url('ppat/aktappat/edit_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-success">Ubah</a>
-                                		<a href="<?= base_url('ppat/aktappat/delete_skmht/'.$ppat['id_skmht']) ?>" class="btn btn-danger">Hapus</a>
-                                		<a href="<?= base_url('ppat/aktappat/cetak_skmht_bri/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak SKMHT BRI</a>
-                                    <a href="<?= base_url('ppat/aktappat/cetak_skmht_bni/'.$ppat['id_skmht']) ?>" class="btn btn-info">Cetak SKMHT BNI</a>
-                                	</div></td>
+                                		<a href="<?= base_url('ppat/aktappat/edit_skmht/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
+                                		<a href="<?= base_url('ppat/aktappat/delete_skmht/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                    <?php if ($ppat['nasabah_bank'] == "BNI"): ?>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_skmht_bni/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak SKMHT</a>
+                                      <?php else: ?>
+                                    <a href="<?= base_url('ppat/aktappat/cetak_skmht_bri/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak SKMHT</a>
+                                    <?php endif ?>
+                                  </div></td>
                                 </tr>
                             	<?php endforeach ?>
                             </tbody>

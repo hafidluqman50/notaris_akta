@@ -815,7 +815,7 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-              <input type="hidden" name="id" value="<?php echo (!empty($row)) ? $row['id'] : '' ?>">
+              <input type="hidden" name="id_fidusia" value="<?php echo (!empty($row)) ? $row['id_fidusia'] : '' ?>">
               <button type="submit" class="btn btn-primary" name="process" value="takis">Submit</button>
             </div>
           </form>

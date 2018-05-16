@@ -10,13 +10,28 @@ class Aphtmodel extends CI_Model
 		parent::__construct();
 	}
 
-    function cekAkta($id) {
-        $this->db->select('id_skmht,nama_penjual,kedudukan_keluarga_penjual,nama_persetujuan')
-                 ->from('tba_ppat_skmht')
-                 ->where('id_skmht',$id);
-        $result = $this->db->get();
-        if ($result->num_rows() >= 1) {
-            return $result->row_array();
+    function findAll($id) {
+        $this->db->select('*')
+                 ->from($this->table)  
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_apht.id_ppat')
+                 ->where('tba_ppat_apht.id_ppat',$id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        else {
+            return array();
+        }
+    }
+
+    function cetakSurat($id,$id_ppat) {
+        $this->db->select('*')
+                 ->from($this->table)
+                 ->join('tba_ppat_biodata','tba_ppat_biodata.id_ppat = tba_ppat_apht.id_ppat')
+                 ->where(['tba_ppat_apht.id_apht'=>$id,'tba_ppat_apht.id_ppat'=>$id_ppat]);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->row_array();
         }
         else {
             return array();
@@ -43,9 +58,8 @@ class Aphtmodel extends CI_Model
         return $array['id_skmht'];
     }
 
-    function findById($id) {
-        $this->db->where('id_apht', $id_user);
-        $this->db->where('status', 1);
+    function findById($id,$id_ppat) {
+        $this->db->where(['id_apht'=>$id,'id_ppat'=>$id_ppat]);
         $query = $this->db->get($this->table, 1);
 
         if ($query->num_rows() >= 1) {
@@ -88,10 +102,8 @@ class Aphtmodel extends CI_Model
         $this->db->update($this->table,$data);
     }
 
-    function deleteData($id) {
-        $data['status'] = 0;
-        $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id',$id);
+    function deleteData($id,$id_ppat) {
+        $this->db->where(['id_apht'=>$id,'id_ppat'=>$id_ppat]);
         $this->db->update($this->table,$data);
     }
 }
