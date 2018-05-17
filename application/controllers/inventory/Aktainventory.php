@@ -82,7 +82,7 @@ class Aktainventory extends CI_Controller {
 	public function add_inv_akta($id) {
 		$data['title']         = 'Tambah Data Inventory PPAT';
 		$data['page']          = 'inventory';
-		$data['id_u_inv_akta'] = $id;
+		$data['id_inv_akta'] = $id;
 		$this->load->view('inventory/form_inv_akta',$data);
 	}
 
@@ -264,75 +264,93 @@ class Aktainventory extends CI_Controller {
 	}
 
 	public function cetak_excel() {
-		$akta       = $this->akta_inv->exportData();
-		$sertifikat = $this->sertifikat_inv->exportData();
-		$excel      = new PHPExcel();
-		$richText   = new PHPExcel_RichText();
-		$bold = $richText->createTextRun('INVENTARIS PPAT');
-		$bold->getFont()->setBold(true);
-		$excel->getProperties()
-			  ->setTitle('Inventory Notaris')
-			  ->setCreator('Nia Nuswantari');
-		$excel->getSheet(0)->setTitle('Selesai BRI');
-		$workSheet1 = new PHPExcel_Worksheet($excel,'Selesai BNI');
-		$workSheet2 = new PHPExcel_Worksheet($excel,'Selesai BSM');
-		$workSheet3 = new PHPExcel_Worksheet($excel,'Sertifikat BRI');
-		$workSheet4 = new PHPExcel_Worksheet($excel,'Sertifikat BNI');
-		$workSheet5 = new PHPExcel_Worksheet($excel,'Sertifikat BSM');
-		$workSheet6 = new PHPExcel_Worksheet($excel,'BRI');
-		$workSheet7 = new PHPExcel_Worksheet($excel,'BNI');
-		$workSheet8 = new PHPExcel_Worksheet($excel,'BSM');
-		$workSheet9 = new PHPExcel_Worksheet($excel,'Luar Kota');
-		$excel->addSheet($workSheet1);
-		$excel->addSheet($workSheet2);
-		$excel->addSheet($workSheet3);
-		$excel->addSheet($workSheet4);
-		$excel->addSheet($workSheet5);
-		$excel->addSheet($workSheet6);
-		$excel->addSheet($workSheet7);
-		$excel->addSheet($workSheet8);
-		$excel->addSheet($workSheet9);
-		$excel->getActiveSheet()
-			  ->mergeCells('A1:X1')
-			  ->setCellValue('A1',$richText)
-			  ->setCellValue('A2','MUHDI')
-			  ->setCellValue('A3','BRI KONVENSIONAL')
-			  ->setCellValue('A5','NO')
-			  ->setCellValue('B5','NASABAH')
-			  ->setCellValue('C5','KELENGKAPAN')
-			  ->setCellValue('D5','JENIS PEKERJAAN')
-			  ->setCellValue('E5','JENIS AKTA')
-			  ->setCellValue('F5','TGL AKTA')
-			  ->setCellValue('G5','NO AKTA')
-			  ->setCellValue('H5','KETIK AKT')
-			  ->setCellValue('I5','CALL AKT')
-			  ->setCellValue('J5','TTD AKD')
-			  ->setCellValue('K5','ATR MNT')
-			  ->setCellValue('L5','MNT KMB')
-			  ->setCellValue('M5','PRINT SAL')
-			  ->setCellValue('N5','RPK MNT')
-			  ->setCellValue('O5','INVOICE')
-			  ->setCellValue('P5','DANLAP')
-			  ->setCellValue('Q5','EXP SKMHT')
-			  ->setCellValue('R5','EXP CNOT')
-			  ->setCellValue('S5','PER LAP')
-			  ->setCellValue('T5','LAP SLS')
-			  ->setCellValue('U5','ATR ODR')
-			  ->setCellValue('V5','KET')
-			  ->getStyle('B5:V5')
-			  ->getFill()
-			  ->getStartColor()
-			  ->setRGB(220,220,220);
-		$excel->getActiveSheet()
-			  ->getStyle('B5:V5')
-			  ->getFont()
-			  ->setSize(11);
-		// $excel->setActiveSheet(3)
-		// 	  ->setCellValue();
-		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="Inventory Notaris.xls"');
-		header('Cache-Control: max-age=0');
-		$to_excel = PHPExcel_IOFactory::createWriter($excel,'Excel2007');
-		$to_excel->save('php://output');
+		// $akta       = $this->akta_inv->exportData('tba_u_inv_akta.status',1);
+		// $sertifikat = $this->sertifikat_inv->exportData();
+		// $excel      = new PHPExcel();
+		// $richText   = new PHPExcel_RichText();
+		// $bold = $richText->createTextRun('INVENTARIS PPAT');
+		// $bold->getFont()->setBold(true);
+		// $excel->getProperties()
+		// 	  ->setTitle('Inventory Notaris')
+		// 	  ->setCreator('Nia Nuswantari');
+		// $excel->getSheet(0)->setTitle('Selesai BRI');
+		// $workSheet1 = new PHPExcel_Worksheet($excel,'Selesai BNI');
+		// $workSheet2 = new PHPExcel_Worksheet($excel,'Selesai BSM');
+		// $workSheet3 = new PHPExcel_Worksheet($excel,'Sertifikat BRI');
+		// $workSheet4 = new PHPExcel_Worksheet($excel,'Sertifikat BNI');
+		// $workSheet5 = new PHPExcel_Worksheet($excel,'Sertifikat BSM');
+		// $workSheet6 = new PHPExcel_Worksheet($excel,'BRI');
+		// $workSheet7 = new PHPExcel_Worksheet($excel,'BNI');
+		// $workSheet8 = new PHPExcel_Worksheet($excel,'BSM');
+		// $workSheet9 = new PHPExcel_Worksheet($excel,'Luar Kota');
+		// $excel->addSheet($workSheet1);
+		// $excel->addSheet($workSheet2);
+		// $excel->addSheet($workSheet3);
+		// $excel->addSheet($workSheet4);
+		// $excel->addSheet($workSheet5);
+		// $excel->addSheet($workSheet6);
+		// $excel->addSheet($workSheet7);
+		// $excel->addSheet($workSheet8);
+		// $excel->addSheet($workSheet9);
+		// $excel->getActiveSheet()
+		// 	  ->mergeCells('A1:X1')
+		// 	  ->setCellValue('A1',$richText)
+		// 	  ->setCellValue('A2','MUHDI')
+		// 	  ->setCellValue('A3','BRI KONVENSIONAL')
+		// 	  ->setCellValue('A5','NO')
+		// 	  ->setCellValue('B5','NASABAH')
+		// 	  ->setCellValue('C5','KELENGKAPAN')
+		// 	  ->setCellValue('D5','JENIS PEKERJAAN')
+		// 	  ->setCellValue('E5','JENIS AKTA')
+		// 	  ->setCellValue('F5','TGL AKTA')
+		// 	  ->setCellValue('G5','NO AKTA')
+		// 	  ->setCellValue('H5','KETIK AKT')
+		// 	  ->setCellValue('I5','CALL AKT')
+		// 	  ->setCellValue('J5','TTD AKD')
+		// 	  ->setCellValue('K5','ATR MNT')
+		// 	  ->setCellValue('L5','MNT KMB')
+		// 	  ->setCellValue('M5','PRINT SAL')
+		// 	  ->setCellValue('N5','RPK MNT')
+		// 	  ->setCellValue('O5','INVOICE')
+		// 	  ->setCellValue('P5','DANLAP')
+		// 	  ->setCellValue('Q5','EXP SKMHT')
+		// 	  ->setCellValue('R5','EXP CNOT')
+		// 	  ->setCellValue('S5','PER LAP')
+		// 	  ->setCellValue('T5','LAP SLS')
+		// 	  ->setCellValue('U5','ATR ODR')
+		// 	  ->setCellValue('V5','KET');
+		// $excel->getActiveSheet()
+		// 	  ->getStyle('A5:V5')
+		//       ->getFill()
+  //   		  ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+		// 	  ->getStartColor()
+		// 	  ->setRGB(39, 174, 96);
+		// 	  foreach (range('A','V') as $value) {
+		// 	  	$excel->getActiveSheet()->getColumnDimension($value)->setAutoSize(true);
+		// 	  }
+		// $styleArray = array(
+		// 	    'font'  => array(
+		// 	        'bold'  => false,
+		// 	        'size'  => 11,
+		// 	        'name'  => 'Verdana'
+		// 	    ));
+		// $excel->getActiveSheet()
+		// 	  ->getStyle('B5:V5')
+		// 	  ->applyFromArray($styleArray);
+		// foreach ($akta as $key => $value) {
+		// 	for ($i=6; $i < count($value); $i++) { 
+		// 		$excel->getActiveSheet()
+		// 			  ->setCellValue('A'.$i,$i)
+		// 			  ->setCellValue('B'.$i,$value['nasabah_akta'])
+		// 			  ->setCellValue('C'.$i,$value['kelengkapan'])
+		// 			  ->setCellValue('D'.$i,$value['jenis_pekerjaan']);
+		// 	}
+		// }
+		// header('Content-Type: application/vnd.ms-excel');
+		// header('Content-Disposition: attachment;filename="Inventory Notaris.xls"');
+		// header('Cache-Control: max-age=0');
+		// $to_excel = PHPExcel_IOFactory::createWriter($excel,'Excel2007');
+		// $to_excel->save('php://output');
+		$this->load->view('errors/coming_soon');
 	}
 }

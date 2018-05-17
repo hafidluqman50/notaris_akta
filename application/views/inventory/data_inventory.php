@@ -63,7 +63,7 @@
                             				Selesai
                             			</a>
                             			<?php else: ?>
-                            			<a href="<?= base_url('inventory/aktainventory/status_akta/'.$ppat['id_u_inv_akta']) ?>" class="btn btn-primary" onclick="return confirm('Yakin Monitor Data Telah Selesai?');">
+                            			<a href="<?= base_url('inventory/aktainventory/selesai_akta/'.$ppat['id_u_inv_akta']) ?>" class="btn btn-primary" onclick="return confirm('Yakin Monitor Data Telah Selesai?');">
                             			Selesai
                             			</a>
                             			<?php endif ?>

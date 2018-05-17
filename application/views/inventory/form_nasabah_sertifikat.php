@@ -9,7 +9,7 @@
 					<div class="box-header with-title">
 						<h3 class="box-title">Form Nasabah Fidusia</h3>
 					</div>
-					<form action="<?php echo base_url('inventory/aktainventory/save_nasabah_fidusia') ?>" method="POST">
+					<form action="<?php echo base_url('inventory/aktainventory/save_nasabah_sertifikat') ?>" method="POST">
 					<div class="box-body">
 						<div class="form-group row">
 							<div class="col-md-6">
@@ -32,7 +32,7 @@
 						<div class="form-group row">
 							<div class="col-md-6">
 								<label for="">Nasabah</label>
-								<input type="text" name="nasabah_fidusia" class="form-control" placeholder="Isi Nasabah" value="<?php echo(isset($row) ? $row['nasabah_sertifikat'] : '') ?>">
+								<input type="text" name="nasabah_sertifikat" class="form-control" placeholder="Isi Nasabah" value="<?php echo(isset($row) ? $row['nasabah_sertifikat'] : '') ?>">
 							</div>
 						</div>
 						<div class="form-group row">

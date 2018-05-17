@@ -8,10 +8,11 @@ class SertifikatInvModel extends CI_Model {
 		parent::__construct();
 	}
 
-	function exportData() {
+	function exportData($where,$value) {
 		$this->db->select('*')
 				 ->from($this->table)
-				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat');
+				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
+				 ->where($where,$value);
 		$query = $this->db->get();
 		if ($query->num_rows() >= 1) {
 			return $query->result_array();

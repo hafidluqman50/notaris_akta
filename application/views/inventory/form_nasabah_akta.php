@@ -9,7 +9,7 @@
 					<div class="box-header with-title">
 						<h3 class="box-title">Form Nasabah PPAT</h3>
 					</div>
-					<form action="<?php echo base_url('inventory/aktainventory/save_nasabah_ppat') ?>" method="POST">
+					<form action="<?php echo base_url('inventory/aktainventory/save_nasabah_akta') ?>" method="POST">
 					<div class="box-body">
 						<div class="form-group row">
 							<div class="col-md-6">

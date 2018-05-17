@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 30, 2018 at 06:36 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Host: localhost
+-- Generation Time: May 17, 2018 at 05:12 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tba_akta_debitur` (
-  `id` int(11) NOT NULL,
+  `id_fidusia` int(11) NOT NULL,
   `no_akta` int(11) NOT NULL,
   `tanggal_akta` date NOT NULL,
   `jam_akta` time NOT NULL,
@@ -157,10 +157,66 @@ CREATE TABLE `tba_akta_debitur` (
 -- Dumping data for table `tba_akta_debitur`
 --
 
-INSERT INTO `tba_akta_debitur` (`id`, `no_akta`, `tanggal_akta`, `jam_akta`, `jam_selesai_akta`, `jenis_fidusia`, `gelar_debitur`, `nama_debitur`, `alias_debitur`, `pekerjaan_debitur`, `kota_lahir_debitur`, `tgl_lahir_debitur`, `warga_debitur`, `alamat_debitur`, `rt_debitur`, `rw_debitur`, `kelurahan_debitur`, `nama_kelurahan_debitur`, `kecamatan_debitur`, `kota_debitur`, `nama_kota_debitur`, `jenis_identitas_debitur`, `no_identitas_debitur`, `status_akta`, `status`, `jenis_persetujuan`, `gelar_persetujuan`, `nama_persetujuan`, `alias_persetujuan`, `pekerjaan_persetujuan`, `kota_lahir_persetujuan`, `tgl_lahir_persetujuan`, `warga_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `rw_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `jenis_identitas_persetujuan`, `no_identitas_persetujuan`, `gelar_pemilik`, `nama_pemilik`, `alias_pemilik`, `pekerjaan_pemilik`, `kota_lahir_pemilik`, `tgl_lahir_pemilik`, `alamat_pemilik`, `rt_pemilik`, `rw_pemilik`, `kelurahan_pemilik`, `nama_kelurahan_pemilik`, `kecamatan_pemilik`, `kota_pemilik`, `nama_kota_pemilik`, `jenis_identitas_pemilik`, `no_identitas_pemilik`, `nama_cv`, `kedudukan_cv`, `tgl_akta_pendirian_cv`, `no_akta_pendirian_cv`, `nota_akta_pendirian_cv`, `tgl_setuju_cv`, `tgl_pk`, `no_pk`, `tgl_sk_fidusia_debitur`, `no_langganan`, `nilai_hutang`, `nilai_penjaminan`, `nilai_obyek`, `no_polisi`, `merk`, `type`, `jenis_kendaraan`, `model`, `thn_buat`, `thn_rakit`, `silinder`, `warna`, `no_rangka`, `no_mesin`, `bpkb_nmr`, `bpkb_atas_nama`, `bpkb_tanggal`, `bpkb_dikeluarkan_oleh`, `sumbu`, `roda`, `kondisi`, `bukti_hak`, `tgl_spb`, `tgl_kwitansi`, `peradilan_negeri`, `penerima_fidusia`, `kedudukan`, `cabang`, `alamat_penerima_fidusia`, `nama_penerima_fidusia`, `jabatan_penerima_fidusia`, `tgl_sk_penerima_fidusia`, `no_sk_penerima_fidusia`, `kanwil`, `alamat_kanwil`, `no_surat_pengantar`, `tgl_surat_pengantar`, `tgl_sk_notaris`, `kode_customer`, `nama_customer`, `pnbp`, `admin_bank`, `materai`, `admin_dan_operasional`, `jumlah`, `biaya_akta`, `no_sertifikat`, `no_bukti_setoran`, `tgl_setor`, `nama_karyawan`, `id_petugas`, `created_at`, `updated_at`) VALUES
+INSERT INTO `tba_akta_debitur` (`id_fidusia`, `no_akta`, `tanggal_akta`, `jam_akta`, `jam_selesai_akta`, `jenis_fidusia`, `gelar_debitur`, `nama_debitur`, `alias_debitur`, `pekerjaan_debitur`, `kota_lahir_debitur`, `tgl_lahir_debitur`, `warga_debitur`, `alamat_debitur`, `rt_debitur`, `rw_debitur`, `kelurahan_debitur`, `nama_kelurahan_debitur`, `kecamatan_debitur`, `kota_debitur`, `nama_kota_debitur`, `jenis_identitas_debitur`, `no_identitas_debitur`, `status_akta`, `status`, `jenis_persetujuan`, `gelar_persetujuan`, `nama_persetujuan`, `alias_persetujuan`, `pekerjaan_persetujuan`, `kota_lahir_persetujuan`, `tgl_lahir_persetujuan`, `warga_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `rw_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `jenis_identitas_persetujuan`, `no_identitas_persetujuan`, `gelar_pemilik`, `nama_pemilik`, `alias_pemilik`, `pekerjaan_pemilik`, `kota_lahir_pemilik`, `tgl_lahir_pemilik`, `alamat_pemilik`, `rt_pemilik`, `rw_pemilik`, `kelurahan_pemilik`, `nama_kelurahan_pemilik`, `kecamatan_pemilik`, `kota_pemilik`, `nama_kota_pemilik`, `jenis_identitas_pemilik`, `no_identitas_pemilik`, `nama_cv`, `kedudukan_cv`, `tgl_akta_pendirian_cv`, `no_akta_pendirian_cv`, `nota_akta_pendirian_cv`, `tgl_setuju_cv`, `tgl_pk`, `no_pk`, `tgl_sk_fidusia_debitur`, `no_langganan`, `nilai_hutang`, `nilai_penjaminan`, `nilai_obyek`, `no_polisi`, `merk`, `type`, `jenis_kendaraan`, `model`, `thn_buat`, `thn_rakit`, `silinder`, `warna`, `no_rangka`, `no_mesin`, `bpkb_nmr`, `bpkb_atas_nama`, `bpkb_tanggal`, `bpkb_dikeluarkan_oleh`, `sumbu`, `roda`, `kondisi`, `bukti_hak`, `tgl_spb`, `tgl_kwitansi`, `peradilan_negeri`, `penerima_fidusia`, `kedudukan`, `cabang`, `alamat_penerima_fidusia`, `nama_penerima_fidusia`, `jabatan_penerima_fidusia`, `tgl_sk_penerima_fidusia`, `no_sk_penerima_fidusia`, `kanwil`, `alamat_kanwil`, `no_surat_pengantar`, `tgl_surat_pengantar`, `tgl_sk_notaris`, `kode_customer`, `nama_customer`, `pnbp`, `admin_bank`, `materai`, `admin_dan_operasional`, `jumlah`, `biaya_akta`, `no_sertifikat`, `no_bukti_setoran`, `tgl_setor`, `nama_karyawan`, `id_petugas`, `created_at`, `updated_at`) VALUES
 (1, 1, '2017-11-19', '01:43:00', '00:00:00', '1', 'Tuan', 'Vicky', '75117', 'Honorer', 'Samarinda', '1993-05-14', 'Indonesia', 'Jalana disini', '1', '1', 'Kelurahan', 'Tanah Merah', 'Samarinda Utara', 'Kota', 'Samarinda', 'KTP', '12345', 'OK', 1, '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '', 0, 0, 0, '', '', '', 0, '', 0000, 0000, 0, '', '', '', '', '', '0000-00-00', '', 0, 0, '0', '', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '', 0, 0, 0, 0, 0, '', '', '0000-00-00', '', 1, '2017-11-27 14:58:11', '0000-00-00 00:00:00'),
 (2, 667, '2017-12-11', '02:00:00', '00:00:00', '1', 'Tuan', 'SUGENG', '75117', 'tukang sapu', 'samarinda', '2012-12-12', 'Indonesia', 'Jalan cendana gg 5 no 19 b', '001', '', 'Kelurahan', 'Sungai Keledang', 'sungai kunjang', 'Kota', 'Samarinda', 'KTP', '1234567890', 'OK', 1, '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', '0000-00-00', '', 0, 0, 0, '', '', '', 0, '', 0000, 0000, 0, '', '', '', '', '', '0000-00-00', '', 0, 0, '0', '', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', '0000-00-00', '0000-00-00', '', '', '', 0, 0, 0, 0, 0, '', '', '0000-00-00', '', 1, '2017-11-27 14:58:13', '0000-00-00 00:00:00'),
 (3, 33333, '2017-11-02', '13:59:00', '01:59:00', '1', 'Tuan', 'Ahmad', '123123', 'Freelancer', 'Samarinda', '2017-11-16', 'Indonesia', 'Jalan Menuju Rumah', '14', '-', 'Kelurahan', 'Karang Mumus', 'Samarinda Ilir', 'Kota', 'Samarinda Kota', 'KTP', '0002792093', 'OK', 1, '3', 'Tuan', 'Mamat', 'Mamat', 'Ngoding', 'Samarinda', '2017-11-17', 'Indonesia', 'Jalan Muso salim', '15', '20', 'Kelurahan', 'Pengoler', 'Samarinda Uhuy', 'Kota', 'Uhuy Jua', 'KTP', '1230202001', 'Tuan', 'Testing', '1212312', 'asdassdasd', 'asdsasadsda', '2017-11-17', 'asdsadsadasdasd', 'asdasdasdd', 'asdasdsasa', 'Kelurahan', 'asdasdsdasda', 'asdsad', 'Kota', 'asdsadsad', 'KITAS', 'asdsasadsda', 'adasdsadsda', 'asdasdasad', '2017-11-16', 'asdasdasd', 'ads', '2017-11-10', '2017-11-10', '1212121212', '2017-11-09', '000000030303', 1231221, 12122, 123212, 'KT 4435 NB', 'Samsung', 'HP', 2, 'Model Gan', 2015, 2016, 2, 'PUTIH', 'Nomor rangka', 'No Mesin Gan', 'Nomor BPKB Gan', 'Nama BPKB atas siapa gan', '2017-11-16', 'BPKB dikeluarkan Oleh', 1, 2, 'Baru', 'BPKB', '2017-11-10', '2017-11-09', 'asdsadsad', 'asdsadsda', 'asdasds', 'cabang', '                                                                                                                                                                                                                                              asdasdsadsda                                                                                                                                                                                    ', 'asdsasd', 'asdsadsadsd', '2017-11-10', '12012021021021', 'asasdsadsda', 'adsasdsda', 'asdsadsda', '2017-11-04', '2017-11-10', 'customer', 'nama', '122122', 123223, 1221, 1232, 123, 22, '1222312', 'aasdsa', '2017-11-17', 'asdasdsadasdds', 1, '2017-12-18 09:06:40', '2017-12-18 09:06:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tba_inv_akta`
+--
+
+CREATE TABLE `tba_inv_akta` (
+  `id_inv_akta` int(11) NOT NULL,
+  `id_u_inv_akta` int(11) NOT NULL,
+  `tgl_akta` date NOT NULL,
+  `jenis_akta` varchar(10) NOT NULL,
+  `no_akta` varchar(70) NOT NULL,
+  `ketik_akt` date NOT NULL,
+  `call_akt` date NOT NULL,
+  `ttd_akd` date NOT NULL,
+  `atr_mnt` varchar(30) NOT NULL,
+  `mnt_kmb` varchar(30) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tba_inv_akta`
+--
+
+INSERT INTO `tba_inv_akta` (`id_inv_akta`, `id_u_inv_akta`, `tgl_akta`, `jenis_akta`, `no_akta`, `ketik_akt`, `call_akt`, `ttd_akd`, `atr_mnt`, `mnt_kmb`, `created_at`, `updated_at`) VALUES
+(2, 1, '2018-05-18', 'AJB', '1000', '2018-05-26', '2018-05-26', '2018-05-25', '2018-05-25', '2018-05-31', '2018-05-16 08:17:01', '2018-05-16 08:27:26'),
+(4, 1, '2018-05-25', 'PPAT', '1230202023', '2018-05-31', '2018-05-26', '2018-05-26', '2018-05-18', '2018-05-24', '2018-05-16 20:19:28', NULL),
+(5, 2, '2018-05-11', 'AJB', '12021021', '2018-05-26', '2018-05-12', '2018-05-19', '2018-05-05', '2018-05-18', '2018-05-16 20:27:40', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tba_inv_sertifikat`
+--
+
+CREATE TABLE `tba_inv_sertifikat` (
+  `id_inv_sertifikat` int(11) NOT NULL,
+  `id_u_inv_sertifikat` int(11) NOT NULL,
+  `ket_order` varchar(30) NOT NULL,
+  `masuk` date NOT NULL,
+  `keluar` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tba_inv_sertifikat`
+--
+
+INSERT INTO `tba_inv_sertifikat` (`id_inv_sertifikat`, `id_u_inv_sertifikat`, `ket_order`, `masuk`, `keluar`, `created_at`, `updated_at`) VALUES
+(8, 1, 'SURAT YEAH', '2018-05-25', '2018-05-11', '2018-05-16 08:47:44', '2018-05-16 08:50:30'),
+(9, 2, 'TERANG BULAN', '2018-05-25', '2018-05-05', '2018-05-16 20:22:18', NULL),
+(10, 2, 'MARTABAK', '2018-05-18', '2018-05-19', '2018-05-16 20:22:29', NULL),
+(11, 1, 'MAHAR', '2018-05-31', '2018-05-18', '2018-05-16 20:22:53', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,9 +226,22 @@ INSERT INTO `tba_akta_debitur` (`id`, `no_akta`, `tanggal_akta`, `jam_akta`, `ja
 
 CREATE TABLE `tba_ppat_ajb` (
   `id_ajb` int(11) NOT NULL,
-  `id_apht` int(11) NOT NULL,
+  `id_ppat` int(11) NOT NULL,
   `tanggal_akta_ajb` date NOT NULL,
   `nomor_akta_ajb` varchar(100) NOT NULL,
+  `gelar_persetujuan` varchar(10) NOT NULL,
+  `nama_persetujuan` varchar(30) NOT NULL,
+  `tempat_lahir_persetujuan` varchar(30) NOT NULL,
+  `tanggal_lahir_persetujuan` date NOT NULL,
+  `pekerjaan_persetujuan` varchar(30) NOT NULL,
+  `alamat_persetujuan` text NOT NULL,
+  `rt_persetujuan` varchar(3) NOT NULL,
+  `kelurahan_persetujuan` varchar(10) NOT NULL,
+  `nama_kelurahan_persetujuan` varchar(30) NOT NULL,
+  `kecamatan_persetujuan` varchar(30) NOT NULL,
+  `kota_persetujuan` varchar(10) NOT NULL,
+  `nama_kota_persetujuan` varchar(30) NOT NULL,
+  `nomor_identitas_persetujuan` varchar(70) NOT NULL,
   `gelar_pembeli` varchar(20) NOT NULL,
   `nama_pembeli` varchar(75) NOT NULL,
   `tempat_lahir_pembeli` varchar(30) NOT NULL,
@@ -180,13 +249,29 @@ CREATE TABLE `tba_ppat_ajb` (
   `pekerjaan_pembeli` varchar(30) NOT NULL,
   `alamat_pembeli` text NOT NULL,
   `rt_pembeli` varchar(20) NOT NULL,
-  `rw_pembeli` varchar(20) NOT NULL,
   `kelurahan_pembeli` varchar(20) NOT NULL,
   `nama_kelurahan_pembeli` varchar(30) NOT NULL,
   `kecamatan_pembeli` varchar(30) NOT NULL,
   `kota_pembeli` varchar(20) NOT NULL,
   `nama_kota_pembeli` varchar(30) NOT NULL,
   `nomor_identitas_pembeli` varchar(100) NOT NULL,
+  `jenis_kepemilikan` varchar(30) NOT NULL,
+  `nomor_kepemilikan` varchar(100) NOT NULL,
+  `nomor_surat_ukur` varchar(100) NOT NULL,
+  `tanggal_surat_ukur` date NOT NULL,
+  `luas_tanah` varchar(100) NOT NULL,
+  `nomor_nib` varchar(100) NOT NULL,
+  `nomor_spptpbb` varchar(100) NOT NULL,
+  `kecamatan_tanah` varchar(30) NOT NULL,
+  `nama_kelurahan_tanah` varchar(30) NOT NULL,
+  `luas_bangunan` varchar(100) NOT NULL,
+  `alamat_bangunan` text NOT NULL,
+  `rt_bangunan` varchar(3) NOT NULL,
+  `kelurahan_bangunan` varchar(10) NOT NULL,
+  `nama_kelurahan_bangunan` varchar(30) NOT NULL,
+  `kecamatan_bangunan` varchar(30) NOT NULL,
+  `kota_bangunan` varchar(10) NOT NULL,
+  `nama_kota_bangunan` varchar(30) NOT NULL,
   `nilai_beli` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -196,8 +281,8 @@ CREATE TABLE `tba_ppat_ajb` (
 -- Dumping data for table `tba_ppat_ajb`
 --
 
-INSERT INTO `tba_ppat_ajb` (`id_ajb`, `id_apht`, `tanggal_akta_ajb`, `nomor_akta_ajb`, `gelar_pembeli`, `nama_pembeli`, `tempat_lahir_pembeli`, `tanggal_lahir_pembeli`, `pekerjaan_pembeli`, `alamat_pembeli`, `rt_pembeli`, `rw_pembeli`, `kelurahan_pembeli`, `nama_kelurahan_pembeli`, `kecamatan_pembeli`, `kota_pembeli`, `nama_kota_pembeli`, `nomor_identitas_pembeli`, `nilai_beli`, `created_at`, `updated_at`) VALUES
-(1, 1, '2018-01-27', 'Nomor Akta AJB', 'tuan', 'Nano Nano', 'Kemana saja', '2018-01-31', 'Sindaman', 'Jalan Samarinda', '15', '', 'Desa', 'Kelurahan Pembeli', 'Kecamatan Pembeli', 'Kota', 'Kota Pembeli', '1231232132', '5000000000', '2018-01-28 14:42:53', '2018-01-28 07:42:53');
+INSERT INTO `tba_ppat_ajb` (`id_ajb`, `id_ppat`, `tanggal_akta_ajb`, `nomor_akta_ajb`, `gelar_persetujuan`, `nama_persetujuan`, `tempat_lahir_persetujuan`, `tanggal_lahir_persetujuan`, `pekerjaan_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `nomor_identitas_persetujuan`, `gelar_pembeli`, `nama_pembeli`, `tempat_lahir_pembeli`, `tanggal_lahir_pembeli`, `pekerjaan_pembeli`, `alamat_pembeli`, `rt_pembeli`, `kelurahan_pembeli`, `nama_kelurahan_pembeli`, `kecamatan_pembeli`, `kota_pembeli`, `nama_kota_pembeli`, `nomor_identitas_pembeli`, `jenis_kepemilikan`, `nomor_kepemilikan`, `nomor_surat_ukur`, `tanggal_surat_ukur`, `luas_tanah`, `nomor_nib`, `nomor_spptpbb`, `kecamatan_tanah`, `nama_kelurahan_tanah`, `luas_bangunan`, `alamat_bangunan`, `rt_bangunan`, `kelurahan_bangunan`, `nama_kelurahan_bangunan`, `kecamatan_bangunan`, `kota_bangunan`, `nama_kota_bangunan`, `nilai_beli`, `created_at`, `updated_at`) VALUES
+(1, 1, '2018-12-31', 'sdffsdasdasd', 'tuan', 'asdasdasd', 'asdasdasdasd', '2018-10-31', 'asdasdasd', 'asdasdasd', 'aas', 'Kelurahan', 'asdasdasd', 'asdasdasd', 'Kota', 'asdasdasd', 'asdasdasd', 'tuan', 'asdasdsad', 'asdasdsadas', '2018-12-31', 'asdasdasd', 'asdasdasd', 'asdasdasd', 'Kelurahan', 'asdasdasd', 'asdasdsa', 'Kota', 'asdasdsad', 'asdasdas', 'asdadsadasd', 'asdassaadas', 'asdasdsadas', '2018-12-31', '1232132', 'sadasdsadsa', '12312321312', 'asddassada', 'asdasdasdas', '123213213', 'asdsdasdsa', 'asd', 'Kelurahan', 'asdasdsadsa', 'asdsadasdas', 'Kota', 'asdasdas', '1232132221', '2018-05-14 06:00:07', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -207,11 +292,48 @@ INSERT INTO `tba_ppat_ajb` (`id_ajb`, `id_apht`, `tanggal_akta_ajb`, `nomor_akta
 
 CREATE TABLE `tba_ppat_apht` (
   `id_apht` int(11) NOT NULL,
-  `id_skmht` int(11) NOT NULL,
+  `id_ppat` int(11) NOT NULL,
   `tanggal_akta_apht` date NOT NULL,
   `nomor_akta_apht` varchar(100) NOT NULL,
-  `nomor_hak_tanggungan` varchar(100) NOT NULL,
-  `tanggal_hak_tanggungan` date NOT NULL,
+  `nasabah_bank` varchar(10) NOT NULL,
+  `gelar_persetujuan` varchar(10) NOT NULL,
+  `nama_persetujuan` varchar(70) NOT NULL,
+  `tempat_lahir_persetujuan` varchar(30) NOT NULL,
+  `tanggal_lahir_persetujuan` date NOT NULL,
+  `pekerjaan_persetujuan` varchar(30) NOT NULL,
+  `alamat_persetujuan` text NOT NULL,
+  `rt_persetujuan` varchar(3) NOT NULL,
+  `kelurahan_persetujuan` varchar(10) NOT NULL,
+  `nama_kelurahan_persetujuan` varchar(30) NOT NULL,
+  `kecamatan_persetujuan` varchar(30) NOT NULL,
+  `kota_persetujuan` varchar(10) NOT NULL,
+  `nama_kota_persetujuan` varchar(30) NOT NULL,
+  `nomor_identitas_persetujuan` varchar(70) NOT NULL,
+  `nomor_akta_skmht` varchar(100) NOT NULL,
+  `tanggal_akta_skmht` date NOT NULL,
+  `nilai_perjanjian` varchar(100) NOT NULL,
+  `nomor_perjanjian_kredit` varchar(100) NOT NULL,
+  `tanggal_perjanjian_kredit` date NOT NULL,
+  `peringkat_tanggungan` varchar(20) NOT NULL,
+  `nilai_tanggungan` varchar(100) NOT NULL,
+  `jenis_kepemilikan` varchar(30) NOT NULL,
+  `nomor_kepemilikan` varchar(100) NOT NULL,
+  `nomor_surat_ukur` varchar(100) NOT NULL,
+  `tanggal_surat_ukur` date NOT NULL,
+  `luas_tanah` varchar(100) NOT NULL,
+  `nomor_nib` varchar(100) NOT NULL,
+  `nomor_spptpbb` varchar(100) NOT NULL,
+  `kecamatan_tanah` varchar(30) NOT NULL,
+  `nama_kelurahan_tanah` varchar(30) NOT NULL,
+  `luas_bangunan` varchar(100) NOT NULL,
+  `alamat_bangunan` text NOT NULL,
+  `rt_bangunan` varchar(3) NOT NULL,
+  `rw_bangunan` varchar(3) NOT NULL,
+  `kelurahan_bangunan` varchar(10) NOT NULL,
+  `nama_kelurahan_bangunan` varchar(30) NOT NULL,
+  `kecamatan_bangunan` varchar(30) NOT NULL,
+  `kota_bangunan` varchar(10) NOT NULL,
+  `nama_kota_bangunan` varchar(30) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -220,8 +342,42 @@ CREATE TABLE `tba_ppat_apht` (
 -- Dumping data for table `tba_ppat_apht`
 --
 
-INSERT INTO `tba_ppat_apht` (`id_apht`, `id_skmht`, `tanggal_akta_apht`, `nomor_akta_apht`, `nomor_hak_tanggungan`, `tanggal_hak_tanggungan`, `created_at`, `updated_at`) VALUES
-(1, 1, '2018-01-31', 'NOMOR AKTA APHT', 'asdadsdsa', '2018-01-31', '2018-01-28 14:41:04', '2018-01-28 07:41:04');
+INSERT INTO `tba_ppat_apht` (`id_apht`, `id_ppat`, `tanggal_akta_apht`, `nomor_akta_apht`, `nasabah_bank`, `gelar_persetujuan`, `nama_persetujuan`, `tempat_lahir_persetujuan`, `tanggal_lahir_persetujuan`, `pekerjaan_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `nomor_identitas_persetujuan`, `nomor_akta_skmht`, `tanggal_akta_skmht`, `nilai_perjanjian`, `nomor_perjanjian_kredit`, `tanggal_perjanjian_kredit`, `peringkat_tanggungan`, `nilai_tanggungan`, `jenis_kepemilikan`, `nomor_kepemilikan`, `nomor_surat_ukur`, `tanggal_surat_ukur`, `luas_tanah`, `nomor_nib`, `nomor_spptpbb`, `kecamatan_tanah`, `nama_kelurahan_tanah`, `luas_bangunan`, `alamat_bangunan`, `rt_bangunan`, `rw_bangunan`, `kelurahan_bangunan`, `nama_kelurahan_bangunan`, `kecamatan_bangunan`, `kota_bangunan`, `nama_kota_bangunan`, `created_at`, `updated_at`) VALUES
+(1, 1, '2018-05-26', '1231221', 'BNI', 'tuan', '1231222', 'asdasdsadasddas', '2018-05-24', 'asdadsdadas', 'jln masdadoads', '121', 'Kelurahan', 'asdadads', 'asdasdasdasdasd', 'Kota', 'skakljdaslkjdaslk', '123123', '123123', '2018-12-31', '123123', '123123123', '2018-12-31', 'asdasdasd', '123123', 'asdasddsds', 'aasdsdasd', 'asdsadads', '2018-12-31', '123123', 'aasdsasdaads', 'asdadsad', 'asdasdasd', 'asdasdasd', '123123', 'asdasdsadasdasd', '234', '', 'Kelurahan', 'asdasdasd', 'asdasdasd', 'Kota', 'asdasdasd', '2018-05-14 11:17:40', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tba_ppat_biodata`
+--
+
+CREATE TABLE `tba_ppat_biodata` (
+  `id_ppat` int(11) NOT NULL,
+  `gelar_penjual` varchar(10) NOT NULL,
+  `nama_penjual` varchar(100) NOT NULL,
+  `tempat_lahir_penjual` varchar(30) NOT NULL,
+  `tanggal_lahir_penjual` date NOT NULL,
+  `pekerjaan_penjual` varchar(30) NOT NULL,
+  `alamat_penjual` text NOT NULL,
+  `rt_penjual` varchar(3) NOT NULL,
+  `rw_penjual` varchar(3) NOT NULL,
+  `kelurahan_penjual` varchar(10) NOT NULL,
+  `nama_kelurahan_penjual` varchar(30) NOT NULL,
+  `kecamatan_penjual` varchar(30) NOT NULL,
+  `kota_penjual` varchar(10) NOT NULL,
+  `nama_kota_penjual` varchar(30) NOT NULL,
+  `nomor_identitas_penjual` varchar(70) NOT NULL,
+  `kedudukan_keluarga_penjual` varchar(30) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tba_ppat_biodata`
+--
+
+INSERT INTO `tba_ppat_biodata` (`id_ppat`, `gelar_penjual`, `nama_penjual`, `tempat_lahir_penjual`, `tanggal_lahir_penjual`, `pekerjaan_penjual`, `alamat_penjual`, `rt_penjual`, `rw_penjual`, `kelurahan_penjual`, `nama_kelurahan_penjual`, `kecamatan_penjual`, `kota_penjual`, `nama_kota_penjual`, `nomor_identitas_penjual`, `kedudukan_keluarga_penjual`, `created_at`, `updated_at`) VALUES
+(1, 'tuan', 'Mahmud', 'Samarinda', '2018-05-25', 'Buruh Serabutan', 'Jln Muso Salim Gang 10', '14', '', 'Kelurahan', 'Tulungagung', 'Koler', 'Kota', 'Samarinda', '0002923923992', 'suami', '2018-05-13 07:26:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -231,29 +387,17 @@ INSERT INTO `tba_ppat_apht` (`id_apht`, `id_skmht`, `tanggal_akta_apht`, `nomor_
 
 CREATE TABLE `tba_ppat_skmht` (
   `id_skmht` int(11) NOT NULL,
+  `id_ppat` int(11) NOT NULL,
   `nomor_akta_skmht` varchar(100) NOT NULL,
   `tanggal_akta_skmht` date NOT NULL,
-  `gelar_penjual` varchar(20) NOT NULL,
-  `nama_penjual` varchar(75) NOT NULL,
-  `tempat_lahir_penjual` varchar(30) NOT NULL,
-  `tanggal_lahir_penjual` date NOT NULL,
-  `pekerjaan_penjual` varchar(30) NOT NULL,
-  `alamat_penjual` text NOT NULL,
-  `rt_penjual` varchar(20) NOT NULL,
-  `kelurahan_penjual` varchar(20) NOT NULL,
-  `nama_kelurahan_penjual` varchar(30) NOT NULL,
-  `kecamatan_penjual` varchar(30) NOT NULL,
-  `kota_penjual` varchar(20) NOT NULL,
-  `nama_kota_penjual` varchar(30) NOT NULL,
-  `nomor_identitas_penjual` varchar(100) NOT NULL,
-  `kedudukan_keluarga_penjual` varchar(20) NOT NULL,
+  `nasabah_bank` varchar(10) NOT NULL,
   `gelar_persetujuan` varchar(20) NOT NULL,
   `nama_persetujuan` varchar(75) NOT NULL,
   `tempat_lahir_persetujuan` varchar(30) NOT NULL,
   `tanggal_lahir_persetujuan` date NOT NULL,
   `pekerjaan_persetujuan` varchar(30) DEFAULT NULL,
   `alamat_persetujuan` text NOT NULL,
-  `rt_persetujuan` varchar(20) NOT NULL,
+  `rt_persetujuan` varchar(3) NOT NULL,
   `kelurahan_persetujuan` varchar(20) NOT NULL,
   `nama_kelurahan_persetujuan` varchar(30) NOT NULL,
   `kecamatan_persetujuan` varchar(30) NOT NULL,
@@ -276,7 +420,7 @@ CREATE TABLE `tba_ppat_skmht` (
   `nama_kelurahan_tanah` varchar(30) NOT NULL,
   `luas_bangunan` varchar(100) NOT NULL,
   `alamat_bangunan` text NOT NULL,
-  `rt_bangunan` varchar(30) NOT NULL,
+  `rt_bangunan` varchar(3) NOT NULL,
   `kelurahan_bangunan` varchar(30) NOT NULL,
   `nama_kelurahan_bangunan` varchar(30) NOT NULL,
   `kecamatan_bangunan` varchar(30) NOT NULL,
@@ -292,8 +436,8 @@ CREATE TABLE `tba_ppat_skmht` (
 -- Dumping data for table `tba_ppat_skmht`
 --
 
-INSERT INTO `tba_ppat_skmht` (`id_skmht`, `nomor_akta_skmht`, `tanggal_akta_skmht`, `gelar_penjual`, `nama_penjual`, `tempat_lahir_penjual`, `tanggal_lahir_penjual`, `pekerjaan_penjual`, `alamat_penjual`, `rt_penjual`, `kelurahan_penjual`, `nama_kelurahan_penjual`, `kecamatan_penjual`, `kota_penjual`, `nama_kota_penjual`, `nomor_identitas_penjual`, `kedudukan_keluarga_penjual`, `gelar_persetujuan`, `nama_persetujuan`, `tempat_lahir_persetujuan`, `tanggal_lahir_persetujuan`, `pekerjaan_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `nomor_identitas_persetujuan`, `nilai_perjanjian`, `nomor_perjanjian_kredit`, `tanggal_perjanjian`, `peringkat_tanggungan`, `nilai_tanggungan`, `jenis_kepemilikan`, `nomor_kepemilikan`, `nomor_surat_ukur`, `tanggal_surat_ukur`, `luas_tanah`, `nomor_nib`, `nomor_spptpbb`, `kecamatan_tanah`, `nama_kelurahan_tanah`, `luas_bangunan`, `alamat_bangunan`, `rt_bangunan`, `kelurahan_bangunan`, `nama_kelurahan_bangunan`, `kecamatan_bangunan`, `kota_bangunan`, `nama_kota_bangunan`, `tanggal_dibuat_apht`, `status`, `created_at`, `updated_at`) VALUES
-(1, '678', '2018-01-05', 'tuan', 'Mamat', 'Samarinda', '2018-01-05', 'Menambang', 'Jalan Samarinda Kota', '14', 'Kelurahan', 'Karang Mumus', 'Samarinda Ilir', 'Kota', 'Samarinda Kota', '00071717272723', 'suami', 'nyonya', 'Sindam', 'Ujung Kulon', '2018-01-04', 'Mining Bitcoin', 'Jalan Kehebatan', '15', 'Kelurahan', 'Sukro Edan', 'Mbelegedes', 'Kota', 'kota Perjanjian', '012012023023012', '500000', 'KMH/123-34324/ASDKASDSD/BNI', '2018-01-20', 'I (Pertama)', '30000000', 'Hak Milik', '120230210', '230', '2018-01-27', '92', 'KMH/12313123213/BNI', 'KASMSD/12321321', 'Wes Wes', 'Mantap jiwa', '90', 'Jalan Masa Depan', '144', 'Kelurahan', 'Kelurahan Bangunan', 'Nama Kecamatan Bangunan', 'Kabupaten', 'Kota Bangunan', '2018-01-31', 1, '2018-01-30 14:30:21', '2018-01-30 07:30:21');
+INSERT INTO `tba_ppat_skmht` (`id_skmht`, `id_ppat`, `nomor_akta_skmht`, `tanggal_akta_skmht`, `nasabah_bank`, `gelar_persetujuan`, `nama_persetujuan`, `tempat_lahir_persetujuan`, `tanggal_lahir_persetujuan`, `pekerjaan_persetujuan`, `alamat_persetujuan`, `rt_persetujuan`, `kelurahan_persetujuan`, `nama_kelurahan_persetujuan`, `kecamatan_persetujuan`, `kota_persetujuan`, `nama_kota_persetujuan`, `nomor_identitas_persetujuan`, `nilai_perjanjian`, `nomor_perjanjian_kredit`, `tanggal_perjanjian`, `peringkat_tanggungan`, `nilai_tanggungan`, `jenis_kepemilikan`, `nomor_kepemilikan`, `nomor_surat_ukur`, `tanggal_surat_ukur`, `luas_tanah`, `nomor_nib`, `nomor_spptpbb`, `kecamatan_tanah`, `nama_kelurahan_tanah`, `luas_bangunan`, `alamat_bangunan`, `rt_bangunan`, `kelurahan_bangunan`, `nama_kelurahan_bangunan`, `kecamatan_bangunan`, `kota_bangunan`, `nama_kota_bangunan`, `tanggal_dibuat_apht`, `status`, `created_at`, `updated_at`) VALUES
+(2, 1, '12312321', '2018-05-31', 'BNI', 'tuan', 'Ulil', 'Wadahnya', '2018-05-26', 'Nganggur', 'Jln Muso Salim', '14', 'Desa', 'sipp', 'mantap', 'Kota', 'Ahay de', '1230123012', '1232312', 'asdassadsad', '2018-05-31', 'I (Pertama)', '1212132121', 'Hak Milik', '12232123', '123213232', '2018-05-26', '12312312', '1231212', '1232121', 'ASdasdasdas', 'Kampret', '123123231', 'Jln Menuju masa depan', '12', 'Kelurahan', 'adsasdasdsd', 'asdsdadass', 'Kota', 'asdadsdd', '2018-05-31', NULL, '2018-05-14 10:19:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -324,6 +468,69 @@ INSERT INTO `tba_template_akta` (`id_surat`, `nama_surat`, `template`, `jenis_su
 (5, 'Surat APHT BRI', '<p style=\"text-align: center;\"><strong>PEJABAT</strong> <strong>PEMBUAT</strong> <strong>AKTA TANAH </strong></p>\r\n<p style=\"text-align: center;\"><strong>(PPAT)</strong></p>\r\n<p style=\"text-align: center;\"><strong>NIA NUSWANTARI, S.H., M.Kn</strong></p>\r\n<p style=\"text-align: center;\">DAERAH KERJA KOTA SAMARINDA</p>\r\n<p style=\"text-align: center;\">S.K. Kepala Badan Pertanahan Nasional RI</p>\r\n<p style=\"text-align: center;\">Nomor : 108/KEP-17.3/III/2011</p>\r\n<p style=\"text-align: center;\">Tanggal 21 Maret 2011</p>\r\n<p style=\"text-align: center;\">Jalan Cendana 5a Nomor 19B RT. 018, Kel. Teluk Lerong Ulu</p>\r\n<p style=\"text-align: center;\">Kec. Sungai Kunjang, Kota Samarinda</p>\r\n<p style=\"text-align: center;\">Telp/Fax. 0541-769891</p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><strong>AKTA </strong><strong>PEMBERIAN HAK TANGGUNGAN</strong></p>\r\n<p style=\"text-align: center;\">Nomor : {no_akta}/{tahun}</p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><em>Lembar Pertama</em></p>\r\n<p>&nbsp;</p>\r\n<p>Pada hari&nbsp; ini, {hari}, tanggal {tanggal_akta} ({tanggal_akta_terbilang}) bulan {bulan} tahun {tahun} ({tahun_terbilang}).</p>\r\n<p>hadir di hadapan saya <strong>NIA NUSWANTARI, Sarjana&nbsp; Hukum, Magister Kenotariatan</strong> yang berdasarkan Surat Keputusan Kepala Badan -Pertanahan Nasional tanggal <strong>21</strong> (dua puluh satu) <strong>Maret 2011</strong> (dua ribu sebelas) Nomor : <strong>108/KEP-17.3/III/2011</strong>, diangkat sebagai Pejabat Pembuat Akta Tanah, yang selanjutnya disebut&nbsp; PPAT, yang&nbsp; dimaksud dalam Pasal 7 Peraturan Pemerintah Nomor 24 Tahun 1997 tentang Pendaftaran Tanah, dengan daerah kerja Kota Samarinda dan -berkantor di Jalan Cendana 5a Nomor 19B, Rukun Tetangga 018, -Kelurahan Teluk Lerong Ulu, Kecamatan Sungai Kunjang, Kota Samarinda, dengan dihadiri oleh saksi-saksi yang saya kenal dan&nbsp; akan disebut pada bagian akhir akta ini :-</p>\r\n<ol>\r\n<li>Tuan <strong>REINHARD YUANGGA M, Sarjana Hukum,</strong> lahir di Bogor, pada tanggal <strong>23</strong><strong>-</strong><strong>07</strong><strong>-19</strong><strong>67</strong> (dua puluh tiga Juli seribu sembilan ratus enam puluh tujuh), Warga Negara Indonesia, Pekerjaan Karyawan Swasta, bertempat tinggal di Jalan Haji Dul Nomor 18, Rukun Tetangga 004, Rukun Warga 001, Kelurahan Petukangan Utara, Kecamatan Pesanggrahan, Kota Jakarta Selatan, Pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : &nbsp;<strong>3174102307670004;</strong></li>\r\n</ol>\r\n<p>-Untuk sementara berada di Samarinda;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - yang menurut keterangannya dalam hal ini menjalankan jabatannya selaku Pimpinan Cabang PT. Bank Rakyat Indonesia (Persero) Tbk. Cabang Samarinda 1 bertindak mewakili Direksi berdasarkan Surat Kuasa Nomor : 15 tertanggal 20-05-2015 (dua puluh Mei dua ribu lima belas) yang dibuat di hadapan EMI SUSILOWATI, Sarjana Hukum, Notaris di Jakarta dari dan oleh karena itu berdasarkan Anggaran Dasar Perseroan beserta perubahan-perubahannya, yang terakhir dimuat dalam akta Nomor : 54, tertanggal 27-10-2017 (dua puluh tujuh Oktober dua ribu tujuh belas), dibuat di hadapan FATHIAH HELMI, Sarjana Hukum, Notaris di Jakarta, dan telah mendapat Persetujuan Perubahan dan Penerimaan Pemberitahuan Perubahan Anggaran Dasar dari Menteri Hukum dan Hak Asasi Manusia Republik Indonesia tertanggal 03-11-2017 (tiga November dua ribu tujuh belas) Nomor : AHU-AH.01.03-0187521, berwenang bertindak untuk dan atas nama Perseroan Terbatas PT. BANK RAKYAT INDONESIA (Persero) Tbk, berkedudukan di Jalan Jenderal Sudirman Nomor : 44-46, Jakarta Pusat.</p>\r\n<p>&nbsp;&nbsp;&nbsp; Selanjutnya disebut &ldquo;Penerima Kuasa&rdquo;.-</p>\r\n<ol>\r\n<li>Yang diwakilinya bertindak berdasarkan Surat Kuasa Membebankan Hak Tanggungan nomor : <strong>{nomor_akta_skmht}</strong>&nbsp;tanggal <strong>{tanggal_akta_skmht}</strong>&nbsp;({tanggal_akta_skmht_terbilang}) yang dibuat di hadapan saya selaku PPAT di Samarinda, selaku kuasa dari dan oleh itu untuk dan atas nama :</li>\r\n</ol>\r\n<p>&nbsp;&nbsp; - {gelar_penjual}&nbsp;<strong>{nama_penjual}</strong>, lahir di {kota_lahir_penjual}, pada tanggal <strong>{tgl_lhr_penjual}</strong>&nbsp;({tgl_lhr_penjual_terbilang}), Warga Negara Indonesia, Pekerjaan {pekerjaan_penjual}, bertempat tinggal di {alamat_penjual}, Rukun Tetangga {rt_penjual}, {kelurahan_penjual} {nama_kelurahan_penjual}, Kecamatan {kecamatan_penjual}, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>{no_identitas_penjual}</strong>;</p>\r\n<p>- Menurut keterangannya dalam melakukan tindakan hukum dalam akta tersebut telah mendapatkan persetujuan dari {kedudukan_keluarga_penjual}nya yang sah dan satu-satunya, serta turut hadir menandatangani akta tersebut yaitu :</p>\r\n<p>-&nbsp;{gelar_persetujuan}&nbsp;<strong>{nama_persetujuan}</strong>, lahir di {kota_lahir_persetujuan}, pada tanggal <strong>{tgl_lhr_persetujuan}</strong>&nbsp;({tgl_lhr_persetujuan_terbilang}), Warga Negara Indonesia, Pekerjaan {pekerjaan_persetujuan}, bertempat tinggal di {alamat_persetujuan}, Rukun Tetangga {rt_persetujuan}, {kelurahan_persetujuan} {nama_kelurahan_persetujuan}, Kecamatan {kecamatan_persetujuan}, {kota_persetujuan}&nbsp;{nama_kota_persetujuan} pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>{no_identitas_persetujuan};</strong></p>\r\n<p>- &nbsp;Pemegang hak atas tanah yang akan dibebani Hak Tanggungan selanjutnya disebut Pemegang Hak, selaku Pemberi Hak Tanggungan untuk selanjutnya disebut &ldquo;<strong>Pihak Pertama</strong>&rdquo;.</p>\r\n<ol>\r\n<li>Untuk dan atas nama badan hukumnya sendiri (PT. BANK RAKYAT INDONESIA berkedudukan di Jakarta Pusat);</li>\r\n</ol>\r\n<p>Selaku Penerima Hak&nbsp; Tanggungan, yang setelah Hak&nbsp; Tanggungan yang bersangkutan didaftar pada Kantor Pertanahan setempat akan bertindak sebagai Pemegang Hak Tanggungan, untuk selanjutnya disebut &ldquo;<strong>Pihak Kedua</strong>&rdquo;.</p>\r\n<ul>\r\n<li>penghadap dikenal oleh saya, PPAT. berdasarkan identitas yang mereka perlihatkan.</li>\r\n</ul>\r\n<p>&nbsp;&nbsp;&nbsp; Para Pihak menerangkan :</p>\r\n<ul>\r\n<li>bahwa oleh Pihak Kedua dan {gelar_penjual}&nbsp;<strong>{nama_penjual}</strong>&nbsp;tersebut di atas selaku Debitor, telah dibuat dan ditanda-tangani perjanjian utang piutang yang dibuktikan dengan :</li>\r\n<li>Akta <strong>Persetujuan Membuka Kredit </strong>Nomor : <strong>{nomor_perjanjian_kredit}&nbsp;</strong>tertanggal <strong>{tanggal_perjanjian}</strong>&nbsp;({tgl_lhr_persetujuan_terbilang}), yang dibuat di hadapan saya Notaris.</li>\r\n<li>bahwa untuk menjamin pelunasan hutang Debitor sejumlah <strong>{nilai_perjanjian}</strong>&nbsp;({nilai_perjanjian_terbilang})/ sejumlah uang yang dapat ditentukan di kemudian hari berdasarkan perjanjian utang-piutang tersebut di atas dan penambahan, perubahan, perpanjangan serta&nbsp; pembaharuannya (selanjutnya disebut perjanjian utang-piutang) sampai sejumlah nilai tanggungan <strong>Peringkat {peringkat_tanggungan} sebesar {nilai_tanggungan}</strong>&nbsp;({nilai_tanggungan_terbilang}), oleh Pihak Pertama diberikan&nbsp; dengan&nbsp; akta ini kepada dan untuk kepentingan Pihak Kedua, yang dengan ini menyatakan menerimanya,&nbsp; Hak Tanggungan yang diatur&nbsp; dalam Undang-undang Hak Tanggungan dan peraturan-peraturan pelaksanaannya atas <strong>Objek </strong>berupa <strong>1 (satu)</strong> hak atas tanah yang diuraikan di bawah ini:</li>\r\n<li><strong>{jenis_kepemilikan}</strong> Nomor : <strong>{nomor_kepemilikan}</strong>, atas sebidang tanah sebagaimana diuraikan dalam <strong>Surat Ukur</strong> Nomor : <strong>{nomor_surat_ukur}&nbsp;</strong>tertanggal <strong>{tanggal_surat_ukur}</strong>&nbsp;({tanggal_surat_ukur_terbilang}), seluas <strong>{luas_tanah}</strong>&nbsp;m2 ({luas_tanah_terbilang}), dengan Nomor Identifikasi Bidang Tanah (NIB) : <strong>{nomor_nib}&nbsp;</strong>dan Nomor Surat Pemberitahuan Pajak Terhutang Pajak Bumi dan Bangunan (SPPTPBB) : <strong>{nomor_spptpbb};</strong></li>\r\n</ul>\r\n<p>terletak di :-</p>\r\n<p>Provinsi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Kalimantan Timur.</p>\r\n<p>Kota&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Samarinda.</p>\r\n<p>Kecamatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {kecamatan_tanah}.</p>\r\n<p>Kelurahan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {nama_kelurahan_tanah}.</p>\r\n<p>Sertipikat yang disebutkan di atas diserahkan kepada saya, PPAT,&nbsp;&nbsp;&nbsp; untuk keperluan pendaftaran Hak Tanggungan yang diberikan dengan akta ini; -</p>\r\n<p>Pemberian Hak Tanggungan tersebut di atas meliputi juga :</p>\r\n<p>Segala sesuatu yang ada dan terdapat di atas tanah tersebut yang menurut hukum dapat dianggap sebagai benda tetap terutama sebuah bangunan seluas {luas_bangunan} m2 ({luas_bangunan_terbilang}), setempat dikenal sebagai tanah dan bangunan yang terletak di {alamat_bangunan}, Rukun Tetangga {rt_bangunan}, {kelurahan_bangunan} {nama_kelurahan_bangunan}, Kecamatan {kecamatan_bangunan}, {kota_bangunan} {nama_kota_bangunan}.</p>\r\n<p>Untuk selanjutnya hak atas tanah dan benda-benda lain tersebut di atas disebut sebagai Objek Hak Tanggungan yang oleh Pihak Pertama&nbsp;&nbsp;&nbsp; dinyatakan sebagai miliknya.</p>\r\n<p>- Para pihak dalam kedudukannya sebagaimana tersebut di atas menerangkan, bahwa pemberian Hak Tanggungan tersebut disetujui dan diperjanjikan dengan ketentuan-ketentuan sebagai berikut :</p>\r\n<p>-Pasal 1 &nbsp;</p>\r\n<p>Pihak Pertama menjamin bahwa semua Objek Hak Tanggungan tersebut&nbsp; di atas, betul milik Pertama, tidak tersangkut dalam suatu sengketa, bebas dari sitaan dan bebas pula dari beban-beban apapun yang tidak tercatat.</p>\r\n<p>-Pasal 2 &nbsp;</p>\r\n<p>Hak Tanggungan tersebut di atas diberikan oleh Pihak Pertama dan&nbsp;&nbsp; diterima oleh Pihak Kedua dengan janji-janji&nbsp; yang disepakati oleh kedua belah pihak sebagaimana diuraikan di bawah ini :</p>\r\n<ul>\r\n<li>Dalam hal Objek Hak Tanggungan kemudian dipecah sehingga Hak Tanggungan membebani beberapa hak atas tanah, Debitor dapat&nbsp; melakukan pelunasan utang yang dijamin dengan Hak Tanggungan&nbsp;&nbsp; dengan cara angsuran yang besarnya sama dengan&nbsp; nilai masingmasing hak atas tanah tersebut, yang akan dibebaskan dari Hak&nbsp;&nbsp; Tanggungan, &nbsp;&nbsp;sehingga &nbsp;&nbsp;kemudian &nbsp;&nbsp;Hak &nbsp;&nbsp;Tanggungan itu hanya&nbsp; membebani sisa Objek Hak Tanggungan untuk menjamin sisa utang yang belum dilunasi. Nilai masing-masing hak atas tanah tersebut akan ditentukan berdasarkan kesepakatan antara Pihak Pertama dengan Pihak Kedua;</li>\r\n<li>Pihak Pertama tidak akan menyewakan kepada pihak lain Objek Hak Tanggungan tanpa persetujuan tertulis terlebih dahulu dari Pihak Kedua, termasuk menentukan atau mengubah jangka waktu sewa dan/atau menerima uang sewa di muka jika disetujui disewakan atau sudah disewakan;</li>\r\n<li>Pihak pertama tidak akan mengubah atau merombak semua bentuk atau tata susunan Objek Hak Tanggungan, termasuk mengubah sifat dan tujuan kegunaannya baik seluruhnya maupun sebagian, tanpa persetujuan tertulis terlebih dahulu dari Pihak Kedua;</li>\r\n<li>Dalam hal Debitor sungguh-sungguh cidera janji, Pihak Kedua oleh Pihak Pertama dengan akta ini diberi dan menyatakan menerima kewenangan, dan untuk itu kuasa, untuk mengelola Objek Hak Tanggungan berdasarkan Penetapan Ketua Pengadilan Negeri yang&nbsp; daerah hukumnya meliputi letak objek Hak Tanggungan&nbsp; yang bersangkutan;</li>\r\n<li>Jika Debitor tidak memenuhi kewajiban untuk melunasi utangnya, berdasarkan perjanjian utang piutang tersebut di atas, oleh Pihak Pertama, Pihak Kedua selaku Pemegang Hak Tanggungan Peringkat <strong>Pertama</strong> dengan akta ini diberi dan menyatakan menerima kewenangan, dan untuk itu kuasa, untuk tanpa persetujuan terlebih dahulu dari Pihak Pertama :</li>\r\n</ul>\r\n<ol>\r\n<li>menjual atau suruh menjual di hadapan umum secara Lelang Objek Hak Tanggungan baik&nbsp; seluruhnya&nbsp;&nbsp; maupun sebagian-sebagian;</li>\r\n<li>mengatur dan menetapkan waktu, tempat, cara dan syaratsyarat penjualan;</li>\r\n<li>menerima uang penjualan, menandatangani dan menyerahkan kuitansi; -</li>\r\n<li>menyerahkan apa yang dijual itu kepada pembeli yang bersangkutan;</li>\r\n<li>mengambil dari uang hasil penjualan itu seluruhnya atau sebagian untuk &nbsp;melunasi &nbsp;utang &nbsp;Debitor &nbsp;tersebut &nbsp;di atas; dan</li>\r\n<li>melakukan hal-hal lain yang menurut undang-undang dan peraturan hukum yang berlaku diharuskan atau menurut pendapat Pihak Kedua perlu dilakukan dalam rangka melaksanakan kuasa tersebut.</li>\r\n</ol>\r\n<ul>\r\n<li>Pihak Kedua sebagai pemegang Hak Tanggungan <strong>Pertama</strong> atas Objek Hak Tanggungan tidak akan membersihkan Hak Tanggungan tersebut kecuali dengan persetujuan dari Pemegang Hak Tanggungan <strong>Kedua</strong> dan seterusnya, walaupun sudah dieksekusi untuk pelunasan piutang Pemegang Hak Tanggungan <strong>Pertama</strong>;</li>\r\n<li>Tanpa persetujuan tertulis terlebih dahulu dari Pihak Kedua, Pihak Pertama tidak akan melepaskan haknya atas Objek Hak Tanggungan atau mengalihkannya secara apapun untuk kepentingan Pihak Ketiga;</li>\r\n<li>Dalam hal Objek Hak Tanggungan dilepaskan haknya oleh Pihak Pertama atau dicabut haknya untuk kepentingan umum, sehingga hak Pihak Pertama atas Objek Hak Tanggungan berakhir, Pihak Kedua dengan akta ini oleh Pihak Pertama diberi dan menyatakan menerima kewenangan,&nbsp; dan untuk itu kuasa, untuk menuntut atau menagih dan menerima uang ganti rugi dan/atau segala sesuatu yang karena itu dapat ditagih dari&nbsp; Pemerintah dan/atau Pihak Ketiga lainnya, untuk itu menandatangani dan menyerahkan tanda penerimaan uang dan melakukan tindakan-tindakan yang perlu dan berguna serta dipandang baik oleh Pihak Kedua serta selanjutnya mengambil seluruh atau sebagian uang ganti rugi dan lain-lainnya tersebut guna pelunasan piutangnya;</li>\r\n<li>Pihak Pertama akan mengasuransikan Objek Hak Tanggungan terhadap bahaya-bahaya kebakaran dan malapetaka lain yang dianggap perlu oleh Pihak Kedua dengan syarat&ndash;syarat untuk suatu jumlah pertanggungan yang dipandang cukup oleh Pihak Kedua pada perusahaan asuransi yang ditunjuk oleh Pihak Kedua, dengan ketentuan surat polis asuransi yang bersangkutan akan disimpan oleh Pihak Kedua dan Pihak Pertama akan membayar premi pada waktu dan sebagaimana mestinya; Dalam hal terjadi kerugian karena kebakaran atau malapetaka lain atas Objek Hak Tanggungan Pihak Kedua dengan akta ini diberi dan menyatakan menerima kewenangan, dan untuk itu kuasa, untuk menerima seluruh atau sebagian uang ganti kerugian asuransi yang bersangkutan sebagai pelunasan utang Debitor;</li>\r\n<li>Pihak Kedua dengan akta ini diberi dan menyatakan menerima kewenangan, dan untuk itu diberi kuasa, untuk atas biaya Pihak Pertama, melakukan tindakan yang diperlukan untuk menjaga dan mempertahankan serta menyelamatkan Objek Hak Tanggungan, jika hal itu diperlukan untuk pelaksanaan eksekusi atau untuk mencegah menjadi hapusnya atau dibatalkannya hak atas Objek Hak Tanggungan karena tidak dipenuhinya&nbsp; atau dilanggarnya ketentuan Undang-undang serta jika diperlukan mengurus perpanjangan jangka waktu dan pembaharuan hak atas tanah yang menjadi objek Hak Tanggungan;</li>\r\n<li>Jika Pihak Kedua mempergunakan kekuasaannya untuk menjual Objek Hak Tanggungan, Pihak Pertama akan memberikan kesempatan kepada yang berkepentingan untuk melihat Objek Hak Tanggungan yang bersangkutan pada waktu yang ditentukan oleh Pihak Kedua dan segera mengosongkan atau suruh mengosongkan dan menyerahkan Objek Hak Tanggungan tersebut kepada Pihak&nbsp;&nbsp; Kedua atau pihak yang ditunjuk oleh Pihak Kedua agar selanjutnya dapat menggunakan dalam arti kata yang seluas-luasnya;</li>\r\n<li>Sertipikat tanda bukti hak atas tanah yang menjadi Objek Hak Tanggungan akan diserahkan oleh Pihak Pertama kepada Pihak Kedua untuk disimpan dan dipergunakan oleh Pihak Kedua dalam melaksanakan hak-haknya sebagai pemegang Hak Tanggungan dan untuk itu Pihak Pertama dengan akta ini memberikan kuasa kepada Pihak Kedua untuk menerima sertipikat tersebut dari Kantor Pertanahan setelah Hak Tanggungan ini didaftar;</li>\r\n</ul>\r\n<p>Pasal 3 -</p>\r\n<p>Untuk melaksanakan janji-janji dan ketentuan-ketentuan sebagaimana diuraikan dalam pasal 2, Pihak Pertama dengan akta ini memberi kuasa kepada Pihak Kedua, yang menyatakan menerimanya untuk menghadap di hadapan pejabat-pejabat pada instansi yang berwenang, memberikan keterangan, menandatangani formulir/surat, menerima segala surat berharga dan lain surat serta membayar semua biaya dan menerima hak segala uang pembayaran serta melakukan segala tindakan yang perlu dan berguna untuk melaksanakan janji-janji dan ketentuan-ketentuan tersebut.</p>\r\n<p>-Pasal 4 &nbsp;</p>\r\n<p>Para pihak dalam hal-hal mengenai Hak Tanggungan tersebut di atas dengan segala akibatnya memilih domisili pada Kantor Pengadilan Negeri <strong>Samarinda</strong>.</p>\r\n<p>-Pasal 5 &nbsp;</p>\r\n<p>Biaya pembuatan akta ini, uang saksi dan segala biaya mengenai pembebanan Hak Tanggungan tersebut di atas dibayar oleh Pihak Pertama</p>\r\n<p>Demikianlah akta ini dibuat dihadapan para pihak dan :</p>\r\n<ol>\r\n<li>Tuan<strong> MUHDIN NOOR</strong>, lahir di Badak 1, pada tanggal <strong>06-01-1987</strong> (enam Januari seribu sembilan ratus delapan puluh tujuh), Warga Negara Indonesia, bertempat tinggal di Jalan Budiman, Rukun Tetangga 008, Kelurahan Karang Asam Ilir, Kecamatan Sungai Kunjang, Kota Samarinda, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan :<strong> 6402054601870001</strong>;</li>\r\n<li>Tuan <strong>PURWANTO</strong>, lahir di Samarinda, pada tanggal <strong>12-04-1987</strong> (dua belas April seribu sembilan ratus delapan puluh tujuh), pekerjaan Swasta, Warga Negara Indonesia, bertempat tinggal di Jalan Sentosa Gang 3 Nomor 56, Rukun Tetangga 030, Kelurahan Sungai Pinang Dalam, Kecamatan Sungai Pinang, Kota Samarinda, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>6472081204870001</strong>;</li>\r\n</ol>\r\n<p>sebagai saksi-saksi, dan setelah dibacakan serta dijelaskan, maka sebagai bukti kebenaran pernyataan yang dikemukakan oleh Pihak Pertama dan Pihak Kedua tersebut diatas, maka akta ini ditandatangani oleh Pihak Pertama, Pihak Kedua, para saksi dan saya, PPAT, sebanyak&nbsp; 2 (dua) rangkap&nbsp; asli, yaitu 1 (satu) rangkap lembar pertama disimpan di kantor saya, dan 1 (satu) rangkap lembar kedua disampaikan kepada Kepala Kantor Pertanahan Kota Samarinda untuk&nbsp; keperluan pendaftaran Hak Tanggungan&nbsp; yang diberikan dalam akta ini.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pihak Pertama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pihak Kedua</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>REINHARD YUANGGA M</strong><strong>, </strong><strong>SH</strong> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;REINHARD YUANGGA M</strong><strong>, </strong><strong>SH </strong></p>\r\n<p><strong>&nbsp; &nbsp; &nbsp; &nbsp;qq.</strong><strong>{nama_penjual}</strong>&nbsp;<strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong><strong>qq. PT. BANK RAKYA</strong><strong>T</strong><strong> INDONESIA</strong></p>\r\n<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(PERSERO) Tbk</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saksi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saksi</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>MUHDIN NOOR</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>PURWANTO</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp; &nbsp; &nbsp; Pejabat Pembuat Akta Tanah</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>&nbsp;&nbsp;&nbsp; NIA NUSWANTARI, S.H., M.Kn</strong></p>\r\n<p>&nbsp;</p>', 'ppat', '2018-01-30 10:26:34', '2018-01-30 10:26:34');
 INSERT INTO `tba_template_akta` (`id_surat`, `nama_surat`, `template`, `jenis_surat`, `created_at`, `updated_at`) VALUES
 (6, 'Surat AJB', '<p style=\"text-align: center;\"><strong>PEJABAT PEMBUAT AKTA TANAH </strong></p>\r\n<p style=\"text-align: center;\"><strong>(PPAT)</strong></p>\r\n<p style=\"text-align: center;\"><strong>NIA NUSWANTARI, S.H., M.Kn</strong></p>\r\n<p style=\"text-align: center;\">DAERAH KERJA KOTA SAMARINDA</p>\r\n<p style=\"text-align: center;\">S.K. Kepala Badan Pertanahan Nasional RI</p>\r\n<p style=\"text-align: center;\">Nomor : 108/KEP-17.3/III/2011</p>\r\n<p style=\"text-align: center;\">Tanggal 21 Maret 2011</p>\r\n<p style=\"text-align: center;\">Jalan Cendana 5a Nomor 19B RT. 018, Kel. Teluk Lerong Ilir</p>\r\n<p style=\"text-align: center;\">Kec. Sungai Kunjang, Kota Samarinda</p>\r\n<p style=\"text-align: center;\">Telp/Fax. 0541-769891</p>\r\n<p style=\"text-align: center;\"><strong>&nbsp;</strong></p>\r\n<p style=\"text-align: center;\"><strong>&nbsp;</strong></p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\"><strong>AKTA JUAL BELI</strong></p>\r\n<p style=\"text-align: center;\">&nbsp;</p>\r\n<p style=\"text-align: center;\">Nomor : {no_akta}/{tahun}</p>\r\n<p style=\"text-align: center;\"><em>&nbsp;</em></p>\r\n<p style=\"text-align: center;\"><em>Lembar Pertama</em></p>\r\n<p>&nbsp;</p>\r\n<p>Pada hari&nbsp; ini,&nbsp; Kamis,&nbsp; tanggal 28 (dua puluh delapan) bulan Desember tahun 2018 (dua ribu delapan belas).</p>\r\n<p>hadir di hadapan saya <strong>NIA NUSWANTARI, Sarjana&nbsp; Hukum, Magister Kenotariatan</strong> yang berdasarkan Surat Keputusan Kepala Badan Pertanahan Nasional tanggal <strong>21</strong> (dua puluh satu) <strong>Maret 2011</strong> (dua ribu sebelas) Nomor : <strong>108/KEP-17.3/III/2011</strong>, diangkat sebagai Pejabat Pembuat Akta Tanah, yang selanjutnya disebut&nbsp; PPAT, yang&nbsp; dimaksud dalam Pasal 7 Peraturan Pemerintah Nomor 24 Tahun 1997 tentang Pendaftaran Tanah, dengan daerah kerja Kota Samarinda dan berkantor di Jalan Cendana 5a Nomor 19B, Rukun Tetangga 018, Kelurahan Teluk Lerong Ilir, Kecamatan Sungai Kunjang, Kota Samarinda, dengan dihadiri oleh saksi-saksi yang saya kenal dan&nbsp; akan disebut pada bagian akhir akta ini :</p>\r\n<ol>\r\n<li>{gelar_penjual}&nbsp;<strong>{nama_penjual}</strong>, lahir di {kota_lahir_penjual}, tanggal <strong>{tgl_lhr_penjual}</strong> ({tgl_lhr_penjual_terbilang}), Warga Negara Indonesia, Pekerjaan {pekerjaan_penjual}, bertempat tinggal di {alamat_penjual}, Rukun Tetangga {rt_penjual}, {kelurahan_penjual} {nama_kelurahan_penjual}, Kecamatan {kecamatan_penjual}, {kota_penjual} {nama_kota_penjual}, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>{no_identitas_penjual};</strong></li>\r\n</ol>\r\n<ul>\r\n<li>Menurut keterangannya untuk melakukan tindakan hukum dalam akta ini telah mendapat persetujuan dari {kedudukan_keluarga_penjual}nya yang sah dan satu-satunya, turut hadir dan menandatangani akta ini yaitu :</li>\r\n<li>{gelar_persetujuan}&nbsp;<strong>{nama_persetujuan}</strong>, lahir di {kota_lahir_persetujuan}, pada tanggal <strong>{tgl_lhr_persetujuan}</strong>&nbsp;({tgl_lhr_persetujuan_terbilang}), Warga Negara Indonesia, Pekerjaan {pekerjaan_persetujuan}, bertempat tinggal di {alamat_persetujuan}, Rukun Tetangga {rt_persetujuan}, {kelurahan_persetujuan} <strong>{nama_kelurahan_persetujuan}</strong>, Kecamatan {kecamatan_persetujuan}, {kota_persetujuan} {nama_kota_persetujuan}, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>{no_identitas_persetujuan};</strong></li>\r\n<li>Selaku \'Penjual\' untuk selanjutnya disebut :</li>\r\n</ul>\r\n<p><strong>Pihak Pertama</strong></p>\r\n<ol start=\"2\">\r\n<li>{gelar_pembeli}<strong> {nama_pembeli}</strong>, lahir di {kota_lahir_pembeli}, pada tanggal <strong>{tgl_lhr_pembeli}</strong>&nbsp;({tgl_lhr_pembeli_terbilang}), Warga Negara Indonesia, Pekerjaan {pekerjaan_pembeli}, bertempat tinggal di {alamat_pembeli}, Rukun Tetangga {rt_pembeli}, {kelurahan_pembeli} {nama_kelurahan_pembeli}, Kecamatan {kecamatan_pembeli}, {kota_pembeli} {nama_kota_pembeli}, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>{no_identitas_pembeli}</strong>;</li>\r\n</ol>\r\n<ul>\r\n<li>Selaku \'Pembeli\' untuk selanjutnya disebut :</li>\r\n</ul>\r\n<p><strong>Pihak Kedua</strong> &nbsp;</p>\r\n<p>Para penghadap dikenal oleh saya, Pejabat Pembuat Akta Tanah. berdasarkan identitas yang mereka perlihatkan.</p>\r\n<p>Pihak Pertama menerangkan dengan ini menjual kepada Pihak Kedua dan Pihak Kedua menerangkan dengan ini membeli dari Pihak Pertama :</p>\r\n<ul>\r\n<li><strong>{jenis_kepemilikan}</strong> Nomor : <strong>{nomor_kepemilikan}</strong>, atas sebidang tanah sebagaimana diuraikan dalam <strong>Surat Ukur</strong> Nomor : <strong>{nomor_surat_ukur}</strong>&nbsp;tertanggal <strong>{tanggal_surat_ukur}</strong> ({tanggal_surat_ukur_terbilang}), seluas <strong>{luas_tanah}</strong>&nbsp;m2 ({luas_tanah_terbilang}), dengan Nomor Identifikasi Bidang Tanah (NIB) : <strong>{nomor_nib}</strong>&nbsp;dan Nomor Surat Pemberitahuan Pajak Terhutang Pajak Bumi dan Bangunan (SPPTPBB) : <strong>{nomor_spptpbb};</strong>\r\n<ul>\r\n<li>terletak di:</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n<p>- Provinsi&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; Kalimantan Timur</p>\r\n<p>- Kabupaten/Kota&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; Samarinda</p>\r\n<p>- Kecamatan&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; {kecamatan_tanah}</p>\r\n<p>- Desa/Kelurahan&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; {nama_kelurahan_tanah}</p>\r\n<p>Jual beli ini meliputi pula :</p>\r\n<p>Segala sesuatu yang ada dan terdapat di atas tanah tersebut yang menurut hukum dapat dianggap sebagai benda tetap terutama sebuah bangunan seluas {luas_bangunan} m2 ({luas_bangunan_terbilang}), setempat dikenal sebagai tanah dan bangunan yang terletak di {alamat_bangunan}, Rukun Tetangga {rt_bangunan}, {kelurahan_bangunan} {nama_kelurahan_bangunan}, Kecamatan {kecamatan_bangunan}, {kota_bangunan} {nama_kota_bangunan}.</p>\r\n<p>Selanjutnya semua yang diuraikan di atas dalam akta ini&nbsp; disebut \"Obyek Jual Beli\".</p>\r\n<p>Pihak Pertama dan Pihak Kedua menerangkan bahwa:</p>\r\n<ol start=\"100\">\r\n<li>Jual beli ini dilakukan dengan harga <strong>{nilai_beli}&nbsp;</strong>({nilai_beli_terbilang}).</li>\r\n<li>Pihak Pertama mengaku telah menerima sepenuhnya uang tersebut diatas dari Pihak Kedua dan untuk penerimaan uang tersebut akta ini berlaku pula sebagai tanda penerimaan yang sah (kwitansi).</li>\r\n<li>Jual beli ini dilakukan dengan syarat-syarat sebagai berikut :</li>\r\n</ol>\r\n<p>Pasal 1</p>\r\n<p>Mulai hari ini obyek jual beli yang diuraikan dalam akta ini telah menjadi milik Pihak Kedua dan&nbsp; karenanya&nbsp; segala keuntungan&nbsp; yang didapat&nbsp; dari, dan segala kerugian/beban atas obyek jual beli tersebut diatas menjadi hak/beban Pihak Kedua.</p>\r\n<p>Pasal 2 &nbsp;</p>\r\n<p>Pihak Pertama menjamin, bahwa obyek jual beli tersebut di atas tidak tersangkut dalam suatu sengketa, bebas dari sitaan, tidak terikat sebagai jaminan untuk sesuatu utang yang tidak tercatat dalam sertipikat, dan bebas dari beban-beban lainnya yang berupa apapun.&nbsp;</p>\r\n<p>Pasal 3 &nbsp;</p>\r\n<p>Pihak&nbsp; Kedua&nbsp; dengan&nbsp; ini menyatakan bahwa dengan jual beli ini&nbsp; kepemilikan tanahnya tidak melebihi ketentuan maksimum penguasaan tanah menurut ketentuan&nbsp; perundang-undangan yang&nbsp; berlaku sebagaimana tercantum dalam pernyataannya tanggal hari ini</p>\r\n<p>Pasal 4 &nbsp;</p>\r\n<p>Dalam&nbsp; hal&nbsp; terdapat perbedaan luas tanah yang menjadi obyek jual beli dalam akta ini dengan hasil pengukuran oleh instansi Badan Pertanahan Nasional, maka&nbsp; para&nbsp; pihak akan&nbsp; menerima&nbsp; hasil&nbsp; pengukuran instansi Badan Pertanahan Nasional tersebut&nbsp; dengan&nbsp; tidak memperhitungkan kembali harga jual beli dan tidak akan saling mengadakan gugatan.</p>\r\n<p>&nbsp;</p>\r\n<p>Pasal 5 &nbsp;</p>\r\n<ol>\r\n<li>Para pihak dengan ini menerangkan telah saling mengetahui</li>\r\n</ol>\r\n<p>letak, status batas-batas objek jual beli ini.</p>\r\n<ol>\r\n<li>Kedua belah pihak menjamin mengenai hal-hal sebagai berikut:\r\n<ol>\r\n<li>Bahwa identitas dan keterangan-keterangan yang diberikan kepada saya, PPAT adalah benar dan sesuai dengan identitas dan keterangan-keterangan yang sah / sesungguhnya dari masing-masing pihak;</li>\r\n<li>Bahwa sertipikat yang diserahkan kepada saya, PPAT adalah satu-satunya sertipikat yang sah / tidak pernah dipalsukan, dan tidak pernah dibuat duplikatnya oleh instansi yang berwenang atas permintaan pihak pertama dan / atau pihak kedua;</li>\r\n</ol>\r\n</li>\r\n</ol>\r\n<p>Sehubungan dengan hal-hal tersebut diatas, kedua belah pihak dengan ini menyatakan dengan tegas membebaskan saya, PPAT dan saksi-saksi dari segala tuntutan dan gugatan berupa apapun juga mengenai hal-hal tersebut.</p>\r\n<p>Pasal 6</p>\r\n<p>Kedua belah pihak dalam hal ini dengan segala akibatnya memilih tempat kediaman hukum yang umum dan tidak berubah pada Kantor Panitera Pengadilan Negeri di Samarinda.</p>\r\n<p>Pasal 7 &nbsp;</p>\r\n<p>Biaya pembuatan akta ini, uang saksi dan segala biaya peralihan hak ini dibayar oleh Pihak Kedua.</p>\r\n<p>Akhirnya hadir juga dihadapan Saya, dengan dihadiri oleh saksisaksi yang sama dan disebutkan pada akhir akta ini:</p>\r\n<p>yang menerangkan telah mengetahui apa yang diuraikan diatas dan menyetujui jual beli dalam akta ini.</p>\r\n<p>Demikianlah akta ini dibuat dihadapan para pihak dan:</p>\r\n<ol>\r\n<li>Tuan <strong>MUHDIN NOOR</strong>, lahir di Badak 1, pada tanggal <strong>06-01</strong>-<strong>1987</strong> (enam Januari seribu sembilan ratus delapan puluh tujuh), Warga Negara Indonesia, bertempat tinggal di Jalan Budiman, Rukun Tetangga 008, Kelurahan Karang Asam Ilir, Kecamatan Sungai Kunjang, Kota Samarinda, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan :<strong> 6402054601870001</strong>;</li>\r\n<li>Tuan <strong>PURWANTO,</strong> lahir di Samarinda, pada tanggal <strong>12-04-1987</strong> (dua belas April seribu sembilan ratus delapan puluh tujuh), pekerjaan Swasta, Warga Negara Indonesia, bertempat tinggal di Jalan Sentosa Gang 3 Nomor 56, Rukun Tetangga 030, Kelurahan Sungai Pinang Dalam, Kecamatan Sungai Pinang, Kota Samarinda, pemegang Kartu Tanda Penduduk dengan Nomor Induk Kependudukan : <strong>6472081204870001;</strong></li>\r\n</ol>\r\n<p>sebagai saksi-saksi, dan setelah dibacakan serta dijelaskan, maka sebagai bukti kebenaran pernyataan yang dikemukakan oleh Pihak Pertama dan Pihak Kedua tersebut di atas, akta ini ditandatangani/cap ibu jari&nbsp; oleh Pihak Pertama, Pihak Kedua, para saksi dan Saya, PPAT, sebanyak 2 (dua) rangkap asli, yaitu 1 (satu) rangkap lembar pertama disimpan di kantor Saya, dan 1 rangkap lembar kedua disampaikan kepada Kepala Kantor Pertanahan Kota Samarinda untuk keperluan pendaftaran peralihan hak akibat jual beli dalam akta ini.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pihak Pertama&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pihak Kedua</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&nbsp;&nbsp;&nbsp;{nama_penjual}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{nama_pembeli}</strong></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Persetujuan {kedudukan_keluarga_penjual}</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {nama_persetujuan}</strong></p>\r\n<p>&nbsp;</p>\r\n<p><strong>&nbsp;</strong></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Saksi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saksi</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><strong>&nbsp;&nbsp;&nbsp;MUHDIN NOOR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>PURWANTO</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Pejabat Pembuat Akta Tanah</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>NIA NUSWANTARI, SH, M.Kn</strong></p>\r\n<table width=\"100%\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table width=\"100%\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<table width=\"100%\">\r\n<tbody>\r\n<tr>\r\n<td>\r\n<p>&nbsp;</p>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>&nbsp;</p>', 'ppat', '2018-01-30 10:26:11', '2018-01-30 10:26:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tba_u_inv_akta`
+--
+
+CREATE TABLE `tba_u_inv_akta` (
+  `id_u_inv_akta` int(11) NOT NULL,
+  `nasabah_akta` varchar(30) NOT NULL,
+  `jenis_bank` varchar(10) NOT NULL,
+  `kelengkapan` varchar(10) NOT NULL,
+  `print_sal` varchar(10) NOT NULL,
+  `rpk_mnt` varchar(10) NOT NULL,
+  `invoice` int(11) NOT NULL,
+  `dan_lap` text NOT NULL,
+  `exp_skmht` text NOT NULL,
+  `exp_cnot` text NOT NULL,
+  `per_lap` text NOT NULL,
+  `no_sps` text NOT NULL,
+  `atr_odr` text NOT NULL,
+  `jenis_pekerjaan` text NOT NULL,
+  `keterangan` text NOT NULL,
+  `status` int(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tba_u_inv_akta`
+--
+
+INSERT INTO `tba_u_inv_akta` (`id_u_inv_akta`, `nasabah_akta`, `jenis_bank`, `kelengkapan`, `print_sal`, `rpk_mnt`, `invoice`, `dan_lap`, `exp_skmht`, `exp_cnot`, `per_lap`, `no_sps`, `atr_odr`, `jenis_pekerjaan`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'MAHMUD(PUTERA ALARS)', 'BNI', 'LENGKAP', 'BELUM', 'SUDAH', 1000000, 'CEK 150, BNP 150', '1 BULAN 14/08/2018', '3 BULAN 14/03/2018', 'PENINGKATAN', '-', '-', 'PENGECEKAN', 'SIP MAMANX NGETES NICH', 0, '2018-05-16 07:35:04', '2018-05-16 07:46:00'),
+(2, 'PETER QUILL(STAR LORD)', 'BRI', 'LENGKAP', 'SUDAH', 'BELUM', 10000, 'CEK 150', '1 BULAN 21/02/2000', '2 BULAN 21/02/2000', 'PENINGKATAN', '121212', '-', 'PENGECEKAN', 'PETER QUILL ITU STAR LORD', 1, '2018-05-16 20:26:22', '2018-05-16 20:27:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tba_u_inv_sertifikat`
+--
+
+CREATE TABLE `tba_u_inv_sertifikat` (
+  `id_u_inv_sertifikat` int(11) NOT NULL,
+  `nasabah_sertifikat` varchar(30) NOT NULL,
+  `jenis_bank` varchar(10) NOT NULL,
+  `jenis_sertifikat` varchar(10) NOT NULL,
+  `nomor` varchar(30) NOT NULL,
+  `kantor` varchar(10) NOT NULL,
+  `bpn` varchar(10) NOT NULL,
+  `luar` varchar(10) NOT NULL,
+  `keterangan` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tba_u_inv_sertifikat`
+--
+
+INSERT INTO `tba_u_inv_sertifikat` (`id_u_inv_sertifikat`, `nasabah_sertifikat`, `jenis_bank`, `jenis_sertifikat`, `nomor`, `kantor`, `bpn`, `luar`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 'THANOS(PUTERA ALARS)', 'BNI', 'SHBH', '120', '1', '1', '-', 'NGETES KOK', '2018-05-16 07:50:01', NULL),
+(2, 'GAMORA', 'BNI', 'SBH', '200', '1', '-', '-', 'TEST JUGA', '2018-05-16 20:21:23', '2018-05-16 20:21:57');
 
 -- --------------------------------------------------------
 
@@ -1458,33 +1665,66 @@ INSERT INTO `tb_user` (`id_user`, `nama`, `username`, `password`, `level`, `stat
 -- Indexes for table `tba_akta_debitur`
 --
 ALTER TABLE `tba_akta_debitur`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_fidusia`);
+
+--
+-- Indexes for table `tba_inv_akta`
+--
+ALTER TABLE `tba_inv_akta`
+  ADD PRIMARY KEY (`id_inv_akta`),
+  ADD KEY `id_u_inv_ppat` (`id_u_inv_akta`);
+
+--
+-- Indexes for table `tba_inv_sertifikat`
+--
+ALTER TABLE `tba_inv_sertifikat`
+  ADD PRIMARY KEY (`id_inv_sertifikat`),
+  ADD KEY `tba_inv_sertifikat_ibfk_1` (`id_u_inv_sertifikat`);
 
 --
 -- Indexes for table `tba_ppat_ajb`
 --
 ALTER TABLE `tba_ppat_ajb`
   ADD PRIMARY KEY (`id_ajb`),
-  ADD KEY `relasi_surat_apht` (`id_apht`);
+  ADD KEY `relasi_surat_apht` (`id_ppat`);
 
 --
 -- Indexes for table `tba_ppat_apht`
 --
 ALTER TABLE `tba_ppat_apht`
   ADD PRIMARY KEY (`id_apht`),
-  ADD KEY `relasi_surat_skmht` (`id_skmht`);
+  ADD KEY `relasi_surat_skmht` (`id_ppat`);
+
+--
+-- Indexes for table `tba_ppat_biodata`
+--
+ALTER TABLE `tba_ppat_biodata`
+  ADD PRIMARY KEY (`id_ppat`);
 
 --
 -- Indexes for table `tba_ppat_skmht`
 --
 ALTER TABLE `tba_ppat_skmht`
-  ADD PRIMARY KEY (`id_skmht`);
+  ADD PRIMARY KEY (`id_skmht`),
+  ADD KEY `id_biodata` (`id_ppat`);
 
 --
 -- Indexes for table `tba_template_akta`
 --
 ALTER TABLE `tba_template_akta`
   ADD PRIMARY KEY (`id_surat`);
+
+--
+-- Indexes for table `tba_u_inv_akta`
+--
+ALTER TABLE `tba_u_inv_akta`
+  ADD PRIMARY KEY (`id_u_inv_akta`);
+
+--
+-- Indexes for table `tba_u_inv_sertifikat`
+--
+ALTER TABLE `tba_u_inv_sertifikat`
+  ADD PRIMARY KEY (`id_u_inv_sertifikat`);
 
 --
 -- Indexes for table `tb_akun`
@@ -1596,127 +1836,197 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tba_akta_debitur`
 --
 ALTER TABLE `tba_akta_debitur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_fidusia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tba_inv_akta`
+--
+ALTER TABLE `tba_inv_akta`
+  MODIFY `id_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tba_inv_sertifikat`
+--
+ALTER TABLE `tba_inv_sertifikat`
+  MODIFY `id_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `tba_ppat_ajb`
 --
 ALTER TABLE `tba_ppat_ajb`
   MODIFY `id_ajb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tba_ppat_apht`
 --
 ALTER TABLE `tba_ppat_apht`
   MODIFY `id_apht` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tba_ppat_biodata`
+--
+ALTER TABLE `tba_ppat_biodata`
+  MODIFY `id_ppat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tba_ppat_skmht`
 --
 ALTER TABLE `tba_ppat_skmht`
-  MODIFY `id_skmht` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_skmht` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tba_template_akta`
 --
 ALTER TABLE `tba_template_akta`
   MODIFY `id_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tba_u_inv_akta`
+--
+ALTER TABLE `tba_u_inv_akta`
+  MODIFY `id_u_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tba_u_inv_sertifikat`
+--
+ALTER TABLE `tba_u_inv_sertifikat`
+  MODIFY `id_u_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tb_akun`
 --
 ALTER TABLE `tb_akun`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
 -- AUTO_INCREMENT for table `tb_detail_item_fee`
 --
 ALTER TABLE `tb_detail_item_fee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tb_detail_jurnal`
 --
 ALTER TABLE `tb_detail_jurnal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tb_detail_pembayaran`
 --
 ALTER TABLE `tb_detail_pembayaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `tb_detail_penjualan`
 --
 ALTER TABLE `tb_detail_penjualan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+
 --
 -- AUTO_INCREMENT for table `tb_item`
 --
 ALTER TABLE `tb_item`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tb_item_bayar`
 --
 ALTER TABLE `tb_item_bayar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tb_item_fee`
 --
 ALTER TABLE `tb_item_fee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tb_jenis_surat`
 --
 ALTER TABLE `tb_jenis_surat`
   MODIFY `id_jenis_surat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `tb_jurnal`
 --
 ALTER TABLE `tb_jurnal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tb_kode_akun`
 --
 ALTER TABLE `tb_kode_akun`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tb_kwitansi_umum`
 --
 ALTER TABLE `tb_kwitansi_umum`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `tb_pembayaran`
 --
 ALTER TABLE `tb_pembayaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tb_penjualan`
 --
 ALTER TABLE `tb_penjualan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
+
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `tba_inv_akta`
+--
+ALTER TABLE `tba_inv_akta`
+  ADD CONSTRAINT `tba_inv_akta_ibfk_1` FOREIGN KEY (`id_u_inv_akta`) REFERENCES `tba_u_inv_akta` (`id_u_inv_akta`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tba_inv_sertifikat`
+--
+ALTER TABLE `tba_inv_sertifikat`
+  ADD CONSTRAINT `tba_inv_sertifikat_ibfk_1` FOREIGN KEY (`id_u_inv_sertifikat`) REFERENCES `tba_u_inv_sertifikat` (`id_u_inv_sertifikat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `tba_ppat_ajb`
 --
 ALTER TABLE `tba_ppat_ajb`
-  ADD CONSTRAINT `relasi_surat_apht` FOREIGN KEY (`id_apht`) REFERENCES `tba_ppat_apht` (`id_apht`) ON DELETE CASCADE;
+  ADD CONSTRAINT `tba_ppat_ajb_ibfk_1` FOREIGN KEY (`id_ppat`) REFERENCES `tba_ppat_biodata` (`id_ppat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tba_ppat_apht`
 --
 ALTER TABLE `tba_ppat_apht`
-  ADD CONSTRAINT `relasi_surat_skmht` FOREIGN KEY (`id_skmht`) REFERENCES `tba_ppat_skmht` (`id_skmht`) ON DELETE CASCADE;
+  ADD CONSTRAINT `tba_ppat_apht_ibfk_1` FOREIGN KEY (`id_ppat`) REFERENCES `tba_ppat_biodata` (`id_ppat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tba_ppat_skmht`
+--
+ALTER TABLE `tba_ppat_skmht`
+  ADD CONSTRAINT `tba_ppat_skmht_ibfk_1` FOREIGN KEY (`id_ppat`) REFERENCES `tba_ppat_biodata` (`id_ppat`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
