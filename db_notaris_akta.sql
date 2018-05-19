@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 17, 2018 at 05:12 AM
+-- Generation Time: May 19, 2018 at 11:52 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -190,7 +190,10 @@ CREATE TABLE `tba_inv_akta` (
 INSERT INTO `tba_inv_akta` (`id_inv_akta`, `id_u_inv_akta`, `tgl_akta`, `jenis_akta`, `no_akta`, `ketik_akt`, `call_akt`, `ttd_akd`, `atr_mnt`, `mnt_kmb`, `created_at`, `updated_at`) VALUES
 (2, 1, '2018-05-18', 'AJB', '1000', '2018-05-26', '2018-05-26', '2018-05-25', '2018-05-25', '2018-05-31', '2018-05-16 08:17:01', '2018-05-16 08:27:26'),
 (4, 1, '2018-05-25', 'PPAT', '1230202023', '2018-05-31', '2018-05-26', '2018-05-26', '2018-05-18', '2018-05-24', '2018-05-16 20:19:28', NULL),
-(5, 2, '2018-05-11', 'AJB', '12021021', '2018-05-26', '2018-05-12', '2018-05-19', '2018-05-05', '2018-05-18', '2018-05-16 20:27:40', NULL);
+(5, 2, '2018-05-11', 'AJB', '12021021', '2018-05-26', '2018-05-12', '2018-05-19', '2018-05-05', '2018-05-18', '2018-05-16 20:27:40', NULL),
+(6, 2, '2018-05-26', 'APHT', '1230203021', '2018-05-17', '2018-05-31', '2018-05-18', '2018-05-26', '2018-05-30', '2018-05-17 23:09:53', '2018-05-17 23:10:03'),
+(7, 3, '2018-05-26', 'AJB', '2103', '2018-05-26', '2018-05-05', '2018-05-24', '2018-05-09', '2018-05-23', '2018-05-18 09:07:14', NULL),
+(8, 3, '2018-05-18', 'AJB', '1203023', '2018-05-12', '2018-05-18', '2018-05-18', '2018-05-18', '2018-05-18', '2018-05-18 09:07:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -216,7 +219,9 @@ INSERT INTO `tba_inv_sertifikat` (`id_inv_sertifikat`, `id_u_inv_sertifikat`, `k
 (8, 1, 'SURAT YEAH', '2018-05-25', '2018-05-11', '2018-05-16 08:47:44', '2018-05-16 08:50:30'),
 (9, 2, 'TERANG BULAN', '2018-05-25', '2018-05-05', '2018-05-16 20:22:18', NULL),
 (10, 2, 'MARTABAK', '2018-05-18', '2018-05-19', '2018-05-16 20:22:29', NULL),
-(11, 1, 'MAHAR', '2018-05-31', '2018-05-18', '2018-05-16 20:22:53', NULL);
+(11, 1, 'MAHAR', '2018-05-31', '2018-05-18', '2018-05-16 20:22:53', NULL),
+(12, 3, 'TERANG BULAN COKELAT KEJU', '2018-05-30', '2018-05-30', '2018-05-18 22:41:13', NULL),
+(13, 3, 'MAKAN', '2018-05-31', '2018-05-24', '2018-05-18 22:41:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -478,7 +483,7 @@ INSERT INTO `tba_template_akta` (`id_surat`, `nama_surat`, `template`, `jenis_su
 CREATE TABLE `tba_u_inv_akta` (
   `id_u_inv_akta` int(11) NOT NULL,
   `nasabah_akta` varchar(30) NOT NULL,
-  `jenis_bank` varchar(10) NOT NULL,
+  `jenis_bank` varchar(30) NOT NULL,
   `kelengkapan` varchar(10) NOT NULL,
   `print_sal` varchar(10) NOT NULL,
   `rpk_mnt` varchar(10) NOT NULL,
@@ -501,8 +506,9 @@ CREATE TABLE `tba_u_inv_akta` (
 --
 
 INSERT INTO `tba_u_inv_akta` (`id_u_inv_akta`, `nasabah_akta`, `jenis_bank`, `kelengkapan`, `print_sal`, `rpk_mnt`, `invoice`, `dan_lap`, `exp_skmht`, `exp_cnot`, `per_lap`, `no_sps`, `atr_odr`, `jenis_pekerjaan`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'MAHMUD(PUTERA ALARS)', 'BNI', 'LENGKAP', 'BELUM', 'SUDAH', 1000000, 'CEK 150, BNP 150', '1 BULAN 14/08/2018', '3 BULAN 14/03/2018', 'PENINGKATAN', '-', '-', 'PENGECEKAN', 'SIP MAMANX NGETES NICH', 0, '2018-05-16 07:35:04', '2018-05-16 07:46:00'),
-(2, 'PETER QUILL(STAR LORD)', 'BRI', 'LENGKAP', 'SUDAH', 'BELUM', 10000, 'CEK 150', '1 BULAN 21/02/2000', '2 BULAN 21/02/2000', 'PENINGKATAN', '121212', '-', 'PENGECEKAN', 'PETER QUILL ITU STAR LORD', 1, '2018-05-16 20:26:22', '2018-05-16 20:27:50');
+(1, 'MAHMUD(PUTERA ALARS)', 'BRI', 'LENGKAP', 'BELUM', 'SUDAH', 1000000, 'CEK 150, BNP 150', '1 BULAN 14/08/2018', '3 BULAN 14/03/2018', 'PENINGKATAN', '-', '-', 'PENGECEKAN', 'SIP MAMANX NGETES NICH', 1, '2018-05-16 07:35:04', '2018-05-16 07:46:00'),
+(2, 'PETER QUILL(STAR LORD)', 'BNI', 'LENGKAP', 'SUDAH', 'BELUM', 10000, 'CEK 150', '1 BULAN 21/02/2000', '2 BULAN 21/02/2000', 'PENINGKATAN', '121212', '-', 'PENGECEKAN', 'PETER QUILL ITU STAR LORD', 1, '2018-05-16 20:26:22', '2018-05-16 20:27:50'),
+(3, 'SIPUT(BELALANG)', 'BSM', 'LENGKAP', 'SUDAH', 'BELUM', 100000, 'CEK 150', '1 BULAN 14/14/2014', '3 BULAN 14/14/2014', 'PENINGKATAN', '1230', '-', 'HT', 'SIPP', 1, '2018-05-18 09:06:46', '2018-05-18 09:08:33');
 
 -- --------------------------------------------------------
 
@@ -513,7 +519,7 @@ INSERT INTO `tba_u_inv_akta` (`id_u_inv_akta`, `nasabah_akta`, `jenis_bank`, `ke
 CREATE TABLE `tba_u_inv_sertifikat` (
   `id_u_inv_sertifikat` int(11) NOT NULL,
   `nasabah_sertifikat` varchar(30) NOT NULL,
-  `jenis_bank` varchar(10) NOT NULL,
+  `jenis_bank` varchar(30) NOT NULL,
   `jenis_sertifikat` varchar(10) NOT NULL,
   `nomor` varchar(30) NOT NULL,
   `kantor` varchar(10) NOT NULL,
@@ -530,7 +536,8 @@ CREATE TABLE `tba_u_inv_sertifikat` (
 
 INSERT INTO `tba_u_inv_sertifikat` (`id_u_inv_sertifikat`, `nasabah_sertifikat`, `jenis_bank`, `jenis_sertifikat`, `nomor`, `kantor`, `bpn`, `luar`, `keterangan`, `created_at`, `updated_at`) VALUES
 (1, 'THANOS(PUTERA ALARS)', 'BNI', 'SHBH', '120', '1', '1', '-', 'NGETES KOK', '2018-05-16 07:50:01', NULL),
-(2, 'GAMORA', 'BNI', 'SBH', '200', '1', '-', '-', 'TEST JUGA', '2018-05-16 20:21:23', '2018-05-16 20:21:57');
+(2, 'GAMORA', 'BNI', 'SBH', '200', '1', '-', '-', 'TEST JUGA', '2018-05-16 20:21:23', '2018-05-16 20:21:57'),
+(3, 'UHUHY', 'MANDIRI LUAR NEGERI', 'SHBH', '120', '1', '2', '3', 'ASDASDSAD', '2018-05-18 22:40:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -1842,13 +1849,13 @@ ALTER TABLE `tba_akta_debitur`
 -- AUTO_INCREMENT for table `tba_inv_akta`
 --
 ALTER TABLE `tba_inv_akta`
-  MODIFY `id_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tba_inv_sertifikat`
 --
 ALTER TABLE `tba_inv_sertifikat`
-  MODIFY `id_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tba_ppat_ajb`
@@ -1884,13 +1891,13 @@ ALTER TABLE `tba_template_akta`
 -- AUTO_INCREMENT for table `tba_u_inv_akta`
 --
 ALTER TABLE `tba_u_inv_akta`
-  MODIFY `id_u_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_u_inv_akta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tba_u_inv_sertifikat`
 --
 ALTER TABLE `tba_u_inv_sertifikat`
-  MODIFY `id_u_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_u_inv_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_akun`

@@ -3,23 +3,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SertifikatInvModel extends CI_Model {
 	var $table = 'tba_inv_sertifikat';
+	public $query;
 
 	function __construct() {
 		parent::__construct();
 	}
 
-	function exportData($where,$value) {
+	public function WhereNotIn(array $array) {
 		$this->db->select('*')
 				 ->from($this->table)
 				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
-				 ->where($where,$value);
-		$query = $this->db->get();
+				 ->where_not_in('jenis_bank',$array);
+		$this->query = $this->db->get();
+		return $this;
+	}
+
+	public function exportData(array $array) {
+		$this->db->select('*')
+				 ->from($this->table)
+				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
+				 ->where($array);
+		$this->query = $this->db->get();
+		return $this;
+	}
+
+	public function getResult() {
+		$query = $this->query;
 		if ($query->num_rows() >= 1) {
 			return $query->result_array();
 		}
 		else {
 			return array();
 		}
+	}
+
+	function countRows() {
+		$count = $this->query;
+		return $count->num_rows();
 	}
 
 	function findAll($id) {

@@ -3,22 +3,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AktaInvModel extends CI_Model {
 	var $table = 'tba_inv_akta';
+	public $query;
 
 	function __construct() {
 		parent::__construct();
 	}
 
-	function exportData() {
+	public function exportData(array $array) {
 		$this->db->select('*')
 				 ->from($this->table)
-				 ->join('tba_u_inv_akta','tba_u_inv_akta.id_u_inv_akta = tba_inv_akta.id_u_inv_akta');
-		$query = $this->db->get();
+				 ->join('tba_u_inv_akta','tba_u_inv_akta.id_u_inv_akta = tba_inv_akta.id_u_inv_akta')
+				 ->where($array);
+		$this->query = $this->db->get();
+		return $this;
+	}
+
+	public function getResult() {
+		$query = $this->query;
 		if ($query->num_rows() >= 1) {
 			return $query->result_array();
 		}
 		else {
 			return array();
 		}
+	}
+
+	public function getRow() {
+		$query = $this->query;
+		if ($query->num_rows() >= 1) {
+			return $query->row_array();
+		}
+		else {
+			return array();
+		}
+	}
+
+	function countRows() {
+		$count = $this->query;
+		return $count->num_rows();
 	}
 
 	function findAll($id) {
