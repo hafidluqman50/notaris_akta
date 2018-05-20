@@ -77,6 +77,12 @@
 								<input type="text" name="per_lap" class="form-control" placeholder="Isi Per Lap; Ex:Peningkatan" value="<?php echo(isset($row) ? $row['per_lap'] : '') ?>">
 							</div>
 						</div>
+						<div class="form-group">
+							<div class="col-md-6">
+								<label for="">Lap Sls</label>
+								<input type="text" name="lap_sls" class="form-control" placeholder="Isi Lap Sls" value="<?php echo(isset($row) ? $row['lap_sls'] : '') ?>">
+							</div>
+						</div>
 						<div class="form-group row">
 							<div class="col-md-6">
 								<label for="">No SPS</label>
@@ -97,6 +103,7 @@
 						</div>
 					</div>
 					<div class="box-footer">
+						<input type="hidden" value="<?php echo(isset($row) ? $row['status'] : '') ?>" name="status">
 						<input type="hidden" value="<?php echo(isset($row) ? $row['id_u_inv_akta'] : '') ?>" name="id">
           				<button type="submit" name="takis" value="sipp" class="btn btn-primary">Simpan</button>
 					</div>

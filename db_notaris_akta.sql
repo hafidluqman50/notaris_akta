@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 19, 2018 at 11:52 AM
+-- Generation Time: May 20, 2018 at 05:08 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -492,6 +492,7 @@ CREATE TABLE `tba_u_inv_akta` (
   `exp_skmht` text NOT NULL,
   `exp_cnot` text NOT NULL,
   `per_lap` text NOT NULL,
+  `lap_sls` varchar(30) NOT NULL,
   `no_sps` text NOT NULL,
   `atr_odr` text NOT NULL,
   `jenis_pekerjaan` text NOT NULL,
@@ -505,10 +506,10 @@ CREATE TABLE `tba_u_inv_akta` (
 -- Dumping data for table `tba_u_inv_akta`
 --
 
-INSERT INTO `tba_u_inv_akta` (`id_u_inv_akta`, `nasabah_akta`, `jenis_bank`, `kelengkapan`, `print_sal`, `rpk_mnt`, `invoice`, `dan_lap`, `exp_skmht`, `exp_cnot`, `per_lap`, `no_sps`, `atr_odr`, `jenis_pekerjaan`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'MAHMUD(PUTERA ALARS)', 'BRI', 'LENGKAP', 'BELUM', 'SUDAH', 1000000, 'CEK 150, BNP 150', '1 BULAN 14/08/2018', '3 BULAN 14/03/2018', 'PENINGKATAN', '-', '-', 'PENGECEKAN', 'SIP MAMANX NGETES NICH', 1, '2018-05-16 07:35:04', '2018-05-16 07:46:00'),
-(2, 'PETER QUILL(STAR LORD)', 'BNI', 'LENGKAP', 'SUDAH', 'BELUM', 10000, 'CEK 150', '1 BULAN 21/02/2000', '2 BULAN 21/02/2000', 'PENINGKATAN', '121212', '-', 'PENGECEKAN', 'PETER QUILL ITU STAR LORD', 1, '2018-05-16 20:26:22', '2018-05-16 20:27:50'),
-(3, 'SIPUT(BELALANG)', 'BSM', 'LENGKAP', 'SUDAH', 'BELUM', 100000, 'CEK 150', '1 BULAN 14/14/2014', '3 BULAN 14/14/2014', 'PENINGKATAN', '1230', '-', 'HT', 'SIPP', 1, '2018-05-18 09:06:46', '2018-05-18 09:08:33');
+INSERT INTO `tba_u_inv_akta` (`id_u_inv_akta`, `nasabah_akta`, `jenis_bank`, `kelengkapan`, `print_sal`, `rpk_mnt`, `invoice`, `dan_lap`, `exp_skmht`, `exp_cnot`, `per_lap`, `lap_sls`, `no_sps`, `atr_odr`, `jenis_pekerjaan`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'MAHMUD(PUTERA ALARS)', 'BRI', 'LENGKAP', 'BELUM', 'SUDAH', 1000000, 'CEK 150, BNP 150', '1 BULAN 14/08/2018', '3 BULAN 14/03/2018', 'PENINGKATAN', 'SELESAI', '-', '-', 'PENGECEKAN', 'NGETES', 1, '2018-05-16 07:35:04', '2018-05-19 21:56:56'),
+(2, 'PETER QUILL(STAR LORD)', 'BRI', 'LENGKAP', 'SUDAH', 'BELUM', 10000, 'CEK 150', '1 BULAN 21/02/2000', '2 BULAN 21/02/2000', 'PENINGKATAN', '-', '121212', '-', 'PENGECEKAN', 'PETER QUILL ITU STAR LORD', 1, '2018-05-16 20:26:22', '2018-05-19 21:56:52'),
+(3, 'SIPUT(BELALANG)', 'BSM', 'LENGKAP', 'SUDAH', 'BELUM', 100000, 'CEK 150', '1 BULAN 14/14/2014', '3 BULAN 14/14/2014', 'PENINGKATAN', '-', '1230', '-', 'HT', 'SIPP', 1, '2018-05-18 09:06:46', '2018-05-18 09:08:33');
 
 -- --------------------------------------------------------
 

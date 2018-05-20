@@ -22,7 +22,8 @@ class SertifikatInvModel extends CI_Model {
 		$this->db->select('*')
 				 ->from($this->table)
 				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
-				 ->where($array);
+				 ->where($array)
+				 ->order_by('tba_inv_sertifikat.id_u_inv_sertifikat','');
 		$this->query = $this->db->get();
 		return $this;
 	}

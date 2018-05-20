@@ -13,7 +13,8 @@ class AktaInvModel extends CI_Model {
 		$this->db->select('*')
 				 ->from($this->table)
 				 ->join('tba_u_inv_akta','tba_u_inv_akta.id_u_inv_akta = tba_inv_akta.id_u_inv_akta')
-				 ->where($array);
+				 ->where($array)
+				 ->order_by('tba_inv_akta.id_u_inv_akta','');
 		$this->query = $this->db->get();
 		return $this;
 	}
@@ -41,6 +42,20 @@ class AktaInvModel extends CI_Model {
 	function countRows() {
 		$count = $this->query;
 		return $count->num_rows();
+	}
+
+	function getData($value) {
+		$this->db->select('*')
+				 ->from($this->table)
+				 ->where('id_u_inv_akta',$value);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	function countNasabah($value) {
+		$this->db->from($this->table)->where('id_u_inv_akta',$value);
+		$query = $this->db->get();
+		return $query->num_rows();
 	}
 
 	function findAll($id) {
