@@ -7,6 +7,37 @@ class NasabahSertifikatInvModel extends CI_Model {
 		parent::__construct();
 	}
 
+	public function WhereNotIn(array $array) {
+		$this->db->select('*')
+				 ->from($this->table)
+				 ->where_not_in('jenis_bank',$array);
+		$this->query = $this->db->get();
+		return $this;
+	}
+
+	public function exportData(array $array) {
+		$this->db->select('*')
+				 ->from($this->table)
+				 ->where($array);
+		$this->query = $this->db->get();
+		return $this;
+	}
+
+	function countRows() {
+		$count = $this->query;
+		return $count->num_rows();
+	}
+
+	public function getResult() {
+		$query = $this->query;
+		if ($query->num_rows() >= 1) {
+			return $query->result_array();
+		}
+		else {
+			return array();
+		}
+	}
+
 	function findAll() {
 		$query = $this->db->get($this->table);
 		if ($query->num_rows() >= 1) {

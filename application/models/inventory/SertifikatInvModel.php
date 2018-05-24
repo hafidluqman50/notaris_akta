@@ -9,38 +9,18 @@ class SertifikatInvModel extends CI_Model {
 		parent::__construct();
 	}
 
-	public function WhereNotIn(array $array) {
+	function getData($value) {
 		$this->db->select('*')
 				 ->from($this->table)
-				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
-				 ->where_not_in('jenis_bank',$array);
-		$this->query = $this->db->get();
-		return $this;
+				 ->where('id_u_inv_sertifikat',$value);
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 
-	public function exportData(array $array) {
-		$this->db->select('*')
-				 ->from($this->table)
-				 ->join('tba_u_inv_sertifikat','tba_u_inv_sertifikat.id_u_inv_sertifikat = tba_inv_sertifikat.id_u_inv_sertifikat')
-				 ->where($array)
-				 ->order_by('tba_inv_sertifikat.id_u_inv_sertifikat','');
-		$this->query = $this->db->get();
-		return $this;
-	}
-
-	public function getResult() {
-		$query = $this->query;
-		if ($query->num_rows() >= 1) {
-			return $query->result_array();
-		}
-		else {
-			return array();
-		}
-	}
-
-	function countRows() {
-		$count = $this->query;
-		return $count->num_rows();
+	function countNasabah($value) {
+		$this->db->from($this->table)->where('id_u_inv_sertifikat',$value);
+		$query = $this->db->get();
+		return $query->num_rows();
 	}
 
 	function findAll($id) {
