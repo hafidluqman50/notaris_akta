@@ -63,7 +63,7 @@ class NasabahAktaInvModel extends CI_Model {
     }
 
     function deleteData($id,$id_akta) {
-    	$this->db->where('id_u_inv_akta',$id)
+    	$this->db->where(['id_u_inv_akta'=>$id,'id_inv_akta'=>$id_akta])
     			 ->delete();
     }
 }

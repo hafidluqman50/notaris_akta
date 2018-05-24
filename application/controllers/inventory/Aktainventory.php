@@ -54,8 +54,8 @@ class Aktainventory extends CI_Controller {
 		$this->load->view('inventory/form_nasabah_akta',$data);
 	}
 
-	public function delete_nasabah_akta($id) {
-		$this->nasabah_akta->deleteData($id);
+	public function delete_nasabah_akta($id,$id_akta) {
+		$this->nasabah_akta->deleteData($id,$id_akta);
 		$this->session->set_flashdata('pesan','Berhasil Hapus');
 		redirect('inventory/aktainventory/data_inventory');
 	}
@@ -118,7 +118,7 @@ class Aktainventory extends CI_Controller {
 
 
 	public function delete_inv_sertifikat($id,$id_inv) {
-		$this->sertifikat_inv->deleteData($id_inv,$id);
+		$this->sertifikat_inv->deleteData($id,$id_inv);
 		$this->session->set_flashdata('pesan','Berhasil Delete Data');
 	}
 
@@ -285,26 +285,28 @@ class Aktainventory extends CI_Controller {
 	}
 
 	public function cetak_excel() {
-		$akta_selesai_bri  = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BRI'])->getResult();
-		$count_selesai_bri = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BRI'])->countRows();
-		$akta_selesai_bni  = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BNI'])->getResult();
-		$count_selesai_bni = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BNI'])->countRows();
-		$akta_selesai_bsm  = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BSM'])->getResult();
-		$count_selesai_bsm = $this->akta_inv->exportData(['status'=>1,'jenis_bank'=>'BSM'])->countRows();
-		$akta_belum_bri    = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BRI'])->getResult();
-		$count_belum_bri   = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BRI'])->countRows();
-		$akta_belum_bni    = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BNI'])->getResult();
-		$count_belum_bni   = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BNI'])->countRows();
-		$akta_belum_bsm    = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BSM'])->getResult();
-		$count_belum_bsm   = $this->akta_inv->exportData(['status'=>0,'jenis_bank'=>'BSM'])->countRows();
-		$sertifikat_bri    = $this->sertifikat_inv->exportData(['jenis_bank'=>'BRI'])->getResult();
-		$count_srt_bri     = $this->sertifikat_inv->exportData(['jenis_bank'=>'BRI'])->countRows();
-		$sertifikat_bni    = $this->sertifikat_inv->exportData(['jenis_bank'=>'BNI'])->getResult();
-		$count_srt_bni     = $this->sertifikat_inv->exportData(['jenis_bank'=>'BNI'])->countRows();
-		$sertifikat_bsm    = $this->sertifikat_inv->exportData(['jenis_bank'=>'BSM'])->getResult();
-		$count_srt_bsm     = $this->sertifikat_inv->exportData(['jenis_bank'=>'BSM'])->countRows();
-		$sertifikat_luar   = $this->sertifikat_inv->WhereNotIn(['BRI','BNI','BSM'])->getResult();
-		$count_srt_luar    = $this->sertifikat_inv->WhereNotIn(['BRI','BNI','BSM'])->countRows();
+		$akta_inv            = $this->akta_inv;
+		$srt_inv             = $this->sertifikat_inv;
+		$nasabah_selesai_bri = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BRI'])->getResult();
+		$int_selesai_bri     = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BRI'])->countRows();
+		$nasabah_selesai_bni = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BNI'])->getResult();
+		$int_selesai_bni     = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BNI'])->countRows();
+		$nasabah_selesai_bsm = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BSM'])->getResult();
+		$int_selesai_bsm     = $this->nasabah_akta->exportData(['status'=>1,'jenis_bank'=>'BSM'])->countRows();
+		$nasabah_belum_bri   = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BRI'])->getResult();
+		$int_belum_bri       = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BRI'])->countRows();
+		$nasabah_belum_bni   = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BNI'])->getResult();
+		$int_belum_bni       = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BNI'])->countRows();
+		$nasabah_belum_bsm   = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BSM'])->getResult();
+		$int_belum_bsm       = $this->nasabah_akta->exportData(['status'=>0,'jenis_bank'=>'BSM'])->countRows();
+		$nasabah_srt_bri     = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BRI'])->getResult();
+		$int_srt_bri         = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BRI'])->countRows();
+		$nasabah_srt_bni     = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BNI'])->getResult();
+		$int_srt_bni         = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BNI'])->countRows();
+		$nasabah_srt_bsm     = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BSM'])->getResult();
+		$int_srt_bsm         = $this->nasabah_sertifikat->exportData(['jenis_bank'=>'BSM'])->countRows();
+		$nasabah_srt_luar    = $this->nasabah_sertifikat->WhereNotIn(['BRI','BNI','BSM'])->getResult();
+		$int_srt_luar        = $this->nasabah_sertifikat->WhereNotIn(['BRI','BNI','BSM'])->countRows();
 		$excel      = new PHPExcel();
 		
 		$excel->getProperties()
@@ -509,142 +511,173 @@ class Aktainventory extends CI_Controller {
 			}
 		}
 
-		// if ($int_selesai_bri > 0) {
-		// 	foreach ($nasabah_selesai_bri as $key => $value) {
-		// 		$counter           = $key+6;
-		// 		$count_selesai_bri = $akta_inv->countNasabah($value['id_u_inv_akta']);
-		// 		$akta_selesai_bri  = $akta_inv->getData($value['id_u_inv_akta']);
-		// 		$excel->setActiveSheetIndex(0)
-		// 			  ->setCellValue('A'.$counter,$key+1)
-		// 			  ->setCellValue('B'.$counter,$value['nasabah_akta'])
-		// 			  ->setCellValue('C'.$counter,$value['kelengkapan'])
-		// 			  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
-		// 			  ->setCellValue('M'.$counter,$value['print_sal'])
-		// 			  ->setCellValue('N'.$counter,$value['rpk_mnt'])
-		// 			  ->setCellValue('O'.$counter,$value['invoice'])
-		// 			  ->setCellValue('P'.$counter,$value['dan_lap'])
-		// 			  ->setCellValue('Q'.$counter,$value['exp_skmht'])
-		// 			  ->setCellValue('R'.$counter,$value['exp_cnot'])
-		// 			  ->setCellValue('S'.$counter,$value['per_lap'])
-		// 			  ->setCellValue('T'.$counter,$value['lap_sls'])
-		// 			  ->setCellValue('U'.$counter,$value['atr_odr'])
-		// 			  ->setCellValue('V'.$counter,$value['keterangan']);
-		// 			foreach ($akta_selesai_bri as $key => $data) { 
-		// 				$counter = $key+6;
-		// 				$excel->setActiveSheetIndex(0)
-		// 					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-		// 					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-		// 					  ->setCellValue('G'.$counter,$data['no_akta'])
-		// 					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-		// 					  ->setCellValue('I'.$counter,$data['call_akt'])
-		// 					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-		// 					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-		// 					  ->setCellValue('L'.$counter,$data['mnt_kmb']);
-		// 		}
-		// 	}
-		// }
 		// SHEET DATA SELESAI BRI //
-		if ($count_selesai_bri > 0) {
-	  		foreach ($akta_selesai_bri as $key => $data) {
-		  		$counter = $key+6;
+		if ($int_selesai_bri > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_selesai_bri as $key => $value) {
+				$akta_selesai_bri  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(0)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['lap_sls'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
-		  	}
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['lap_sls'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_selesai_bri as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(0)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(0)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
+			}
 		}
 		// END SHEET DATA SELESAI BRI //
 
-
 		// SHEET DATA SELESAI BNI //
-		if ($count_selesai_bri > 0) {
-			foreach ($akta_selesai_bni as $key => $data) {
-		  		$counter = $key+6;
+		if ($int_selesai_bni > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_selesai_bni as $key => $value) {
+				$akta_selesai_bni  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(1)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['lap_sls'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['lap_sls'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_selesai_bni as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(1)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(1)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
 			}
 		}
 		// END SHEET DATA SELESAI BNI //
 
 		// SHEET DATA SELESAI BSM //
-		if ($count_selesai_bsm > 0) {
-	  		foreach ($akta_selesai_bsm as $key => $data) {
-		  		$counter = $key+6;
+		if ($int_selesai_bsm > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_selesai_bsm as $key => $value) {
+				$akta_selesai_bsm  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(2)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['lap_sls'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['lap_sls'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_selesai_bsm as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(2)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(2)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
 			}
-		  }
+		}
 		 // END SHEET DATA SELESAI BSM //
-
 		 
 		// SHEET DATA SERTIFIKAT BRI //
-		if ($count_srt_bri > 0) {
+		if ($int_srt_bri > 0) {
+			$counterInside = 6;
+			$counter       = 7;
 			foreach ($sertifikat_bri as $key => $data) {
-			  	$counter = $key+7;
-			  	$index = $i-1;
-				$var  = $count_srt_bri + $counter + 1;
-				$var2 = $count_srt_bri + $counter + 2;
+				$var  = $int_srt_bri + $counter + 1;
+				$var2 = $int_srt_bri + $counter + 2;
+				$sertifikat_bri = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(3)
 			  		  ->setCellValue('A'.$counter,$key+1)
 			  		  ->setCellValue('B'.$counter,$data['jenis_sertifikat'])
@@ -654,56 +687,98 @@ class Aktainventory extends CI_Controller {
 			  		  ->setCellValue('F'.$counter,$data['kantor'])
 			  		  ->setCellValue('G'.$counter,$data['bpn'])
 			  		  ->setCellValue('H'.$counter,$data['luar'])
-			  		  ->setCellValue('I'.$counter,$data['ket_order'])
-			  		  ->setCellValue('J'.$counter,$data['masuk'])
-			  		  ->setCellValue('K'.$counter,$data['keluar'])
 			  		  ->setCellValue('L'.$counter,$data['keterangan']);
+			  		  foreach ($sertifikat_bri as $key => $value) {
+			  		  	$counterInside++;
+			  		  	$excel->setActiveSheetIndex(3)
+					  		  ->setCellValue('I'.$counterInside,$value['ket_order'])
+					  		  ->setCellValue('J'.$counterInside,humanDate($value['masuk']))
+					  		  ->setCellValue('K'.$counterInside,humanDate($value['keluar']));
+			  		  }
+				$excel->setActiveSheetIndex(3)
+					  ->mergeCells('A'.$counter.':A'.$counterInside)
+					  ->mergeCells('B'.$counter.':B'.$counterInside)
+					  ->mergeCells('C'.$counter.':C'.$counterInside)
+					  ->mergeCells('D'.$counter.':D'.$counterInside)
+					  ->mergeCells('E'.$counter.':E'.$counterInside)
+					  ->mergeCells('F'.$counter.':F'.$counterInside)
+					  ->mergeCells('G'.$counter.':G'.$counterInside)
+					  ->mergeCells('H'.$counter.':H'.$counterInside)
+					  ->mergeCells('L'.$counter.':L'.$counterInside);
+				 $counter = $counterInside + 1;
 			}
 			$excel->setActiveSheetIndex(3)
 			  	  ->mergeCells('A'.$var.':E'.$var)
 			  	  ->mergeCells('A'.$var2.':E'.$var2)
 			  	  ->mergeCells('F'.$var2.':H'.$var2)
 			  	  ->setCellValue('A'.$var,'JUMLAH : ')
-			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ');
+			  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
+			  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
+			  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
+			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
+			  	  ->setCellValue('F'.$var2,$int_srt_luar);
 		}
 
-		// END SHEET DATA SERTIFIKAT BRI // 										
+		// // END SHEET DATA SERTIFIKAT BRI // 										
 
-		// SHEET DATA SERTIFIKAT BNI //
-		if ($count_srt_bni > 0) {
-			foreach ($sertifikat_bni as $key => $data) {
-				$counter = $key+7;
-				$var     = $count_srt_bni + $counter + 1;
-				$var2    = $count_srt_bni + $counter + 2;
-		  	$excel->setActiveSheetIndex(4)
-		  		  ->setCellValue('A'.$counter,$i)
-		  		  ->setCellValue('B'.$counter,$data['jenis_sertifikat'])
-		  		  ->setCellValue('C'.$counter,$data['nomor'])
-		  		  ->setCellValue('D'.$counter,$data['jenis_bank'])
-		  		  ->setCellValue('E'.$counter,$data['nasabah_sertifikat'])
-		  		  ->setCellValue('F'.$counter,$data['kantor'])
-		  		  ->setCellValue('G'.$counter,$data['bpn'])
-		  		  ->setCellValue('H'.$counter,$data['luar'])
-		  		  ->setCellValue('I'.$counter,$data['ket_order'])
-		  		  ->setCellValue('J'.$counter,$data['masuk'])
-		  		  ->setCellValue('K'.$counter,$data['keluar'])
-		  		  ->setCellValue('L'.$counter,$data['keterangan']);
-		    }
-		  	$excel->setActiveSheetIndex(4)
-		  		  ->mergeCells('A'.$var.':E'.$var)
-		  		  ->mergeCells('A'.$var2.':E'.$var2)
-		  		  ->mergeCells('F'.$var2.':H'.$var2)
-		  		  ->setCellValue('A'.$var,'JUMLAH : ')
-		  		  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ');
+		// // SHEET DATA SERTIFIKAT BNI //
+		if ($int_srt_bni > 0) {
+			$counterInside = 6;
+			$counter       = 7;
+			foreach ($nasabah_srt_bni as $key => $data) {
+				$var  = $int_srt_bni + $counter + 1;
+				$var2 = $int_srt_bni + $counter + 2;
+				$sertifikat_bni = $srt_inv->getData($data['id_u_inv_sertifikat']);
+			  	$excel->setActiveSheetIndex(4)
+			  		  ->setCellValue('A'.$counter,$key+1)
+			  		  ->setCellValue('B'.$counter,$data['jenis_sertifikat'])
+			  		  ->setCellValue('C'.$counter,$data['nomor'])
+			  		  ->setCellValue('D'.$counter,$data['jenis_bank'])
+			  		  ->setCellValue('E'.$counter,$data['nasabah_sertifikat'])
+			  		  ->setCellValue('F'.$counter,$data['kantor'])
+			  		  ->setCellValue('G'.$counter,$data['bpn'])
+			  		  ->setCellValue('H'.$counter,$data['luar'])
+			  		  ->setCellValue('L'.$counter,$data['keterangan']);
+			  		  foreach ($sertifikat_bni as $key => $value) {
+			  		  	$counterInside++;
+			  		  	$excel->setActiveSheetIndex(4)
+					  		  ->setCellValue('I'.$counterInside,$value['ket_order'])
+					  		  ->setCellValue('J'.$counterInside,humanDate($value['masuk']))
+					  		  ->setCellValue('K'.$counterInside,humanDate($value['keluar']));
+			  		  }
+				$excel->setActiveSheetIndex(4)
+					  ->mergeCells('A'.$counter.':A'.$counterInside)
+					  ->mergeCells('B'.$counter.':B'.$counterInside)
+					  ->mergeCells('C'.$counter.':C'.$counterInside)
+					  ->mergeCells('D'.$counter.':D'.$counterInside)
+					  ->mergeCells('E'.$counter.':E'.$counterInside)
+					  ->mergeCells('F'.$counter.':F'.$counterInside)
+					  ->mergeCells('G'.$counter.':G'.$counterInside)
+					  ->mergeCells('H'.$counter.':H'.$counterInside)
+					  ->mergeCells('L'.$counter.':L'.$counterInside);
+				 $counter = $counterInside + 1;
+			}
+			$excel->setActiveSheetIndex(4)
+			  	  ->mergeCells('A'.$var.':E'.$var)
+			  	  ->mergeCells('A'.$var2.':E'.$var2)
+			  	  ->mergeCells('F'.$var2.':H'.$var2)
+			  	  ->setCellValue('A'.$var,'JUMLAH : ')
+			  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
+			  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
+			  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
+			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
+			  	  ->setCellValue('F'.$var2,$int_srt_luar);
 		}
-		// END SHEET DATA SERTIFIKAT BNI //
+		// // END SHEET DATA SERTIFIKAT BNI //
 
-		// SHEET DATA SERTIFIKAT BSM //
-		if ($count_srt_bsm > 0) {
-			foreach ($sertifikat_bsm as $key => $data) {
-				$counter = $key+7;
-				$var     = $count_srt_bsm + $counter + 1;
-				$var2    = $count_srt_bsm + $counter + 2;
+		// // SHEET DATA SERTIFIKAT BSM //
+		if ($int_srt_bsm > 0) {
+			$counterInside = 6;
+			$counter       = 7;
+			foreach ($nasabah_srt_bsm as $key => $data) {
+				$var  = $int_srt_bsm + $counter + 1;
+				$var2 = $int_srt_bsm + $counter + 2;
+				$sertifikat_bsm = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(5)
 			  		  ->setCellValue('A'.$counter,$key+1)
 			  		  ->setCellValue('B'.$counter,$data['jenis_sertifikat'])
@@ -713,119 +788,207 @@ class Aktainventory extends CI_Controller {
 			  		  ->setCellValue('F'.$counter,$data['kantor'])
 			  		  ->setCellValue('G'.$counter,$data['bpn'])
 			  		  ->setCellValue('H'.$counter,$data['luar'])
-			  		  ->setCellValue('I'.$counter,$data['ket_order'])
-			  		  ->setCellValue('J'.$counter,$data['masuk'])
-			  		  ->setCellValue('K'.$counter,$data['keluar'])
 			  		  ->setCellValue('L'.$counter,$data['keterangan']);
+			  		  foreach ($sertifikat_bsm as $key => $value) {
+			  		  	$counterInside++;
+			  		  	$excel->setActiveSheetIndex(5)
+					  		  ->setCellValue('I'.$counterInside,$value['ket_order'])
+					  		  ->setCellValue('J'.$counterInside,humanDate($value['masuk']))
+					  		  ->setCellValue('K'.$counterInside,humanDate($value['keluar']));
+			  		  }
+				$excel->setActiveSheetIndex(5)
+					  ->mergeCells('A'.$counter.':A'.$counterInside)
+					  ->mergeCells('B'.$counter.':B'.$counterInside)
+					  ->mergeCells('C'.$counter.':C'.$counterInside)
+					  ->mergeCells('D'.$counter.':D'.$counterInside)
+					  ->mergeCells('E'.$counter.':E'.$counterInside)
+					  ->mergeCells('F'.$counter.':F'.$counterInside)
+					  ->mergeCells('G'.$counter.':G'.$counterInside)
+					  ->mergeCells('H'.$counter.':H'.$counterInside)
+					  ->mergeCells('L'.$counter.':L'.$counterInside);
+				 $counter = $counterInside + 1;
 			}
-		  	$excel->setActiveSheetIndex(5)
-		  		  ->mergeCells('A'.$var.':E'.$var)
-		  		  ->mergeCells('A'.$var2.':E'.$var2)
-		  		  ->mergeCells('F'.$var2.':H'.$var2)
-		  		  ->setCellValue('A'.$var,'JUMLAH : ')
-		  		  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ');
+			$excel->setActiveSheetIndex(5)
+			  	  ->mergeCells('A'.$var.':E'.$var)
+			  	  ->mergeCells('A'.$var2.':E'.$var2)
+			  	  ->mergeCells('F'.$var2.':H'.$var2)
+			  	  ->setCellValue('A'.$var,'JUMLAH : ')
+			  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
+			  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
+			  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
+			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
+			  	  ->setCellValue('F'.$var2,$int_srt_luar);
 		}
 		// END SHEET DATA SERTIFIKAT BSM //
 
 		// SHEET DATA BELUM BRI //
-		if ($count_belum_bri > 0) {
-			foreach ($akta_belum_bri as $key => $data) {
-				$counter = $key+6;
+		if ($int_belum_bri > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_belum_bri as $key => $value) {
+				$akta_belum_bri  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(6)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['no_sps'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['no_sps'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_belum_bri as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(6)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(6)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
 			}
 		}
 		// END SHEET DATA BELUM BRI //
 
 		// SHEET DATA BELUM BNI //
-		if ($count_belum_bni > 0) {
-			foreach ($akta_belum_bni as $key => $data) {
-		  		$counter = $key+6;
+		
+		if ($int_belum_bni > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_belum_bni as $key => $value) {
+				$akta_belum_bni  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(7)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['no_sps'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
-		  	}
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['no_sps'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_belum_bni as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(7)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(7)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
+			}
 		}
 		// END SHEET DATA BELUM BNI //
 
 		// SHEET DATA BELUM BSM //
-		if ($count_belum_bsm > 0) {
-			foreach ($akta_belum_bsm as $key => $data) {
-		  		$counter = $key+6;
+		if ($int_belum_bsm > 0) {
+			$counterInside = 5;
+			$counter       = 6;
+			foreach ($nasabah_belum_bsm as $key => $value) {
+				$akta_belum_bsm  = $akta_inv->getData($value['id_u_inv_akta']);
 				$excel->setActiveSheetIndex(8)
 					  ->setCellValue('A'.$counter,$key+1)
-					  ->setCellValue('B'.$counter,$data['nasabah_akta'])
-					  ->setCellValue('C'.$counter,$data['kelengkapan'])
-					  ->setCellValue('D'.$counter,$data['jenis_pekerjaan'])
-					  ->setCellValue('E'.$counter,$data['jenis_akta'])
-					  ->setCellValue('F'.$counter,$data['tgl_akta'])
-					  ->setCellValue('G'.$counter,$data['no_akta'])
-					  ->setCellValue('H'.$counter,$data['ketik_akt'])
-					  ->setCellValue('I'.$counter,$data['call_akt'])
-					  ->setCellValue('J'.$counter,$data['ttd_akd'])
-					  ->setCellValue('K'.$counter,$data['atr_mnt'])
-					  ->setCellValue('L'.$counter,$data['mnt_kmb'])
-					  ->setCellValue('M'.$counter,$data['print_sal'])
-					  ->setCellValue('N'.$counter,$data['rpk_mnt'])
-					  ->setCellValue('O'.$counter,$data['invoice'])
-					  ->setCellValue('P'.$counter,$data['dan_lap'])
-					  ->setCellValue('Q'.$counter,$data['exp_skmht'])
-					  ->setCellValue('R'.$counter,$data['exp_cnot'])
-					  ->setCellValue('S'.$counter,$data['per_lap'])
-					  ->setCellValue('T'.$counter,$data['no_sps'])
-					  ->setCellValue('U'.$counter,$data['atr_odr'])
-					  ->setCellValue('V'.$counter,$data['keterangan']);
+					  ->setCellValue('B'.$counter,$value['nasabah_akta'])
+					  ->setCellValue('C'.$counter,$value['kelengkapan'])
+					  ->setCellValue('D'.$counter,$value['jenis_pekerjaan'])
+					  ->setCellValue('M'.$counter,$value['print_sal'])
+					  ->setCellValue('N'.$counter,$value['rpk_mnt'])
+					  ->setCellValue('O'.$counter,number_format($value['invoice']))
+					  ->setCellValue('P'.$counter,$value['dan_lap'])
+					  ->setCellValue('Q'.$counter,$value['exp_skmht'])
+					  ->setCellValue('R'.$counter,$value['exp_cnot'])
+					  ->setCellValue('S'.$counter,$value['per_lap'])
+					  ->setCellValue('T'.$counter,$value['no_sps'])
+					  ->setCellValue('U'.$counter,$value['atr_odr'])
+					  ->setCellValue('V'.$counter,$value['keterangan']);
+					foreach ($akta_belum_bsm as $i => $dataAkta) { 
+						$counterInside++;
+						$excel->setActiveSheetIndex(8)
+							  ->setCellValue('E'.$counterInside,$dataAkta['jenis_akta'])
+							  ->setCellValue('F'.$counterInside,tanggal_ppat($dataAkta['tgl_akta']))
+							  ->setCellValue('G'.$counterInside,$dataAkta['no_akta'])
+							  ->setCellValue('H'.$counterInside,tanggal_ppat($dataAkta['ketik_akt']))
+							  ->setCellValue('I'.$counterInside,tanggal_ppat($dataAkta['call_akt']))
+							  ->setCellValue('J'.$counterInside,tanggal_ppat($dataAkta['ttd_akd']))
+							  ->setCellValue('K'.$counterInside,tanggal_ppat($dataAkta['atr_mnt']))
+							  ->setCellValue('L'.$counterInside,tanggal_ppat($dataAkta['mnt_kmb']));
+				}
+				$excel->setActiveSheetIndex(8)
+			  	  ->mergeCells('A'.$counter.':A'.$counterInside)
+			  	  ->mergeCells('B'.$counter.':B'.$counterInside)
+			  	  ->mergeCells('C'.$counter.':C'.$counterInside)
+			  	  ->mergeCells('D'.$counter.':D'.$counterInside)
+			  	  ->mergeCells('M'.$counter.':M'.$counterInside)
+			  	  ->mergeCells('N'.$counter.':N'.$counterInside)
+			  	  ->mergeCells('O'.$counter.':O'.$counterInside)
+			  	  ->mergeCells('P'.$counter.':P'.$counterInside)
+			  	  ->mergeCells('Q'.$counter.':Q'.$counterInside)
+			  	  ->mergeCells('R'.$counter.':R'.$counterInside)
+			  	  ->mergeCells('S'.$counter.':S'.$counterInside)
+			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
+			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
+			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+				$counter = $counterInside + 1;
 			}
 		}
 		// END SHEET DATA BELUM BSM //
 
 		// SHEET DATA SERTIFIKAT LUAR KOTA //
-		if ($count_srt_luar > 0) {
-			foreach ($sertifikat_luar as $key => $data) {
-				$counter = $key+7;
-				$var     = $count_srt_luar + $counter + 1;
-				$var2    = $count_srt_luar + $counter + 2;
+		if ($int_srt_luar > 0) {
+			$counterInside = 6;
+			$counter       = 7;
+			foreach ($nasabah_srt_luar as $key => $data) {
+				$var  = $int_srt_luar + $counter + 1;
+				$var2 = $int_srt_luar + $counter + 2;
+				$sertifikat_luar = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(9)
 			  		  ->setCellValue('A'.$counter,$key+1)
 			  		  ->setCellValue('B'.$counter,$data['jenis_sertifikat'])
@@ -835,17 +998,36 @@ class Aktainventory extends CI_Controller {
 			  		  ->setCellValue('F'.$counter,$data['kantor'])
 			  		  ->setCellValue('G'.$counter,$data['bpn'])
 			  		  ->setCellValue('H'.$counter,$data['luar'])
-			  		  ->setCellValue('I'.$counter,$data['ket_order'])
-			  		  ->setCellValue('J'.$counter,$data['masuk'])
-			  		  ->setCellValue('K'.$counter,$data['keluar'])
 			  		  ->setCellValue('L'.$counter,$data['keterangan']);
+			  		  foreach ($sertifikat_luar as $key => $value) {
+			  		  	$counterInside++;
+			  		  	$excel->setActiveSheetIndex(9)
+					  		  ->setCellValue('I'.$counterInside,$value['ket_order'])
+					  		  ->setCellValue('J'.$counterInside,humanDate($value['masuk']))
+					  		  ->setCellValue('K'.$counterInside,humanDate($value['keluar']));
+			  		  }
+				$excel->setActiveSheetIndex(9)
+					  ->mergeCells('A'.$counter.':A'.$counterInside)
+					  ->mergeCells('B'.$counter.':B'.$counterInside)
+					  ->mergeCells('C'.$counter.':C'.$counterInside)
+					  ->mergeCells('D'.$counter.':D'.$counterInside)
+					  ->mergeCells('E'.$counter.':E'.$counterInside)
+					  ->mergeCells('F'.$counter.':F'.$counterInside)
+					  ->mergeCells('G'.$counter.':G'.$counterInside)
+					  ->mergeCells('H'.$counter.':H'.$counterInside)
+					  ->mergeCells('L'.$counter.':L'.$counterInside);
+				 	  $counter = $counterInside + 1;
 			}
 			$excel->setActiveSheetIndex(9)
 			  	  ->mergeCells('A'.$var.':E'.$var)
 			  	  ->mergeCells('A'.$var2.':E'.$var2)
 			  	  ->mergeCells('F'.$var2.':H'.$var2)
 			  	  ->setCellValue('A'.$var,'JUMLAH : ')
-			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ');
+			  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
+			  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
+			  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
+			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
+			  	  ->setCellValue('F'.$var2,$int_srt_luar);
 		}
 		// END SHEET DATA SERTIFIKAT LUAR //
 

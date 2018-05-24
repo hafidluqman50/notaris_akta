@@ -81,6 +81,11 @@ function rupiah($uang) {
     return $uang;
 }
 
+function tanggal_ppat($tgl) {
+    $tanggal= explode('-',$tgl);
+    return $tanggal[2].'/'.$tanggal[1].'/'.$tanggal[0];
+}
+
 function format_hari($tanggal) {
     $cek = date('D',strtotime($tanggal));
     $array = ['Sun'=>'Minggu','Mon'=>'Senin','Tue'=>'Selasa','Wed'=>'Rabu','Thu'=>'Kamis','Fri'=>
