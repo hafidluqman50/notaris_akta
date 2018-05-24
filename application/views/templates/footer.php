@@ -24,5 +24,13 @@
 <script src="<?php echo base_url('assets/js/adminlte.min.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/js/demo.js'); ?>"></script>
+<!-- TinyMCE -->
+<script src="<?php echo base_url('assets/plugins/tinymce/jquery.tinymce.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/plugins/tinymce/tinymce.min.js') ?>"></script>
+<!-- dataTables -->
+<script src="<?php echo base_url('assets/plugins/dataTables/table/js/jquery.dataTables.js') ?>"></script>
+<script src="<?php echo base_url('assets/plugins/dataTables/table/js/dataTables.bootstrap.js') ?>"></script>
+<!-- Custom JS -->
+<script src="<?php echo base_url('assets/js/custom.js') ?>"></script>
 </body>
 </html>

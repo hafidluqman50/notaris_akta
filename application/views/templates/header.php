@@ -17,7 +17,9 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/skins/_all-skins.min.css'); ?>">
-
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/tinymce/skins/lightgray/skin.min.css') ?>">
+  <!-- <link rel="stylesheet" href=""> -->
+<link rel="stylesheet" href="<?php echo base_url('assets/plugins/dataTables/table/css/dataTables.bootstrap.css') ?>">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -42,10 +44,32 @@
             <li class="dropdown <?php echo ($page == 'fidusia') ? 'active' : '' ?>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta Fidusia <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Debitur</a></li>
+                <li><a href="<?php echo base_url('fidusia/akta/debitur') ?>">Data Fidusia</a></li><!-- 
                 <li><a href="#">Data Persetujuan</a></li>
                 <li><a href="#">Data Pemilik</a></li>
-                <li><a href="#">Data Pinjaman</a></li>
+                <li><a href="#">Data Pinjaman</a></li> -->
+              </ul>
+            </li>
+            <li class="dropdown <?php echo($page=='ppat') ? 'active' : '' ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akta PPAT <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu"><!-- 
+                <li><a href="<?php echo base_url('ppat/aktappat/data_skmht') ?>">Data SKMHT</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/data_apht') ?>">Data APHT</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/data_ajb') ?>">Data AJB</a></li> -->
+                <li><a href="<?php echo base_url('ppat/aktappat/data_penjual') ?>">Data PPAT</a></li>
+              </ul>              
+            </li>
+            <li class="dropdown <?php echo($page=='surat') ? 'active' : '' ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Template Surat <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?php echo base_url('fidusia/akta/surat_debitur') ?>">Surat Akta Fidusia</a></li>
+                <li><a href="<?php echo base_url('ppat/aktappat/surat_ppat') ?>">Surat Akta PPAT</a></li>
+              </ul>
+            </li>
+            <li class="dropdown <?php echo($page=='inventory') ? 'active' : '' ?>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?php echo base_url('inventory/aktainventory/data_inventory') ?>"> Data Inventory</a></li>
               </ul>
             </li>
           </ul>
