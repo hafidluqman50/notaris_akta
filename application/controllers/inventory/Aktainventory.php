@@ -54,8 +54,8 @@ class Aktainventory extends CI_Controller {
 		$this->load->view('inventory/form_nasabah_akta',$data);
 	}
 
-	public function delete_nasabah_akta($id) {
-		$this->nasabah_akta->deleteData($id);
+	public function delete_nasabah_akta($id,$id_akta) {
+		$this->nasabah_akta->deleteData($id,$id_akta);
 		$this->session->set_flashdata('pesan','Berhasil Hapus');
 		redirect('inventory/aktainventory/data_inventory');
 	}
@@ -118,7 +118,7 @@ class Aktainventory extends CI_Controller {
 
 
 	public function delete_inv_sertifikat($id,$id_inv) {
-		$this->sertifikat_inv->deleteData($id_inv,$id);
+		$this->sertifikat_inv->deleteData($id,$id_inv);
 		$this->session->set_flashdata('pesan','Berhasil Delete Data');
 	}
 

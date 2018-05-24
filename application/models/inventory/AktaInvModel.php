@@ -97,8 +97,8 @@ class AktaInvModel extends CI_Model {
     	$this->db->update($this->table,$data);
     }
 
-    function deleteData($id_akta,$id) {
-    	$this->db->where(['id_u_inv_akta'=>$id_akta,'id_inv_akta'=>$id])
+    function deleteData($id,$id_akta) {
+    	$this->db->where(['id_u_inv_akta'=>$id,'id_inv_akta'=>$id_akta])
     			 ->delete();
     }
 }

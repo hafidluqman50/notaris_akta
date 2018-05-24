@@ -70,7 +70,7 @@ class NasabahSertifikatInvModel extends CI_Model {
     	$this->db->update($this->table,$data);
     }
 
-    function deleteData($id,$id_sertifikat) {
+    function deleteData($id) {
     	$this->db->where('id_u_inv_sertifikat',$id)
     			 ->delete();
     }

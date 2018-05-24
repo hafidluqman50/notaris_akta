@@ -63,7 +63,7 @@ class SertifikatInvModel extends CI_Model {
     }
 
     function deleteData($id,$id_sertifikat) {
-    	$this->db->where(['id_u_inv_sertifikat'=>$id_sertifikat,'id_inv_sertifikat'=>$id])
+    	$this->db->where(['id_u_inv_sertifikat'=>$id,'id_inv_sertifikat'=>$id_sertifikat])
     			 ->delete();
     }
 }
