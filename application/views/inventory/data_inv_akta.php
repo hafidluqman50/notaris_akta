@@ -54,7 +54,7 @@
                             			<a href="<?= base_url('inventory/aktainventory/edit_inv_akta/'.$ppat['id_u_inv_akta'].'/'.$ppat['id_inv_akta']) ?>" class="btn btn-success">
                             			Ubah
                             			</a>
-                            			<a href="<?= base_url('inventory/aktainventory/delete_nasabah_akta/'.$ppat['id_u_inv_akta'].'/'.$ppat['id_inv_akta']) ?>" class="btn btn-danger" onclick="return confirm('Yakin Hapus ?');">
+                            			<a href="<?= base_url('inventory/aktainventory/delete_inv_akta/'.$ppat['id_u_inv_akta'].'/'.$ppat['id_inv_akta']) ?>" class="btn btn-danger" onclick="return confirm('Yakin Hapus ?');">
                             			Hapus
                             			</a>
                             		</td>
