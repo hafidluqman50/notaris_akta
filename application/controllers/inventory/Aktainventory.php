@@ -96,15 +96,15 @@ class Aktainventory extends CI_Controller {
 	}
 
 	public function delete_inv_akta($id,$id_inv) {
-		$this->akta_inv->deleteData($id_inv,$id);
+		$this->akta_inv->deleteData($id,$id_inv);
 		$this->session->set_flashdata('pesan','Berhasil Delete Data');
+		redirect('inventory/aktainventory/monitor_akta/'.$id);
 	}
 
 	public function add_inv_sertifikat($id) {
 		$data['title']            = 'Tambah Data Inventory PPAT';
 		$data['page']             = 'inventory';
 		$data['id_inv_sertifikat'] = $id;
-		// $data['row']           = ''
 		$this->load->view('inventory/form_inv_sertifikat',$data);
 	}
 
@@ -120,6 +120,7 @@ class Aktainventory extends CI_Controller {
 	public function delete_inv_sertifikat($id,$id_inv) {
 		$this->sertifikat_inv->deleteData($id,$id_inv);
 		$this->session->set_flashdata('pesan','Berhasil Delete Data');
+		redirect('inventory/aktainventory/monitor_sertifikat/'.$id);
 	}
 
 	public function save_nasabah_akta() {
@@ -559,6 +560,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(0)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -612,6 +619,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(1)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -665,6 +678,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(2)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -675,8 +694,6 @@ class Aktainventory extends CI_Controller {
 			$counterInside = 6;
 			$counter       = 7;
 			foreach ($sertifikat_bri as $key => $data) {
-				$var  = $int_srt_bri + $counter + 1;
-				$var2 = $int_srt_bri + $counter + 2;
 				$sertifikat_bri = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(3)
 			  		  ->setCellValue('A'.$counter,$key+1)
@@ -705,8 +722,16 @@ class Aktainventory extends CI_Controller {
 					  ->mergeCells('G'.$counter.':G'.$counterInside)
 					  ->mergeCells('H'.$counter.':H'.$counterInside)
 					  ->mergeCells('L'.$counter.':L'.$counterInside);
+			  	$excel->setActiveSheetIndex(3)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				 $counter = $counterInside + 1;
 			}
+		  	$var = $counterInside + 2;
+		  	$var2 = $counterInside + 3;
 			$excel->setActiveSheetIndex(3)
 			  	  ->mergeCells('A'.$var.':E'.$var)
 			  	  ->mergeCells('A'.$var2.':E'.$var2)
@@ -726,8 +751,6 @@ class Aktainventory extends CI_Controller {
 			$counterInside = 6;
 			$counter       = 7;
 			foreach ($nasabah_srt_bni as $key => $data) {
-				$var  = $int_srt_bni + $counter + 1;
-				$var2 = $int_srt_bni + $counter + 2;
 				$sertifikat_bni = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(4)
 			  		  ->setCellValue('A'.$counter,$key+1)
@@ -756,8 +779,16 @@ class Aktainventory extends CI_Controller {
 					  ->mergeCells('G'.$counter.':G'.$counterInside)
 					  ->mergeCells('H'.$counter.':H'.$counterInside)
 					  ->mergeCells('L'.$counter.':L'.$counterInside);
+			  	$excel->setActiveSheetIndex(4)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				 $counter = $counterInside + 1;
 			}
+		  	$var = $counterInside + 2;
+		  	$var2 = $counterInside + 3;
 			$excel->setActiveSheetIndex(4)
 			  	  ->mergeCells('A'.$var.':E'.$var)
 			  	  ->mergeCells('A'.$var2.':E'.$var2)
@@ -776,8 +807,6 @@ class Aktainventory extends CI_Controller {
 			$counterInside = 6;
 			$counter       = 7;
 			foreach ($nasabah_srt_bsm as $key => $data) {
-				$var  = $int_srt_bsm + $counter + 1;
-				$var2 = $int_srt_bsm + $counter + 2;
 				$sertifikat_bsm = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(5)
 			  		  ->setCellValue('A'.$counter,$key+1)
@@ -806,8 +835,16 @@ class Aktainventory extends CI_Controller {
 					  ->mergeCells('G'.$counter.':G'.$counterInside)
 					  ->mergeCells('H'.$counter.':H'.$counterInside)
 					  ->mergeCells('L'.$counter.':L'.$counterInside);
+			  	$excel->setActiveSheetIndex(5)
+			  		  ->getStyle('A'.$counter.':L'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				 $counter = $counterInside + 1;
 			}
+		  	$var = $counterInside + 2;
+		  	$var2 = $counterInside + 3;
 			$excel->setActiveSheetIndex(5)
 			  	  ->mergeCells('A'.$var.':E'.$var)
 			  	  ->mergeCells('A'.$var2.':E'.$var2)
@@ -869,6 +906,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(6)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -923,6 +966,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(7)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -976,6 +1025,12 @@ class Aktainventory extends CI_Controller {
 			  	  ->mergeCells('T'.$counter.':T'.$counterInside)
 			  	  ->mergeCells('U'.$counter.':U'.$counterInside)
 			  	  ->mergeCells('V'.$counter.':V'.$counterInside);
+			  	$excel->setActiveSheetIndex(8)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				$counter = $counterInside + 1;
 			}
 		}
@@ -986,8 +1041,6 @@ class Aktainventory extends CI_Controller {
 			$counterInside = 6;
 			$counter       = 7;
 			foreach ($nasabah_srt_luar as $key => $data) {
-				$var  = $int_srt_luar + $counter + 1;
-				$var2 = $int_srt_luar + $counter + 2;
 				$sertifikat_luar = $srt_inv->getData($data['id_u_inv_sertifikat']);
 			  	$excel->setActiveSheetIndex(9)
 			  		  ->setCellValue('A'.$counter,$key+1)
@@ -1016,18 +1069,26 @@ class Aktainventory extends CI_Controller {
 					  ->mergeCells('G'.$counter.':G'.$counterInside)
 					  ->mergeCells('H'.$counter.':H'.$counterInside)
 					  ->mergeCells('L'.$counter.':L'.$counterInside);
+			  	$excel->setActiveSheetIndex(9)
+			  		  ->getStyle('A'.$counter.':V'.$counterInside)
+			  		  ->applyFromArray([
+			  		  	'alignment'=>['vertical'=>PHPExcel_Style_Alignment::VERTICAL_CENTER,'horizontal'=>PHPExcel_Style_Alignment::HORIZONTAL_CENTER],
+					  	'borders' => ['allborders' => ['style' => PHPExcel_Style_Border::BORDER_THIN]]
+			  		  ]);
 				 	  $counter = $counterInside + 1;
 			}
-			$excel->setActiveSheetIndex(9)
-			  	  ->mergeCells('A'.$var.':E'.$var)
-			  	  ->mergeCells('A'.$var2.':E'.$var2)
-			  	  ->mergeCells('F'.$var2.':H'.$var2)
-			  	  ->setCellValue('A'.$var,'JUMLAH : ')
-			  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
-			  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
-			  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
-			  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
-			  	  ->setCellValue('F'.$var2,$int_srt_luar);
+			  	$var = $counterInside + 2;
+			  	$var2 = $counterInside + 3;
+				$excel->setActiveSheetIndex(9)
+				  	  ->mergeCells('A'.$var.':E'.$var)
+				  	  ->mergeCells('A'.$var2.':E'.$var2)
+				  	  ->mergeCells('F'.$var2.':H'.$var2)
+				  	  ->setCellValue('A'.$var,'JUMLAH : ')
+				  	  ->setCellValue('F'.$var,'=SUM(F7:F'.$counterInside.')')
+				  	  ->setCellValue('G'.$var,'=SUM(G7:G'.$counterInside.')')
+				  	  ->setCellValue('H'.$var,'=SUM(H7:H'.$counterInside.')')
+				  	  ->setCellValue('A'.$var2,'TOTAL SERTIFIKAT : ')
+				  	  ->setCellValue('F'.$var2,$int_srt_luar);
 		}
 		// END SHEET DATA SERTIFIKAT LUAR //
 
