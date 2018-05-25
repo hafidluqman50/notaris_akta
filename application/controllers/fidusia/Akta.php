@@ -39,6 +39,12 @@ class Akta extends CI_Controller
 		$this->load->view('data_debitur/form',$data);
 	}
 
+	public function hapus_debitur($id) {
+		$this->akta->deleteData($id);
+		$this->session->set_flashdata('pesan','Berhasil Hapus');
+		redirect('/fidusia/akta/debitur');
+	}
+
 	public function save_debitur() {
 		if ($this->input->post('process')) {
 			$no_akta                     = $this->input->post('no_akta');

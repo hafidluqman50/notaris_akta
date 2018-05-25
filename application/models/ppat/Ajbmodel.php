@@ -87,7 +87,6 @@ class Ajbmodel extends CI_Model
     }
 
     function deleteData($id,$id_ppat) {
-        $this->db->where(['id_ajb'=>$id,'id_ppat'=>$id_ppat]);
-        $this->db->update($this->table,$data);
+        $this->db->from($this->table)->where(['id_ajb'=>$id,'id_ppat'=>$id_ppat])->delete();
     }
 }

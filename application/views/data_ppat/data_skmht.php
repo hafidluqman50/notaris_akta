@@ -27,7 +27,7 @@
                         </div>
                     <?php endif; ?>
                     <p>
-                        <a href="<?php echo base_url('ppat/aktappat/add_penjual/'.$id_ppat); ?>" class="btn btn-primary">Tambah Data</a>
+                        <a href="<?php echo base_url('ppat/aktappat/add_skmht/'.$id_ppat); ?>" class="btn btn-primary">Tambah Data</a>
                     </p>
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -53,7 +53,7 @@
                                   <td><?= $ppat['nasabah_bank'] ?></td>
                                 	<td><div class="btn-group">
                                 		<a href="<?= base_url('ppat/aktappat/edit_skmht/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
-                                		<a href="<?= base_url('ppat/aktappat/delete_skmht/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                		<a href="<?= base_url('ppat/aktappat/delete_skmht/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger" onclick="return confirm('Yakin Hapus ?');">Hapus</a>
                                     <?php if ($ppat['nasabah_bank'] == "BNI"): ?>
                                     <a href="<?= base_url('ppat/aktappat/cetak_skmht_bni/'.$ppat['id_skmht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak SKMHT</a>
                                       <?php else: ?>

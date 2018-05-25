@@ -56,14 +56,14 @@ class Aktamodel extends CI_Model {
 
     function updateData($id,$data) {
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id)fidusia',$id);
+        $this->db->where('id_fidusia',$id);
         $this->db->update($this->table,$data);
     }
 
     function deleteData($id) {
         $data['status'] = 0;
         $data['updated_at'] = date('Y-m-d H:i:s');
-        $this->db->where('id)fidusia',$id);
+        $this->db->where('id_fidusia',$id);
         $this->db->update($this->table,$data);
     }
 

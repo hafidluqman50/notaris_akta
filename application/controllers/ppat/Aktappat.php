@@ -145,7 +145,7 @@ class Aktappat extends CI_Controller {
 	public function delete_apht($id_apht,$id_ppat) {
 		$this->apht->deleteData($id_apht,$id_ppat);
 		$this->session->set_flashdata('pesan','Berhasil Hapus Data');
-		redirect('ppat/aktappat/apht/'.$id_ppat);
+		redirect('ppat/aktappat/data_apht/'.$id_ppat);
 	}
 
 	public function data_ajb($id) {
@@ -174,7 +174,7 @@ class Aktappat extends CI_Controller {
 	public function delete_ajb($id_ajb,$id_ppat) {
 		$this->ajb->deleteData($id_ajb,$id_ppat);
 		$this->session->set_flashdata('pesan','Berhasil Hapus AJB');
-		redirect('ppat/aktappat/ajb/'.$id_ppat);
+		redirect('ppat/aktappat/data_ajb/'.$id_ppat);
 	}
 	
 	public function save_skmht() {
@@ -213,16 +213,16 @@ class Aktappat extends CI_Controller {
 			$luas_bangunan               = $this->input->post('luas_bangunan');
 			$alamat_bangunan             = $this->input->post('alamat_bangunan');
 			$rt_bangunan                 = $this->input->post('rt_bangunan');
-			$kelurahan_bangunan 		 = $this->input->post('kelurahan_bangunan');
+			$kelurahan_bangunan          = $this->input->post('kelurahan_bangunan');
 			$nama_kelurahan_bangunan     = $this->input->post('nama_kelurahan_bangunan');
-			$kecamatan_bangunan			 = $this->input->post('kecamatan_bangunan');
-			$kota_bangunan 				 = $this->input->post('kota_bangunan');
-			$nama_kota_bangunan 		 = $this->input->post('nama_kota_bangunan');
-			$tanggal_dibuat_apht		 = $this->input->post('tanggal_dibuat_apht');
-			$id_ppat 				 = $this->input->post('id_ppat');
+			$kecamatan_bangunan          = $this->input->post('kecamatan_bangunan');
+			$kota_bangunan               = $this->input->post('kota_bangunan');
+			$nama_kota_bangunan          = $this->input->post('nama_kota_bangunan');
+			$tanggal_dibuat_apht         = $this->input->post('tanggal_dibuat_apht');
+			$id_ppat                     = $this->input->post('id_ppat');
 			$id                          = $this->input->post('id');
 			$array = [
-				'id_biodata'                  => $id_ppat,
+				'id_ppat'                     => $id_ppat,
 				'nomor_akta_skmht'            => $nomor_akta,
 				'tanggal_akta_skmht'          => $tanggal_akta,
 				'nasabah_bank'				  => $nasabah_bank,
@@ -298,7 +298,7 @@ class Aktappat extends CI_Controller {
 			$tanggal_akta_skmht          = $this->input->post('tanggal_akta_skmht');
 			$nilai_perjanjian            = $this->input->post('nilai_perjanjian');
 			$nomor_perjanjian_kredit     = $this->input->post('nomor_perjanjian_kredit');
-			$tanggal_perjanjian          = $this->input->post('tanggal_perjanjian');
+			$tanggal_perjanjian_kredit   = $this->input->post('tanggal_perjanjian_kredit');
 			$peringkat_tanggungan        = $this->input->post('peringkat_tanggungan');
 			$nilai_tanggungan            = $this->input->post('nilai_tanggungan');
 			$jenis_kepemilikan           = $this->input->post('jenis_kepemilikan');
@@ -322,7 +322,7 @@ class Aktappat extends CI_Controller {
 			$id_ppat  				 = $this->input->post('id_ppat');
 			$id                          = $this->input->post('id');
 			$array = [
-				'id_biodata'				  => $id_ppat,
+				'id_ppat'				      => $id_ppat,
 				'nomor_akta_apht'             => $nomor_akta,
 				'tanggal_akta_apht'           => $tanggal_akta,
 				'nasabah_bank'				  => $nasabah_bank,
@@ -343,7 +343,7 @@ class Aktappat extends CI_Controller {
 				'tanggal_akta_skmht'          => $tanggal_akta_skmht,
 				'nilai_perjanjian'            => $nilai_perjanjian,
 				'nomor_perjanjian_kredit'     => $nomor_perjanjian_kredit,
-				'tanggal_perjanjian_kredit'   => $tanggal_perjanjian,
+				'tanggal_perjanjian_kredit'   => $tanggal_perjanjian_kredit,
 				'peringkat_tanggungan'        => $peringkat_tanggungan,
 				'nilai_tanggungan'            => $nilai_tanggungan,
 				'jenis_kepemilikan'           => $jenis_kepemilikan,
@@ -430,7 +430,7 @@ class Aktappat extends CI_Controller {
 			$id_ppat                  = $this->input->post('id_ppat');
 			$id                          = $this->input->post('id');
 			$array = [
-				'id_biodata'				  => $id_ppat,
+				'id_ppat'				      => $id_ppat,
 				'nomor_akta_ajb'              => $nomor_akta,
 				'tanggal_akta_ajb'            => $tanggal_akta,
 				'gelar_persetujuan'           => $gelar_persetujuan,
@@ -540,8 +540,6 @@ class Aktappat extends CI_Controller {
 
 	public function cetak_skmht_bni($id,$id_ppat) {
 		$skmht                             = $this->skmht->cetakSurat($id,$id_ppat);
-		// var_dump($skmht);
-		// die;
 		$surat_skmht                       = $this->surat->suratSkmhtBni();
 		$row                               = [];
 		$row['nomor_akta_skmht']           = $skmht['nomor_akta_skmht'];
