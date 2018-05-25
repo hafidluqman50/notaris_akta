@@ -103,7 +103,6 @@ class Aphtmodel extends CI_Model
     }
 
     function deleteData($id,$id_ppat) {
-        $this->db->where(['id_apht'=>$id,'id_ppat'=>$id_ppat]);
-        $this->db->update($this->table,$data);
+        $this->db->from($this->table)->where(['id_apht'=>$id,'id_ppat'=>$id_ppat])->delete();
     }
 }

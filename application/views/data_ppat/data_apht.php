@@ -53,7 +53,7 @@
                                   <td><?= $ppat['nasabah_bank'] ?></td>
                                   <td><div class="btn-group">
                                     <a href="<?= base_url('ppat/aktappat/edit_apht/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
-                                    <a href="<?= base_url('ppat/aktappat/delete_apht/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('ppat/aktappat/delete_apht/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger" onclick="return confirm('Yakin Hapus ?');">Hapus</a>
                                     <?php if ($ppat['nasabah_bank'] == "BNI"): ?>
                                     <a href="<?= base_url('ppat/aktappat/cetak_apht_bni/'.$ppat['id_apht'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak APHT</a>
                                       <?php else: ?>

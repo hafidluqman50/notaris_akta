@@ -59,6 +59,6 @@ class Ppatpenjualmodel extends CI_Model {
     }
 
     function deleteData($id) {
-        $this->db->where('id_ppat',$id)->delete();
+        $this->db->from($this->table)->where('id_ppat',$id)->delete();
     }
 }

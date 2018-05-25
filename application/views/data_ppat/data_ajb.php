@@ -15,7 +15,7 @@
       <section class="content">
         <div class="box box-default">
           <div class="box-header with-border">
-            <h3 class="box-title">Data APHT</h3>
+            <h3 class="box-title">Data AJB</h3>
           </div>
           <div class="box-body">
             <div class="row">
@@ -51,7 +51,7 @@
                                   <td><?= $ppat['jenis_kepemilikan'] ?></td>
                                   <td><div class="btn-group">
                                     <a href="<?= base_url('ppat/aktappat/edit_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-success">Ubah</a>
-                                    <a href="<?= base_url('ppat/aktappat/delete_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('ppat/aktappat/delete_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-danger" onclick="return confirm('Yakin Hapus ?');">Hapus</a>
                                     <a href="<?= base_url('ppat/aktappat/cetak_ajb/'.$ppat['id_ajb'].'/'.$ppat['id_ppat']) ?>" class="btn btn-info">Cetak AJB</a>
                                   </div></td>
                                 </tr>

@@ -73,8 +73,7 @@ class Skmhtmodel extends CI_Model
         $this->db->update($this->table,$data);
     }
 
-    function deleteData($id,$id_debitur) {
-        $this->db->where(['id_skmht'=>$id,'id_ppat'=>$id_debitur]);
-        $this->db->update($this->table,$data);
+    function deleteData($id,$id_ppat) {
+        $this->db->from($this->table)->where(['id_skmht'=>$id,'id_ppat'=>$id_ppat])->delete();
     }
 }
